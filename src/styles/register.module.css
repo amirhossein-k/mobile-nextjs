@@ -1,0 +1,228 @@
+.wrapper_register {
+  overflow: hidden;
+  max-width: 390px;
+  background: #fff;
+  padding: 30px;
+  border-radius: 15px;
+  box-shadow: rgb(38, 57, 77) 1px 0px 30px -10px;
+}
+.wrapper_register .title_text {
+  display: flex;
+  width: 200%;
+}
+.wrapper_register .title {
+  width: 50%;
+  font-size: 35px;
+  font-weight: 600;
+
+  text-align: center;
+  transition: all 0.6s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+}
+
+.wrapper_register .slide_controls {
+  position: relative;
+  display: flex;
+  height: 50px;
+  width: 100%;
+  overflow: hidden;
+  margin: 30px 0 10px 0;
+  justify-content: space-between;
+  border: 1px solid lightgray;
+}
+
+.slide_controls .slide {
+  height: 100%;
+  color: #fff;
+  width: 100%;
+  font-size: 18px;
+  font-weight: 500;
+  text-align: center;
+  line-height: 42px;
+  cursor: pointer;
+  z-index: 1;
+  transition: all 0.6s ease;
+  /* display: flex; */
+}
+
+/* .slide-controls label.login{
+    color: rgb(255, 255, 255);
+  } */
+
+.slide_controls .slide_tab {
+  position: absolute;
+  height: 100%;
+  width: 50%;
+  left: 0%;
+  z-index: 0;
+  border-radius: 15px;
+  background: -webkit-linear-gradient(left, #003366, #004080, #0059b3, #0073e6);
+  transition: all 0.6s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+}
+.slide_controls .slide_tab.checked {
+  left: 50% !important;
+}
+.wrapper_register input[type="radio"] {
+  display: none;
+  /* opacity: 1; */
+  z-index: 999;
+  width: 500px;
+  height: 5000px;
+  /* display: inline; */
+}
+
+#signup:checked ~ .slide_tab {
+  left: 50%;
+}
+#login:checked ~ .slide_tab {
+  left: 0%;
+}
+/* #signup:checked ~ label.login{
+    color: rgb(253, 243, 243);
+    cursor: default;
+    user-select: none;
+  } */
+/* #login ~ label.login{
+    color: rgb(253, 243, 243);
+    cursor: pointer;
+    user-select: none;
+  } */
+/* #signup  ~ label.signup{
+    cursor: all-scroll;
+    user-select: none;
+  } */
+/* #slide-tab.checked ~ label.login{
+    color: rgb(255, 255, 255);
+   
+  }
+#login:checked ~ label.signup{
+    color: rgb(3, 3, 3);
+} */
+/* #login:checked ~ label.signup{
+
+    cursor: default;
+    user-select: none;
+} */
+.wrapper_register .form_container {
+  width: 100%;
+  overflow: hidden;
+}
+
+.form_container .form_inner {
+  display: flex;
+  width: 200%;
+  height: 250px;
+  transition: all 0.6s cubic-bezier(0.2, -0.25, 0.255, 0.2);
+}
+.form_container .form_inner form {
+  width: 50%;
+  transition: all 0.6s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+}
+
+.form_inner form .field {
+  height: 50px;
+  width: 100%;
+  margin-top: 30px;
+}
+.form_inner form .field input {
+  height: 100%;
+  width: 100%;
+  outline: none;
+  padding-left: 15px;
+  border-radius: 15px;
+  border: 1px solid lightgrey;
+  border-bottom-width: 2px;
+  font-size: 17px;
+  transition: all 0.3s ease;
+}
+.form_inner form .field input:focus {
+  border-color: #1a75ff !important;
+  /* box-shadow: inset 0 0 3px #fb6aae; */
+}
+.form_inner form .field input::placeholder {
+  color: #999;
+  transition: all 0.3s ease;
+}
+form .field input:focus::placeholder {
+  color: #1a75ff;
+}
+.form_inner form .pass_link {
+  margin-top: 40px;
+}
+.form_inner form .signup_ink {
+  text-align: center;
+  margin-top: 30px;
+}
+.form_inner form .pass-link a,
+.form_inner form .signup_link a {
+  color: #1a75ff;
+  text-decoration: none;
+}
+.form_inner form .pass_link a:hover,
+.form_inner form .signup_link a:hover {
+  text-decoration: underline;
+}
+form .btn {
+  height: 50px;
+  margin-top: 40px !important;
+  width: 100%;
+  border-radius: 15px;
+  position: relative;
+  overflow: hidden;
+}
+form .btn .btn_layer {
+  height: 100%;
+  width: 100%;
+  position: absolute;
+  left: 0%;
+  bottom: 0;
+  background: -webkit-linear-gradient(
+    right,
+    #003366,
+    #004080,
+    #0059b3,
+    #0073e6
+  );
+  border-radius: 15px;
+  transition: all 0.4s linear;
+}
+@keyframes as {
+  0% {
+    width: 100%;
+  }
+  50% {
+  }
+  100% {
+    width: 250%;
+  }
+}
+form .btn:hover .btn_layer {
+  /* left: 120%; */
+  background: -webkit-linear-gradient(left, #2b5d74, #1d6ec1, #0078bf, #176dab);
+  animation: as 2s ease infinite;
+}
+form .btn button {
+  height: 100%;
+  width: 100%;
+  z-index: 1;
+  position: relative;
+  background: none;
+  border: none;
+  color: #fff;
+  padding-left: 0;
+  border-radius: 15px;
+  font-size: 20px;
+  font-weight: 400;
+  cursor: pointer;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.h {
+  color: "#fff";
+  cursor: "default";
+}
+.s {
+  color: "#000";
+  cursor: "pointer";
+}
