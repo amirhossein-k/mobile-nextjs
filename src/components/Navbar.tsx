@@ -74,11 +74,11 @@ const Navbarr = () => {
             ? {top: "-100%", scale: "0", transitionProperty: "top"}
             : {top: "0%", scale: "1", transitionProperty: "scale"}
         }
-        className="nav-link bg-gray-950 duration-500 transition-all flex items-center md:min-h-fit absolute md:static right-0 top-[-100%] md:w-auto h-screen w-[50vh] md:h-full p-1  "
+        className="nav-link bg-gray-950 duration-500 transition-all flex items-center md:min-h-fit absolute md:static right-0 top-[-100%] md:w-[31%] h-screen w-[50vh] md:h-full p-1  "
       >
         <ul
           dir="rtl"
-          className="flex md:flex-row flex-col md:items-center md:gap-[4vw] gap-8 w-full  h-full  "
+          className="z-50 flex md:flex-row flex-col md:items-center md:gap-[4vw] gap-8 w-full  h-full  "
         >
           <div
             className=" flex items-end justify-start p-2 md:hidden mb-5 text-white"

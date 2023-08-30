@@ -20,7 +20,7 @@ const MyLayout = ({category}: {category: CategoryMainItem[]}) => {
               <Image
                 src={item.pic}
                 alt=""
-                className="relative object-fill w-full hover:scale-150 "
+                className=" object-fill w-full hover:scale-150 "
                 style={{
                   transition: "all 0.5s ease",
                   height: "inherit",
