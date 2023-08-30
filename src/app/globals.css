@@ -2,6 +2,16 @@
 @tailwind components;
 @tailwind utilities;
 
+@layer base {
+  body {
+    @apply h-full antialiased dark:bg-neutral-950 dark:text-neutral-50;
+  }
+}
 header nav {
   z-index: 999999;
+}
+
+.swiper {
+  width: 100%;
+  height: 100%;
 }

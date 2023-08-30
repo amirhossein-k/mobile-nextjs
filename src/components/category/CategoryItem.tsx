@@ -10,7 +10,7 @@ const CategoryItem = ({category}: {category: CategoryMainItem[]}) => {
   return (
     <div className=" ">
       <div
-        className={`grid lg:grid-cols-10 md:grid-cols-6 lg:grid-flow-row md:auto-cols-fr    auto-rows-[150px] sm:grid-cols-1 gap-6 p-6 bg-[#f3f3f3]    `}
+        className={`grid lg:grid-cols-10 md:grid-cols-6 lg:grid-flow-row md:auto-cols-fr    auto-rows-[150px] sm:grid-cols-1 gap-6  bg-[#f3f3f3]    `}
       >
         {category?.map((item, index) => (
           <GridCategoryItem key={index + item.title} size={"1x1"}>

@@ -13,7 +13,7 @@ export const metadata: Metadata = {
 
 export default function RootLayout({children}: {children: React.ReactNode}) {
   return (
-    <html lang="en" suppressHydrationWarning={true}>
+    <html className="h-full" lang="en" suppressHydrationWarning={true}>
       <head>
         <link
           rel="stylesheet"
@@ -24,12 +24,13 @@ export default function RootLayout({children}: {children: React.ReactNode}) {
           href="node_modules/keen-slider/keen-slider.min.css"
         />
       </head>
-      <body className={`${inter.className} h-full`}>
+      <body className={`${inter.className} `}>
         <ReduxProvider>
           <header>
             <Navbarr />
           </header>
           {children}
+          {/* <div className="flex flex-col h-full">{children}</div> */}
         </ReduxProvider>
       </body>
     </html>
