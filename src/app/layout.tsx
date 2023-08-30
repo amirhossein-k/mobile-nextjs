@@ -19,6 +19,10 @@ export default function RootLayout({children}: {children: React.ReactNode}) {
           rel="stylesheet"
           href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css"
         />
+        <link
+          rel="stylesheet"
+          href="node_modules/keen-slider/keen-slider.min.css"
+        />
       </head>
       <body className={`${inter.className} h-full`}>
         <ReduxProvider>

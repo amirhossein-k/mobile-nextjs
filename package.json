@@ -26,6 +26,7 @@
     "flowbite-react": "^0.5.0",
     "glamor": "^2.20.40",
     "jsonwebtoken": "^9.0.1",
+    "keen-slider": "^6.8.6",
     "mongoose": "^7.4.3",
     "next": "13.4.17",
     "postcss": "8.4.28",

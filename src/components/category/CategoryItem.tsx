@@ -1,12 +1,10 @@
 "use client";
 import React, {useEffect, useState} from "react";
 
-import axios from "axios";
-
 import {CategoryMain, CategoryMainItem} from "../../../types";
-import GridCategoryItem from "../category/GridCategory";
+import GridCategoryItem from "./GridCategory";
 import Image from "next/image";
-const MyLayout = ({category}: {category: CategoryMainItem[]}) => {
+const CategoryItem = ({category}: {category: CategoryMainItem[]}) => {
   // const [categoryMain, setCategoryMain] = useState<CategoryMainItem[]>();
 
   return (
@@ -44,4 +42,4 @@ const MyLayout = ({category}: {category: CategoryMainItem[]}) => {
   );
 };
 
-export default MyLayout;
+export default CategoryItem;

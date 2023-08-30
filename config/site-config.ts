@@ -20,20 +20,3 @@ export type GridItemType =
   | "address"
   | "information"
   | "list";
-
-// interface ITEMS {
-//   value: string | [];
-
-//   name: string;
-// }
-// export interface GridItemInterface {
-//   layout: GridItemLayout;
-//   type: GridItemType;
-//   title?: string;
-//   name?: string;
-//   value?: string | boolean;
-//   label?: string;
-//   lenght?: number;
-//   user?: USER;
-//   items?: ITEMS[];
-// }
