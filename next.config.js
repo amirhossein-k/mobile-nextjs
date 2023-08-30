@@ -3,6 +3,9 @@ const nextConfig = {
   experimental: {
     serverActions: true,
   },
+  images: {
+    domains: ["uploads.storage.iran.liara.space"],
+  },
   // reactStrictMode: true,
   // swcMinify: true,
   // async headers() {

@@ -34,3 +34,15 @@ export interface GridItemInterface {
   user?: USER;
   items?: ITEMS[];
 }
+
+export interface CategoryMainItem {
+  id: any;
+  title: string;
+  pic: string;
+  parent: string;
+}
+export interface CategoryMain {
+  message: string;
+  success: boolean;
+  category: CategoryMainItem[];
+}
