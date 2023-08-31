@@ -46,3 +46,14 @@ export interface CategoryMain {
   success: boolean;
   category: CategoryMainItem[];
 }
+
+export interface Itemitem {
+  pic: string;
+  title: string;
+}
+export interface Item {
+  layout: string;
+  type?: string;
+  title?: string;
+  item?: Itemitem[];
+}
