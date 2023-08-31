@@ -4,7 +4,15 @@ const nextConfig = {
     serverActions: true,
   },
   images: {
-    domains: ["uploads.storage.iran.liara.space"],
+    remotePatterns: [
+      {
+        protocol: "https",
+        hostname: "uploads.storage.iran.liara.space",
+        port: "",
+        pathname: "/**",
+      },
+    ],
+    domains: ["uploade.storage.iran.liara.space"],
   },
   // reactStrictMode: true,
   // swcMinify: true,
