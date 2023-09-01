@@ -35,8 +35,9 @@ const SideBar = ({user}: {user: USER}) => {
   // }, []);
 
   return (
-    <div className={` w-full flex flex-col md:flex-row`}>
+    <div className={` w-full flex flex-col md:flex-row `}>
       <ToastContainer autoClose={2000} />
+
       <LeftSide setNavbarOpen={setNavbarOpen} navbarOpen={navbarOpen} />
       <RightSide user={user!} navbarOpen={navbarOpen} />
     </div>

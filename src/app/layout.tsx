@@ -30,6 +30,7 @@ export default function RootLayout({children}: {children: React.ReactNode}) {
             <Navbarr />
           </header>
           {children}
+
           {/* <div className="flex flex-col h-full">{children}</div> */}
         </ReduxProvider>
       </body>

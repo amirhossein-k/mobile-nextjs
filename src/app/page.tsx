@@ -7,6 +7,7 @@ import Slider from "@/components/slider/slider";
 import Image from "next/image";
 import Banner from "@/components/banner/Banner";
 import Offer from "@/components/offer/Offer";
+import {ToastContainer} from "react-toastify";
 export default async function Home() {
   // const category: CategoryMain[] = resjson.data;
   const category = await getCategoryMain();

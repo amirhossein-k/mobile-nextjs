@@ -8,7 +8,11 @@
   }
 }
 header nav {
-  z-index: 999999;
+  z-index: 99;
+}
+
+.Toastify {
+  z-index: 100;
 }
 
 .swiper {

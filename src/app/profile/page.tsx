@@ -7,6 +7,7 @@ import {USER} from "../../../types";
 import {AppDispatch, useAppSelector} from "../../../redux/store";
 import {SyncUser} from "../../../redux/features/updateuser-slice";
 import {useDispatch} from "react-redux";
+import {ToastContainer} from "react-toastify";
 
 interface ResGetUserDetail {
   message: string;
