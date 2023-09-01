@@ -41,6 +41,10 @@ export default async function Home() {
     {
       layout: "offer",
       item: [
+        // {
+        //   pic: "https://uploade.storage.iran.liara.space/box.png",
+        //   title: "item 0 ",
+        // },
         {
           pic: "https://uploade.storage.iran.liara.space/arnel-hasanovic-4oWSXdeAS2g-unsplash.jpg",
           title: "item 1 ",

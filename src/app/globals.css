@@ -11,6 +11,9 @@ header nav {
   z-index: 99;
 }
 
+.bg-patern1 {
+  background: url("https://uploade.storage.iran.liara.space/pattern.png") repeat;
+}
 .Toastify {
   z-index: 100;
 }

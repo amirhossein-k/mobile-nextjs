@@ -18,6 +18,10 @@ const config: Config = {
     dropShadow: {
       category: "3px 4px 3px #a1a1a1",
     },
+    backgroundImage: {
+      patern1:
+        "background:url('https://uploade.storage.iran.liara.space/pattern.png') repeat",
+    },
   },
   plugins: [require("@tailwindcss/container-queries")],
 };

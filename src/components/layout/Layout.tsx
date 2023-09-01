@@ -9,7 +9,7 @@ const variants = cva(" rounded-3xl    dark:bg-neutral-900    ", {
       slider:
         " col-span-full  row-span-1  md:row-span-4  h-full w-full bg-stone-300",
       banner: " p-2 col-span-full row-span-2   w-full",
-      offer: "col-span-full  row-span-1  h-fit w-full bg-stone-300",
+      offer: "col-span-full  row-span-1  h-fit w-full bg-stone-200  p-2",
     },
   },
   defaultVariants: {
