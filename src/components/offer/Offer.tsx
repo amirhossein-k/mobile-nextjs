@@ -35,7 +35,7 @@ const Offer = ({item}: {item: Item}) => {
             <div className=" relative  h-[70%] ">
               <Image
                 alt=""
-                src={item.pic}
+                src={item.pic ?? ""}
                 fill
                 style={{objectFit: "fill"}}
                 quality={100}

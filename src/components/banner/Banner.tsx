@@ -2,7 +2,7 @@ import Image from "next/image";
 import React from "react";
 
 interface Itemitem {
-  pic: string;
+  pic?: string;
   title: string;
 }
 interface Item {
@@ -18,10 +18,10 @@ const Banner = ({item}: {item: Item}) => {
         return (
           <div
             className="bg-blue-300 rounded w-full flex justify-center items-center relative h-full overflow-hidden "
-            key={index + pics.pic}
+            key={index + pics.title}
           >
             <Image
-              src={pics.pic}
+              src={pics.pic ?? ""}
               // width={500}
               // height={500}
               fill

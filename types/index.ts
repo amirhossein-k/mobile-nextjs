@@ -48,7 +48,7 @@ export interface CategoryMain {
 }
 
 export interface Itemitem {
-  pic: string;
+  pic?: string;
   title: string;
 }
 export interface Item {
