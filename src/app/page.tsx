@@ -127,10 +127,12 @@ export default async function Home() {
                 <Layout size={"offer"} key={"g"}>
                   <Offer item={item} />
                 </Layout>
-              ) : (
+              ) : item.layout === "newproduct" ? (
                 <Layout size={"newproduct"} key={"g"}>
                   <NewProduct item={item} />
                 </Layout>
+              ) : (
+                <div className="">ff</div>
               )
             )}
         </div>

@@ -30,7 +30,7 @@ const slider = ({category}: {category: CategoryMainItem[]}) => {
       >
         {category.map((item) => {
           return (
-            <SwiperSlide>
+            <SwiperSlide key={item.id}>
               <Image src={item.pic} alt="" fill quality={100} />
             </SwiperSlide>
           );

@@ -4,28 +4,12 @@ import {Item} from "../../../types";
 import {Swiper, SwiperSlide} from "swiper/react";
 import {Keyboard, Scrollbar, Navigation, Pagination} from "swiper/modules";
 import Image from "next/image";
+import {css} from "glamor";
 
 const NewProduct = ({item}: {item: Item}) => {
   return (
-    // <div className="flex flex-col bg-orange-200 w-full" dir="rtl">
-    //   {/* <div className="">جدید ترین</div>
-    //   <div className="flex flex-row  flex-shrink overflow-x-auto ">
-    //     {item.item?.map((itt) => {
-    //       return (
-    //         <div
-    //           className={`w-fit flex-shrink-0  h-[330px] p-2  justify-center items-center  ${itt.pic} `}
-    //           key={itt.pic}
-    //         >
-    //           <div className="w-[287px] flex justify-center flex-col items-center h-full bg-red-200">
-    //             <div className="w-full h-[70%] bg-fuchsia-300">{itt.title}</div>
-    //             <div className="w-full h-1/2 bg-fuchsia-600">555</div>
-    //           </div>
-    //         </div>
-    //       );
-    //     })}
-    //   </div> */}
     <div
-      className="flex flex-col sm:w-[95%] md:w-[85%] lg:w-[80%] m-auto h-[350px] bg-neutral-200 p-1 shadow-shadow-one "
+      className="flex flex-col sm:w-[95%] md:w-[85%] lg:w-[80%] m-auto h-[480px] bg-neutral-200 p-1 shadow-shadow-one "
       dir="rtl"
     >
       <div className="header p-2 flex justify-between">
@@ -51,11 +35,11 @@ const NewProduct = ({item}: {item: Item}) => {
             slidesPerGroup: 2,
           },
           1180: {
-            slidesPerView: 3,
+            slidesPerView: 4,
             slidesPerGroup: 2,
           },
           1550: {
-            slidesPerView: 4,
+            slidesPerView: 5,
             slidesPerGroup: 2,
           },
         }}
@@ -67,11 +51,17 @@ const NewProduct = ({item}: {item: Item}) => {
         modules={[Keyboard, Scrollbar, Navigation, Pagination]}
         className="mySwiper"
       >
-        {item.item?.map((itt) => {
+        {item.item?.map((itt, index) => {
           return (
-            <SwiperSlide className="px-5 shadow">
-              <div className="w-full flex justify-center flex-col items-center h-full shadow-shadow-catmain bg-gray-700   hover:bg-purple-300 text-white hover:text-black ">
-                <div className="w-full h-[70%] bg-fuchsia-300 relative">
+            <SwiperSlide
+              className="px-5 shadow"
+              key={itt.title + index + itt.pic}
+            >
+              <div className="w-full flex justify-center flex-col items-center h-full shadow-shadow-catmain bg-gray-700   hover:bg-purple-300 text-white hover:text-black group ">
+                <div className="w-full h-[50%] bg-fuchsia-300 relative">
+                  <div className="absolute z-30 bg-black rounded px-2 py-1 right-2 top-3 group-hover:text-purple-300">
+                    -5%
+                  </div>
                   <Image src={itt.pic ?? ""} alt="" fill />
                 </div>
                 <div className="w-full h-1/2 flex  flex-col  p-2">

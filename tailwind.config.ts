@@ -13,6 +13,7 @@ const config: Config = {
           " rgba(0, 0, 0, 0.12) 0px 1px 3px, rgba(0, 0, 0, 0.24) 0px 1px 2px",
         "shadow-catmain":
           "inset 5px 11px 20px 0px rgba(0,0,0,0.5), -1px 1px 13px rgb(255 171 220 / 40%)",
+        "shadow-white": "inset 0px 1px 6px 0px rgb(71 71 71 / 97%)",
       },
     },
     dropShadow: {
