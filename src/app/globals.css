@@ -33,7 +33,7 @@ header nav {
 
 .swiper-button-next {
   color: rgb(230, 30, 230) !important;
-  left: -0px !important;
+  /* left: -0px !important; */
   /* width: 50px !important; */
   height: 68px !important;
 }
