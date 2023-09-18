@@ -57,14 +57,14 @@ const NewProduct = ({item}: {item: Item}) => {
               className="px-5 shadow"
               key={itt.title + index + itt.pic}
             >
-              <div className="w-full flex justify-center flex-col items-center h-full shadow-shadow-catmain bg-gray-700   hover:bg-purple-300 text-white hover:text-black group ">
-                <div className="w-full h-[50%] bg-fuchsia-300 relative">
+              <div className="w-full flex justify-center flex-col items-center h-full shadow-shadow-catmain bg-[#2682c4]   hover:bg-purple-300 text-white hover:text-black group ">
+                <div className="w-full h-[75%] bg-fuchsia-300 relative">
                   <div className="absolute z-30 bg-black rounded px-2 py-1 right-2 top-3 group-hover:text-purple-300">
                     -5%
                   </div>
                   <Image src={itt.pic ?? ""} alt="" fill />
                 </div>
-                <div className="w-full h-1/2 flex  flex-col  p-2">
+                <div className="w-full h-[25%] flex  flex-col  p-2">
                   <div className="title flex-1 text-lg">{itt.title}</div>
                   <div className="price flex-1 text-lg" dir="ltr">
                     155 تومان

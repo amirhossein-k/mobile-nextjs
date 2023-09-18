@@ -1,46 +1,59 @@
-const Footer = async () => {
+import Link from "next/link";
+import React from "react";
+
+import {FaFacebookF} from "react-icons/fa";
+import {FiInstagram} from "react-icons/fi";
+import {IoLogoTwitter} from "react-icons/io";
+// import {FooterItem} from "../../../../types";
+
+const footerItem = [
+  {path: "#", title: "Home"},
+  {path: "#about", title: "About"},
+  {path: "#experience", title: "Experience"},
+  {path: "#portfolio", title: "Portfolio"},
+  {path: "#testimonials", title: "Testimonials"},
+  {path: "#contact", title: "Contact"},
+];
+const Footer = () => {
   return (
-    <div className=" bg-black text-white  relative" dir="rtl">
-      <div className=" lg:w-[75%]  flex md:flex-row flex-col w-full h-full lg:m-auto m-0  shadow-shadow-white bg-gray-900 ">
-        {/* adress */}
-        {/* <div className="absolute hidden lg:block right-0 w-[13%] h-full bg-gray-800 z-10"></div>
-        <div className="absolute hidden lg:block left-0 w-[13%] h-full bg-gray-800 z-10"></div> */}
-        <div className="md:w-full  bg-red-200 h-full  py-4 bg-transparent md:flex-1 flex-none">
-          <ul className="w-full h-full">
-            <li className="  p-4 text-xl shadow-lg ">
-              تهران،میدان ولیعصر،ابتدای کریمخان، پلاک 304، طبقه اول
+    <footer className="bg-[#2682c4] py-12 px-0 text-center text-sm mt-28 hover:text-color-bg">
+      <Link href="" className="text-3xl font-medium mb-8">
+        Amir
+      </Link>
+      <ul className="flex flex-wrap justify-center gap-8 mt-0 mx-0 mb-12">
+        {footerItem.map((item) => {
+          return (
+            <li className="">
+              <Link href={item.path}>{item.title}</Link>
             </li>
-            <li className=" p-4 text-xl flex-1">تلفن: 02191071701</li>
-          </ul>
-        </div>
-        {/* menu  */}
-        <div className="grid grid-cols-2 w-full h-full auto-rows-[250px] md:w-1/2">
-          <div className="grid ">
-            <div className="flex-1 p-2 border-b  flex items-center justify-center">
-              دسترسی سریع
-            </div>
-            <div className=" flex-1 flex items-center justify-center p-2 hover:bg-purple-300 cursor-pointer">
-              item2
-            </div>
-            <div className=" flex-1 flex items-center justify-center p-2 hover:bg-purple-300">
-              item2
-            </div>
-          </div>
-          {/*  */}
-          <div className="grid">
-            <div className="flex-1 flex items-center justify-center p-2 border-b ">
-              خدمات مشتریان
-            </div>
-            <div className="flex-1 flex items-center justify-center p-2 hover:bg-purple-300">
-              item2
-            </div>
-            <div className="flex-1 flex items-center justify-center p-2 hover:bg-purple-300">
-              item2
-            </div>
-          </div>
-        </div>
+          );
+        })}
+      </ul>
+
+      <div className="flex justify-center gap-4 mb-12 ">
+        <Link
+          href="https::/facebook.com"
+          className="bg-color-bg text-white p-3 rounded-xl flex border border-transparent hover:bg-transparent hover:text-color-bg hover:border-color-bg"
+        >
+          <FaFacebookF />
+        </Link>
+        <Link
+          href="https::/instagram.com"
+          className="bg-color-bg text-white p-3 rounded-xl flex border border-transparent hover:bg-transparent hover:text-color-bg hover:border-color-bg"
+        >
+          <FiInstagram />
+        </Link>
+        <Link
+          href="https::/twitter.com"
+          className="bg-color-bg text-white p-3 rounded-xl flex border border-transparent hover:bg-transparent hover:text-color-bg hover:border-color-bg"
+        >
+          <IoLogoTwitter />
+        </Link>
       </div>
-    </div>
+      <div className=" mb-16 text-color-bg">
+        <small>&copy; Amir All rights reserved</small>
+      </div>
+    </footer>
   );
 };
 

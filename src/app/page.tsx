@@ -23,19 +23,19 @@ export default async function Home() {
       item: [
         {
           pic: "https://uploade.storage.iran.liara.space/arnel-hasanovic-4oWSXdeAS2g-unsplash.jpg",
-          title: "item 1 ",
+          title: "قاب های طراحی شده",
         },
         {
           pic: "https://uploade.storage.iran.liara.space/balkouras-nicos-5ylXkp_dZng-unsplash.jpg",
-          title: "item 2 ",
+          title: "قاب های فانتزی",
         },
         {
           pic: "https://uploade.storage.iran.liara.space/daniel-fazio-DzqeB43HfnE-unsplash.jpg",
-          title: "item 3 ",
+          title: "قاب های مردانه",
         },
         {
           pic: "https://uploade.storage.iran.liara.space/daniel-korpai-tE_kGhscUTU-unsplash.jpg",
-          title: "item 4 ",
+          title: "قاب های دخترانه",
         },
       ],
     },
@@ -47,28 +47,28 @@ export default async function Home() {
         //   title: "item 0 ",
         // },
         {
-          pic: "https://uploade.storage.iran.liara.space/arnel-hasanovic-4oWSXdeAS2g-unsplash.jpg",
-          title: "item 1 ",
+          pic: "https://uploade.storage.iran.liara.space/2.jpg",
+          title: "قاب سفید",
         },
         {
-          pic: "https://uploade.storage.iran.liara.space/balkouras-nicos-5ylXkp_dZng-unsplash.jpg",
-          title: "item 2 ",
+          pic: "https://uploade.storage.iran.liara.space/3.jpeg",
+          title: "قاب دخترکش",
         },
         {
-          pic: "https://uploade.storage.iran.liara.space/daniel-fazio-DzqeB43HfnE-unsplash.jpg",
-          title: "item 3 ",
+          pic: "https://uploade.storage.iran.liara.space/5.jpeg",
+          title: "قاب دارک",
         },
         {
-          pic: "https://uploade.storage.iran.liara.space/daniel-korpai-tE_kGhscUTU-unsplash.jpg",
-          title: "item 4 ",
+          pic: "https://uploade.storage.iran.liara.space/6.jpeg",
+          title: "قاب طرح اسکل های اویزون",
         },
         {
-          pic: "https://uploade.storage.iran.liara.space/function%20toString%28%29%20%7B%20%5Bnative%20code%5D%20%7D5154ea4d35f16e1a58feef672d50efd7.jpg",
-          title: "item 5 ",
+          pic: "https://uploade.storage.iran.liara.space/7.jpeg",
+          title: "قاب طرح چرت پرت",
         },
         {
-          pic: "https://uploade.storage.iran.liara.space/function%20toString%28%29%20%7B%20%5Bnative%20code%5D%20%7Dlicensed-image.jpg",
-          title: "item 6 ",
+          pic: "https://uploade.storage.iran.liara.space/9.jpg",
+          title: "گردنبند انیمه AOT طرح گروه شناسایی",
         },
       ],
     },
@@ -76,28 +76,28 @@ export default async function Home() {
       layout: "newproduct",
       item: [
         {
-          pic: "https://uploade.storage.iran.liara.space/arnel-hasanovic-4oWSXdeAS2g-unsplash.jpg",
-          title: "item 1 ",
+          pic: "https://uploade.storage.iran.liara.space/1.jpeg",
+          title: "قاب نوتلا",
         },
         {
-          pic: "https://uploade.storage.iran.liara.space/balkouras-nicos-5ylXkp_dZng-unsplash.jpg",
-          title: "item 2 ",
+          pic: "https://uploade.storage.iran.liara.space/5.jpeg",
+          title: "قاب دارک ",
         },
         {
-          pic: "https://uploade.storage.iran.liara.space/daniel-fazio-DzqeB43HfnE-unsplash.jpg",
-          title: "item 3 ",
+          pic: "https://uploade.storage.iran.liara.space/3.jpeg",
+          title: "قاب دخترکش",
         },
         {
-          pic: "https://uploade.storage.iran.liara.space/daniel-korpai-tE_kGhscUTU-unsplash.jpg",
-          title: "item 4 ",
+          pic: "https://uploade.storage.iran.liara.space/10.jpg",
+          title: "هنزفری اخرین  مدل",
         },
         {
-          pic: "https://uploade.storage.iran.liara.space/function%20toString%28%29%20%7B%20%5Bnative%20code%5D%20%7D5154ea4d35f16e1a58feef672d50efd7.jpg",
-          title: "item 5 ",
+          pic: "https://uploade.storage.iran.liara.space/11.png",
+          title: "گردنبند وان پیس",
         },
         {
-          pic: "https://uploade.storage.iran.liara.space/function%20toString%28%29%20%7B%20%5Bnative%20code%5D%20%7Dlicensed-image.jpg",
-          title: "item 6 ",
+          pic: "https://uploade.storage.iran.liara.space/7.jpeg",
+          title: "قاب طرح چرت پرت",
         },
       ],
     },

@@ -1,87 +1,59 @@
+import Link from "next/link";
 import React from "react";
-// import './footer.css'
+
+import {FaFacebookF} from "react-icons/fa";
+import {FiInstagram} from "react-icons/fi";
+import {IoLogoTwitter} from "react-icons/io";
+// import {FooterItem} from "../../../../types";
+
+const footerItem = [
+  {path: "#", title: "Home"},
+  {path: "#about", title: "About"},
+  {path: "#experience", title: "Experience"},
+  {path: "#portfolio", title: "Portfolio"},
+  {path: "#testimonials", title: "Testimonials"},
+  {path: "#contact", title: "Contact"},
+];
 const Footer = () => {
   return (
-    <div className="row footer-container">
-      <div className="col-md-3 col-12 col">
-        <div className=" box-container">
-          <div className="box-title category ">دسته بندی</div>
-          {/* <div className='col-12'>
-                    
-                </div> */}
-          {/* <div className='col-12'> */}
-          <div className="box">
-            <a>انواع گل</a>
-          </div>
-          {/* </div> */}
-          {/* <div className='col-12'>  */}
-          <div className="box">
-            <a>گلهای اپارتمانی</a>
-          </div>
-          {/* </div> */}
-          {/* <div className='col-12'> */}
-          <div className="box">
-            <a> انواع کاکتوس</a>
-          </div>
-          {/* </div> */}
-        </div>
-      </div>
-      <div className="col-md-3 col-12 col">
-        <div className=" box-container">
-          <div className="box-title category">شبکه های مجازی </div>
-          <div className="box social">
-            <a>
-              <i className="bi bi-instagram"></i>
-            </a>
-            <a>
-              <i className="bi bi-telegram"></i>
-            </a>
-            <a>
-              {" "}
-              <i className="bi bi-whatsapp"></i>
-            </a>
-          </div>
-        </div>
-      </div>
-      <div className="col-md-3 col-12 col">
-        <div className=" box-container">
-          <div className="box-title category">اطلاعات تماس </div>
-          <div className="box">
-            <div className="open">
-              <p>
-                <i className="bi bi-clock-fill"></i> شنبه- پنجشبه : 8 - 17:30{" "}
-              </p>
-            </div>
-            <div className="address">
-              <p>
-                <i className="bi bi-geo-alt-fill"></i>تهران:پیروزی{" "}
-              </p>
-            </div>
-            <div className="phone">
-              <p>
-                <i className="bi bi-telephone"></i>
-                <a href="tel:09391470427">09391470427</a>{" "}
-              </p>
-            </div>
-            <div className="e-mail">
-              <p>
-                <i className="bi bi-envelope"></i> haamir3030@gmail.com{" "}
-              </p>
-            </div>
-          </div>
-        </div>
-      </div>
-      <div className="col-md-3 col-12 col">
-        <div className=" box-container">
-          <div className="box-title">نماد اعتماد </div>
-          <div className="box trust">
-            <img src="" alt="photo" />
+    <footer className="bg-color-priamry py-12 px-0 text-center text-sm mt-28 hover:text-color-bg">
+      <Link href="" className="text-3xl font-medium mb-8">
+        Amir
+      </Link>
+      <ul className="flex flex-wrap justify-center gap-8 mt-0 mx-0 mb-12">
+        {footerItem.map((item) => {
+          return (
+            <li className="">
+              <Link href={item.path}>{item.title}</Link>
+            </li>
+          );
+        })}
+      </ul>
 
-            <img src="" alt="photo" />
-          </div>
-        </div>
+      <div className="flex justify-center gap-4 mb-12 ">
+        <Link
+          href="https::/facebook.com"
+          className="bg-color-bg text-white p-3 rounded-xl flex border border-transparent hover:bg-transparent hover:text-color-bg hover:border-color-bg"
+        >
+          <FaFacebookF />
+        </Link>
+        <Link
+          href="https::/instagram.com"
+          className="bg-color-bg text-white p-3 rounded-xl flex border border-transparent hover:bg-transparent hover:text-color-bg hover:border-color-bg"
+        >
+          <FiInstagram />
+        </Link>
+        <Link
+          href="https::/twitter.com"
+          className="bg-color-bg text-white p-3 rounded-xl flex border border-transparent hover:bg-transparent hover:text-color-bg hover:border-color-bg"
+        >
+          <IoLogoTwitter />
+        </Link>
       </div>
-    </div>
+      <div className=" mb-16 text-color-bg">
+        <small>&copy; Amir All rights reserved</small>
+      </div>
+    </footer>
   );
 };
 
