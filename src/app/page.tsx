@@ -9,6 +9,7 @@ import Banner from "@/components/banner/Banner";
 import Offer from "@/components/offer/Offer";
 import {ToastContainer} from "react-toastify";
 import NewProduct from "@/components/newproduct/NewProduct";
+import GIfHome from "@/components/GIfHome/GIfHome";
 export default async function Home() {
   // const category: CategoryMain[] = resjson.data;
   const category = await getCategoryMain();
@@ -17,6 +18,19 @@ export default async function Home() {
   const list = [
     {layout: "categoryMain"},
     {layout: "slider"},
+    {
+      layout: "gifhome",
+      item: [
+        {
+          pic: "https://uploade.storage.iran.liara.space/ja-carti-banner.gif",
+          title: "1",
+        },
+        {
+          pic: "https://uploade.storage.iran.liara.space/siliconi-ghab.gif",
+          title: "2",
+        },
+      ],
+    },
     {
       layout: "banner",
 
@@ -117,7 +131,10 @@ export default async function Home() {
               ) : item.layout === "slider" ? (
                 <Layout size={"slider"} key={"g"}>
                   <Slider category={category} />
-                  {/* <div className="h-full w-full">d</div> */}
+                </Layout>
+              ) : item.layout === "gifhome" ? (
+                <Layout size={"offer"} key={3}>
+                  <GIfHome />
                 </Layout>
               ) : item.layout === "banner" ? (
                 <Layout size={"banner"} key={"g"}>

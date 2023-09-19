@@ -10,10 +10,10 @@ const Offer = ({item}: {item: Item}) => {
       dir="rtl"
     >
       <div className="h-full w-[100%] bg-slate-200-300 rounded  flex flex-col gap-3  relative  p-2  text-white hover:text-purple-300 overflow-hidden cursor-default bg-[#4eb3fa]">
-        <div className=" relative  h-[70%] lg:h-[50%] ">
+        <div className=" relative  h-[90%] lg:h-[70%] ">
           <Image
             alt=""
-            src={"https://uploade.storage.iran.liara.space/box.png"}
+            src={"https://uploade.storage.iran.liara.space/offer%20copy.png"}
             fill
             style={{objectFit: "fill"}}
             quality={100}
