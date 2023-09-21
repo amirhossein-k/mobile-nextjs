@@ -10,6 +10,8 @@ import Offer from "@/components/offer/Offer";
 import {ToastContainer} from "react-toastify";
 import NewProduct from "@/components/newproduct/NewProduct";
 import GIfHome from "@/components/GIfHome/GIfHome";
+import {Suspense} from "react";
+import IphoneMain from "@/components/IponeMain/IphoneMain";
 export default async function Home() {
   // const category: CategoryMain[] = resjson.data;
   const category = await getCategoryMain();
@@ -115,7 +117,42 @@ export default async function Home() {
         },
       ],
     },
+    {
+      layout: "newIphone",
+      item: [
+        {
+          pic: "https://uploade.storage.iran.liara.space/10.jpg",
+          title: "هنزفری اخرین  مدل",
+        },
+        {
+          pic: "https://uploade.storage.iran.liara.space/11.png",
+          title: "گردنبند وان پیس",
+        },
+        {
+          pic: "https://uploade.storage.iran.liara.space/7.jpeg",
+          title: "قاب طرح چرت پرت",
+        },
+      ],
+    },
+    {
+      layout: "newSamsung",
+      item: [
+        {
+          pic: "https://uploade.storage.iran.liara.space/10.jpg",
+          title: "هنزفری اخرین  مدل",
+        },
+        {
+          pic: "https://uploade.storage.iran.liara.space/11.png",
+          title: "گردنبند وان پیس",
+        },
+        {
+          pic: "https://uploade.storage.iran.liara.space/7.jpeg",
+          title: "قاب طرح چرت پرت",
+        },
+      ],
+    },
   ];
+
   return (
     <main className="relative flex flex-col items-center flex-1 w-full h-full ">
       <div className="container-fluid  relative  w-full h-full px-1 ">
@@ -125,7 +162,9 @@ export default async function Home() {
             list.map((item) =>
               item.layout === "categoryMain" ? (
                 <Layout size={"categoryMain"} key={"g"}>
-                  <CategoryItem category={category} />
+                  <Suspense fallback={<h2>loading</h2>}>
+                    <CategoryItem category={category} />
+                  </Suspense>
                   {/* <div className="">cat</div> */}
                 </Layout>
               ) : item.layout === "slider" ? (
@@ -147,6 +186,14 @@ export default async function Home() {
               ) : item.layout === "newproduct" ? (
                 <Layout size={"newproduct"} key={"g"}>
                   <NewProduct item={item} />
+                </Layout>
+              ) : item.layout === "newIphone" ? (
+                <Layout size={"newproduct"} key={"g"}>
+                  <IphoneMain item={item} />
+                </Layout>
+              ) : item.layout === "newSamsung" ? (
+                <Layout size={"newproduct"} key={"g"}>
+                  <IphoneMain item={item} />
                 </Layout>
               ) : (
                 <div className="">ff</div>

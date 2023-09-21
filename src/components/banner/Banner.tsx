@@ -1,5 +1,6 @@
 import Image from "next/image";
-import React from "react";
+
+import React, {Suspense} from "react";
 
 interface Itemitem {
   pic?: string;

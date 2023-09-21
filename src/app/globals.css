@@ -6,9 +6,41 @@
   body {
     @apply h-full antialiased dark:bg-neutral-950 dark:text-neutral-50;
   }
+
+  html {
+    background: linear-gradient(to right, #c6c6c6, #e6dfdf, #bfc4c4);
+
+    /* background: url("../../public/6.jpg");
+    background-repeat: repeat;
+    /* background-position: center center; */
+    /* background-size: contain;
+    animation: ani1 5s infinite linear;
+    filter: brightness(98%); */
+  }
 }
 header nav {
   z-index: 99;
+}
+
+@layer components {
+  .stylecard::before,
+  .stylecard::after {
+    content: "";
+    position: absolute;
+    width: 120px;
+    height: 120px;
+    background-color: #ffffff70;
+    border-radius: 50%;
+    filter: blur(50px);
+  }
+  .stylecard::before {
+    top: 0;
+    left: 0;
+  }
+  .stylecard::after {
+    bottom: 0;
+    right: 0;
+  }
 }
 
 .bg-patern1 {

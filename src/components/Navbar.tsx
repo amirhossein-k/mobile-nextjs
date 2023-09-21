@@ -74,7 +74,7 @@ const Navbarr = () => {
             ? {top: "-100%", scale: "0", transitionProperty: "top"}
             : {top: "0%", scale: "1", transitionProperty: "scale"}
         }
-        className="nav-link bg-gray-950 duration-500 transition-all flex items-center md:min-h-fit absolute md:static right-0 top-[-100%] md:w-[31%] h-screen w-[50vh] md:h-full p-1  "
+        className="nav-link fixed bg-gray-950 duration-500 transition-all flex items-center md:min-h-fit  md:static right-0 top-[-100%] md:w-[31%] h-screen w-[50vh] md:h-full p-1  "
       >
         <ul
           dir="rtl"

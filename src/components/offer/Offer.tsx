@@ -9,7 +9,7 @@ const Offer = ({item}: {item: Item}) => {
       className=" w-full grid  auto-rows-[300px] lg:auto-rows-[380px] grid-flow-col  auto-cols-[190px]  gap-2  overflow-x-auto bg-patern1 p-3 "
       dir="rtl"
     >
-      <div className="h-full w-[100%] bg-slate-200-300 rounded  flex flex-col gap-3  relative  p-2  text-white hover:text-purple-300 overflow-hidden cursor-default bg-[#4eb3fa]">
+      <div className="h-full w-[100%] bg-slate-200-300 rounded  flex flex-col gap-3  relative  p-2  text-white hover:text-purple-300 overflow-hidden cursor-default bg-[#5b95cf]">
         <div className=" relative  h-[90%] lg:h-[70%] ">
           <Image
             alt=""
@@ -37,7 +37,7 @@ const Offer = ({item}: {item: Item}) => {
         return (
           <Link
             href={"/"}
-            className={`h-full w-[100%] bg-slate-200-300 rounded  flex flex-col gap-3  relative  p-2 group hover:bg-purple-300 text-white hover:text-black overflow-hidden cursor-pointer bg-[#2682c4] `}
+            className={`h-full w-[100%] bg-slate-200-300 rounded  flex flex-col gap-3  relative  p-2 group hover:bg-purple-300 text-white hover:text-black overflow-hidden cursor-pointer bg-[#5b95cf] shadow `}
           >
             <div className=" relative  h-[60%] lg:h-[65%] rounded-md overflow-hidden">
               <Image
