@@ -6,7 +6,7 @@ import Link from "next/link";
 const Offer = ({item}: {item: Item}) => {
   return (
     <div
-      className=" w-full grid  auto-rows-[300px] lg:auto-rows-[380px] grid-flow-col  auto-cols-[190px]  gap-2  overflow-x-auto bg-patern1 p-3 "
+      className=" w-[98%] mx-auto grid  auto-rows-[300px] lg:auto-rows-[380px] grid-flow-col  auto-cols-[190px]  gap-2  overflow-x-auto bg-patern1 p-3 "
       dir="rtl"
     >
       <div className="h-full w-[100%] bg-slate-200-300 rounded  flex flex-col gap-3  relative  p-2  text-white hover:text-purple-300 overflow-hidden cursor-default bg-[#5b95cf]">

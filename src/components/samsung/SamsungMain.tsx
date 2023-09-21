@@ -5,19 +5,18 @@ import {Swiper, SwiperSlide} from "swiper/react";
 import {Keyboard, Scrollbar, Navigation, Pagination} from "swiper/modules";
 import Image from "next/image";
 
-const NewProduct = ({item}: {item: Item}) => {
+const SamsungMain = ({item}: {item: Item}) => {
   return (
     <div
       className="flex flex-col sm:w-[95%] md:w-[95%] lg:w-[92%] m-auto h-[480px] bg-[#d4d3d342] p-1 shadow-card2 rounded "
       dir="rtl"
     >
       <div className="header p-2 flex justify-between">
-        <div className=" flex-1 indent-4 flex-col  flex justify-center p-2 text-xl font-semibold ">
-          <div className="text-center">قاب های</div>
-          <div className="text-center"> ایفون</div>
+        <div className=" flex-1 indent-2 flex justify-center p-2 text-xl font-semibold ">
+          قاب های سامسونگ
         </div>
         <div className=" border-b-black border-b-4 border-dotted inline-block  tex-xl  w-[70%] "></div>
-        <div className="flex-1 text-center hover:font-semibold hover:textShadow flex justify-center  text-xl p-2 cursor-pointer 	">
+        <div className="flex-1 text-center hover:font-semibold hover:textShadow flex justify-center  text-xl p-2 cursor-pointer">
           مشاهده همه
         </div>
       </div>
@@ -89,4 +88,4 @@ const NewProduct = ({item}: {item: Item}) => {
   );
 };
 
-export default NewProduct;
+export default SamsungMain;

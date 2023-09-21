@@ -31,7 +31,7 @@ const CategoryItem = ({category}: {category: CategoryMainItem[]}) => {
                 width={200}
                 height={200}
               />
-              <span className="text-[#f9f9f9]   sm:text-xl text-2xl absolute bottom-0 right-0 drop-shadow-category">
+              <span className="text-[#f9f9f9] textShadow2  sm:text-xl text-2xl absolute bottom-0 right-0 drop-shadow-category">
                 {item.title}
               </span>
             </div>

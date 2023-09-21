@@ -8,7 +8,7 @@ import Image from "next/image";
 const NewProduct = ({item}: {item: Item}) => {
   return (
     <div
-      className="flex flex-col sm:w-[95%] md:w-[85%] lg:w-[80%] m-auto h-[480px] bg-[#5b95cf] p-1 shadow-shadow-one "
+      className="flex flex-col sm:w-[95%] md:w-[95%] lg:w-[92%] m-auto h-[480px] bg-[#5b95cf] p-1 shadow-shadow-one "
       dir="rtl"
     >
       <div className="header p-2 flex justify-between">

@@ -30,7 +30,7 @@ const Banner = ({item}: {item: Item}) => {
               alt=""
               className="group-hover:scale-105 "
             />
-            <span className="absolute text-xl text-[#49799c] font-semibold">
+            <span className="absolute text-xl text-[#fafafa] textShadow2 font-semibold">
               {pics.title}
             </span>
           </div>

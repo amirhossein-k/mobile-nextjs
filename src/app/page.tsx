@@ -12,6 +12,9 @@ import NewProduct from "@/components/newproduct/NewProduct";
 import GIfHome from "@/components/GIfHome/GIfHome";
 import {Suspense} from "react";
 import IphoneMain from "@/components/IponeMain/IphoneMain";
+import SamsungMain from "@/components/samsung/SamsungMain";
+import XiamiMain from "@/components/xiami/XiamiMain";
+import Blogs from "@/components/blogs/Blogs";
 export default async function Home() {
   // const category: CategoryMain[] = resjson.data;
   const category = await getCategoryMain();
@@ -71,6 +74,10 @@ export default async function Home() {
           title: "قاب دخترکش",
         },
         {
+          pic: "https://uploade.storage.iran.liara.space/9.jpg",
+          title: "گردنبند انیمه AOT طرح گروه شناسایی",
+        },
+        {
           pic: "https://uploade.storage.iran.liara.space/5.jpeg",
           title: "قاب دارک",
         },
@@ -81,6 +88,10 @@ export default async function Home() {
         {
           pic: "https://uploade.storage.iran.liara.space/7.jpeg",
           title: "قاب طرح چرت پرت",
+        },
+        {
+          pic: "https://uploade.storage.iran.liara.space/5.jpeg",
+          title: "قاب دارک",
         },
         {
           pic: "https://uploade.storage.iran.liara.space/9.jpg",
@@ -132,6 +143,18 @@ export default async function Home() {
           pic: "https://uploade.storage.iran.liara.space/7.jpeg",
           title: "قاب طرح چرت پرت",
         },
+        {
+          pic: "https://uploade.storage.iran.liara.space/10.jpg",
+          title: "هنزفری اخرین  مدل",
+        },
+        {
+          pic: "https://uploade.storage.iran.liara.space/11.png",
+          title: "گردنبند وان پیس",
+        },
+        {
+          pic: "https://uploade.storage.iran.liara.space/7.jpeg",
+          title: "قاب طرح چرت پرت",
+        },
       ],
     },
     {
@@ -148,6 +171,46 @@ export default async function Home() {
         {
           pic: "https://uploade.storage.iran.liara.space/7.jpeg",
           title: "قاب طرح چرت پرت",
+        },
+      ],
+    },
+    {
+      layout: "newXiami",
+      item: [
+        {
+          pic: "https://uploade.storage.iran.liara.space/10.jpg",
+          title: "هنزفری اخرین  مدل",
+        },
+        {
+          pic: "https://uploade.storage.iran.liara.space/11.png",
+          title: "گردنبند وان پیس",
+        },
+        {
+          pic: "https://uploade.storage.iran.liara.space/7.jpeg",
+          title: "قاب طرح چرت پرت",
+        },
+      ],
+    },
+    {
+      layout: "blogs",
+      item: [
+        {
+          pic: "https://uploade.storage.iran.liara.space/%D9%BE%D8%B1%D8%AF%D8%A7%D8%AE%D8%AA_%D8%A2%D9%86%D9%84%D8%A7%DB%8C%D9%86__1_-removebg-preview.png",
+          title: "نحوه ثبت سفارش",
+          time: "3/4/1399",
+          category: "اموزشی",
+        },
+        {
+          pic: "https://uploade.storage.iran.liara.space/HL.M.delivery.jpg",
+          title: "نحوه مرجوع کردن",
+          time: "5/5/1399",
+          category: "اموزشی",
+        },
+        {
+          pic: "https://uploade.storage.iran.liara.space/%D8%B6%D9%85%D8%A7%D9%86%D8%AA-%D8%A8%D8%A7%D8%B2%DA%AF%D8%B4%D8%AA-%DA%A9%D8%A7%D9%84%D8%A7-300x300.png",
+          title: "نحوه مشاهده وضعیت ارسال",
+          time: "9/4/1389",
+          category: "اموزشی",
         },
       ],
     },
@@ -193,7 +256,15 @@ export default async function Home() {
                 </Layout>
               ) : item.layout === "newSamsung" ? (
                 <Layout size={"newproduct"} key={"g"}>
-                  <IphoneMain item={item} />
+                  <SamsungMain item={item} />
+                </Layout>
+              ) : item.layout === "newXiami" ? (
+                <Layout size={"newproduct"} key={"g"}>
+                  <XiamiMain item={item} />
+                </Layout>
+              ) : item.layout === "blogs" ? (
+                <Layout size={"newproduct"} key={"g"}>
+                  <Blogs item={item} />
                 </Layout>
               ) : (
                 <div className="">ff</div>

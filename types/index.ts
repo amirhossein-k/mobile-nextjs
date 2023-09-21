@@ -50,6 +50,8 @@ export interface CategoryMain {
 export interface Itemitem {
   pic?: string;
   title: string;
+  time?: string;
+  category?: string;
 }
 export interface Item {
   layout: string;
