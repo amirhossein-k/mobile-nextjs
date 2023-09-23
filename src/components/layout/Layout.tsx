@@ -1,5 +1,5 @@
 import {cn} from "../../../utils/cn";
-import {css} from "glamor";
+
 import {cva, type VariantProps} from "class-variance-authority";
 
 const variants = cva(" rounded-3xl    dark:bg-neutral-900    ", {
