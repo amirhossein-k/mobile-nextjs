@@ -40,7 +40,7 @@ export interface CategoryMainItem {
   title: string;
   pic: string;
   parent: string;
-  linkk?: string;
+  linkk: string;
 }
 export interface CategoryMain {
   message: string;
