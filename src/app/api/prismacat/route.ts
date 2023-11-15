@@ -12,6 +12,7 @@ export async function POST(req: Request) {
       pic,
       title,
       parent,
+      hreff,
     },
   });
   return NextResponse.json(categoryItem);
