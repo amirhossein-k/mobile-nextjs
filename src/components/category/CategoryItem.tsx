@@ -16,7 +16,7 @@ const CategoryItem = ({category}: {category: CategoryMainItem[]}) => {
         {category?.map((item, index) => (
           <GridCategoryItem key={index + item.title} size={"1x1"}>
             <Link
-              href={item.hreff ?? ""}
+              href={item.linkk ?? ""}
               className="overflow-hidden  relative rounded bg-green-200 h-full flex items-center justify-center"
             >
               <Image

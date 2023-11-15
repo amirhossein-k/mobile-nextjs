@@ -5,14 +5,14 @@ import {NextResponse} from "next/server";
 export async function POST(req: Request) {
   const reqBody = await req.json();
 
-  const {title, pic, parent} = reqBody;
+  const {title, pic, parent, linkk} = reqBody;
 
   const categoryItem = await prisma.categoryItem.create({
     data: {
       pic,
       title,
       parent,
-      hreff,
+      linkk,
     },
   });
   return NextResponse.json(categoryItem);

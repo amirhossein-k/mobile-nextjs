@@ -22,6 +22,6 @@ model CategoryItem{
   pic      String 
   title  String 
   parent  String
-  href   String
+  linkk   String
   
 }
