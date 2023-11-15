@@ -17,7 +17,7 @@ const footerItem = [
 const Footer = () => {
   return (
     <footer
-      className="bg-[#2682c4] py-3 px-0 text-center text-lg mt-28 "
+      className=" bg-[#0b0b0b] text-white py-3 px-0 text-center text-lg  "
       dir="rtl"
     >
       <Link

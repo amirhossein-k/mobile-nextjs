@@ -28,18 +28,18 @@ const Navbarr = () => {
       {/* left nav */}
       <div className="nav-link flex justify-between items-center h-full ">
         <ul className="flex gap-6 justify-between p-1 ">
-          <li className="border rounded-md bg-white min-w-1/2 text-stone-600 py-2 px-3 hover:bg-stone-300 cursor-pointer">
+          <li className="border rounded-md bg-white min-w-1/2 text-stone-600 py-2 px-3 hover:text-sky-500 cursor-pointer">
             <Link href="/register">
               <i className="bi bi-person text-xl " />
             </Link>
           </li>
-          <li className="border rounded-md bg-white min-w-1/2 text-stone-600 py-2 px-3 hover:bg-stone-300 cursor-pointer">
+          <li className="border rounded-md bg-white min-w-1/2 text-stone-600 py-2 px-3 hover:text-sky-500 cursor-pointer">
             <i className="bi bi-cart font-semibold text-xl" />
           </li>
 
           <li
             onClick={() => setsearch(!search)}
-            className="border rounded-md bg-white min-w-1/2 text-stone-600 py-2 px-3 hover:bg-stone-300 cursor-pointer flex items-center"
+            className="border rounded-md bg-white min-w-1/2 text-stone-600 py-2 px-3 hover:text-sky-500 cursor-pointer flex items-center"
           >
             <i className="bi bi-search text-xl " />
           </li>
@@ -86,12 +86,12 @@ const Navbarr = () => {
           >
             <i className="bi bi-x-octagon text-2xl hover:text-red-500 "></i>
           </div>
-          <li className="hover:text-purple-500 px-2 border-b pb-2  text-xl shadow-md bg-transparent text-white md:border-0 cursor-pointer sm:text-lg md:text-base lg:text-lg   w-full font-medium ">
+          <li className="hover:text-sky-500 px-2 border-b pb-2  text-xl shadow-md bg-transparent text-white md:border-0 cursor-pointer sm:text-lg md:text-base lg:text-lg   w-full font-medium ">
             <Link href={"/"}>صفحه اصلی</Link>
           </li>
 
           <li
-            className={`sm:w-full md:w-[150%] lg:w-[110%]  hover:text-purple-500   border-b pb-2 text-lg  shadow-md text-white md:border-0 cursor-pointer  sm:text-lg md:text-base lg:text-lg  font-medium`}
+            className={`sm:w-full md:w-[150%] lg:w-[110%]  hover:text-sky-500   border-b pb-2 text-lg  shadow-md text-white md:border-0 cursor-pointer  sm:text-lg md:text-base lg:text-lg  font-medium`}
           >
             <div className={`${styles.dropdown} relative`}>
               <button className="   py-2 px-4 rounded  items-center">
@@ -102,7 +102,7 @@ const Navbarr = () => {
               >
                 <li className="">
                   <a
-                    className={`rounded-t bg-black text-white hover:bg-gray-200 hover:text-purple-500 py-2 px-4 block whitespace-no-wrap`}
+                    className={`rounded-t bg-black text-white hover:bg-gray-200 hover:text-sky-500 py-2 px-4 block whitespace-no-wrap`}
                     href="#"
                   >
                     One
@@ -110,7 +110,7 @@ const Navbarr = () => {
                 </li>
                 <li className="">
                   <a
-                    className={` bg-black text-white hover:bg-gray-200 hover:text-purple-500 py-2 px-4 block whitespace-no-wrap`}
+                    className={` bg-black text-white hover:bg-gray-200 hover:text-sky-500 py-2 px-4 block whitespace-no-wrap`}
                     href="#"
                   >
                     One
@@ -118,7 +118,7 @@ const Navbarr = () => {
                 </li>
                 <li className="">
                   <a
-                    className={`rounded-b bg-black text-white hover:bg-gray-200 hover:text-purple-500 py-2 px-4 block whitespace-no-wrap`}
+                    className={`rounded-b bg-black text-white hover:bg-gray-200 hover:text-sky-500 py-2 px-4 block whitespace-no-wrap`}
                     href="#"
                   >
                     One
@@ -127,7 +127,7 @@ const Navbarr = () => {
               </ul>
             </div>
           </li>
-          <li className="hover:text-purple-500 px-2 border-b pb-2  text-lg  shadow-md text-white md:border-0 cursor-pointer w-full sm:text-lg md:text-base lg:text-lg font-medium">
+          <li className="hover:text-sky-500 px-2 border-b pb-2  text-lg  shadow-md text-white md:border-0 cursor-pointer w-full sm:text-lg md:text-base lg:text-lg font-medium">
             <Link href={"/about"}>درباره ما</Link>
           </li>
         </ul>
@@ -135,7 +135,7 @@ const Navbarr = () => {
       {/* rihgt nav user - grid icon */}
       <div className="flex gap-6 px-3 md:hidden">
         <i
-          className="bi bi-grid text-lg cursor-pointer flex justify-center items-center text-purple-300 min-w-1/2 p-2 hover:text-purple-500 md:hidden"
+          className="bi bi-grid text-lg cursor-pointer flex justify-center items-center text-purple-300 min-w-1/2 p-2 hover:text-sky-500 md:hidden"
           onClick={() => setOpen(!open)}
         ></i>
       </div>

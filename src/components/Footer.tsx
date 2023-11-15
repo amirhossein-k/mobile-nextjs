@@ -16,7 +16,7 @@ const footerItem = [
 ];
 const Footer = () => {
   return (
-    <footer className="bg-color-priamry py-12 px-0 text-center text-sm mt-28 hover:text-color-bg">
+    <footer className="bg-color-priamry py-12 px-0 text-center text-sm  hover:text-color-bg">
       <Link href="" className="text-3xl font-medium mb-8">
         Amir
       </Link>

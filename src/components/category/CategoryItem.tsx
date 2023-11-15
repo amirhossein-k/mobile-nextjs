@@ -4,6 +4,7 @@ import React, {useEffect, useState} from "react";
 import {CategoryMain, CategoryMainItem} from "../../../types";
 import GridCategoryItem from "./GridCategory";
 import Image from "next/image";
+import Link from "next/link";
 const CategoryItem = ({category}: {category: CategoryMainItem[]}) => {
   // const [categoryMain, setCategoryMain] = useState<CategoryMainItem[]>();
 
@@ -14,7 +15,10 @@ const CategoryItem = ({category}: {category: CategoryMainItem[]}) => {
       >
         {category?.map((item, index) => (
           <GridCategoryItem key={index + item.title} size={"1x1"}>
-            <div className="overflow-hidden  relative rounded bg-green-200 h-full flex items-center justify-center">
+            <Link
+              href={item.href}
+              className="overflow-hidden  relative rounded bg-green-200 h-full flex items-center justify-center"
+            >
               <Image
                 src={item.pic}
                 alt=""
@@ -34,7 +38,7 @@ const CategoryItem = ({category}: {category: CategoryMainItem[]}) => {
               <span className="text-[#f9f9f9] textShadow2  sm:text-xl text-2xl absolute bottom-0 right-0 drop-shadow-category">
                 {item.title}
               </span>
-            </div>
+            </Link>
           </GridCategoryItem>
         ))}
       </div>
