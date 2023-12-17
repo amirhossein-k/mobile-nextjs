@@ -51,6 +51,12 @@ header nav {
   .textShadow2 {
     text-shadow: 1px 2px 10px #004ef6, 2px 2px 5px #4cacff;
   }
+  .offer {
+    @apply border-red-500;
+  }
+  .offer-text {
+    @apply text-red-500;
+  }
 }
 
 .bg-patern1 {

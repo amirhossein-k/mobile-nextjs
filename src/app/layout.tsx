@@ -37,9 +37,9 @@ export default function RootLayout({children}: {children: React.ReactNode}) {
 
           {/* <div className="flex flex-col h-full">{children}</div> */}
         </ReduxProvider>
-        <footer>
-          <Footer />
-        </footer>
+        {/* <footer> */}
+        <Footer />
+        {/* </footer> */}
       </body>
     </html>
   );
