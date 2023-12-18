@@ -19,7 +19,7 @@ export const GetProduct = async () => {
       },
     };
     console.log("objectgggggggggg");
-    const data = await axios(options);
+    const data: any = await axios(options);
     console.log(data, "yu");
     return data;
   } catch (error: any) {
