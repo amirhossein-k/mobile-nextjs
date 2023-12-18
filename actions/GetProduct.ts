@@ -19,9 +19,9 @@ export const GetProduct = async () => {
       },
     };
     console.log("objectgggggggggg");
-    const {data}: {data: any} = await axios(options);
+    const {data}: {data: getproduct | undefined} = await axios(options);
     return data;
-  } catch (error: any | undefined) {
+  } catch (error: any) {
     return error;
     throw error.response.data.error;
   }
