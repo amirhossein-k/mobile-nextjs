@@ -60,3 +60,12 @@ export interface Item {
   title?: string;
   item?: Itemitem[];
 }
+
+export interface product {
+  title: string;
+  model: string;
+  price: string;
+  class?: string;
+  class2?: string;
+  price_offer?: string;
+}
