@@ -5,7 +5,7 @@ import {product} from "../types";
 
 interface getproduct {
   message: string;
-  success: string;
+  success: boolean;
   product: product[];
 }
 export const GetProduct = async () => {

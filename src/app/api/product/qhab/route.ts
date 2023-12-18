@@ -35,12 +35,22 @@ export const POST = async (req: NextRequest) => {
     return NextResponse.json({error: error.massage}, {status: 500});
   }
 };
+interface getproduct {
+  message: string;
+  success: boolean;
+  product: product[];
+}
 
 export const GET = async (req: NextRequest) => {
   try {
     const product = await Product.find();
 
-    if (product) {
+    var sdendd: getproduct = {
+      message: "بارگذاری شد",
+      success: true,
+      product,
+    };
+    if (product !== undefined) {
       return NextResponse.json(
         {
           message: "بارگذاری شد",
