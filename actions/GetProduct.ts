@@ -21,7 +21,8 @@ export const GetProduct = async () => {
     console.log("objectgggggggggg");
     const {data}: {data: getproduct} = await axios(options);
     return data;
-  } catch (error: any) {
+  } catch (error: any | undefined) {
+    return error;
     throw error.response.data.error;
   }
 };
