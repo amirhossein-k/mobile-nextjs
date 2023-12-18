@@ -7,6 +7,18 @@ const config: Config = {
     "./src/app/**/*.{js,ts,jsx,tsx,mdx}",
   ],
   theme: {
+    screens: {
+      sm: "640px",
+
+      md: "768px",
+
+      lg: "1024px",
+
+      x: "1180px",
+      xl: "1280px",
+
+      "2xl": "1536px",
+    },
     extend: {
       boxShadow: {
         "shadow-one":

@@ -11,7 +11,7 @@ const Qhab = ({products}: {products: product[]}) => {
     <>
       <div className="row  bg-slate-50   text-md">ادرس زیر مجموعه</div>
       {/* <div className="row">موضوع دسته بندی</div> */}
-      <div className="grid lg:grid-flow-col grid-flow-row  auto-cols-fr  bg-slate-50  ">
+      <div className="grid x:grid-flow-col grid-flow-row  auto-cols-fr  bg-slate-50  ">
         {/* filter - right side*/}
         <div className="col  col-span-1 px-2  ">
           {/* filter mobile */}
@@ -20,14 +20,14 @@ const Qhab = ({products}: {products: product[]}) => {
           </div> */}
 
           <div
-            className={` grid-flow-row lg:grid  ${
+            className={` grid-flow-row x:grid  ${
               filter
                 ? " fixed z-[100] bg-[#1a1b1cf5] text-sky-50 top-0 h-fit w-full right-0 p-2"
                 : "hidden"
             }`}
           >
             {/* filter mobile */}
-            <div className="header  flex  h-[40px] justify-between mb-3 lg:hidden">
+            <div className="header  flex  h-[40px] justify-between mb-3 x:hidden">
               <div className="close   flex gap-2">
                 <i
                   className="bi bi-x-lg p-2 text-lg hover:scale-105 cursor-pointer"
@@ -42,48 +42,84 @@ const Qhab = ({products}: {products: product[]}) => {
             </div>
             {/* فیلتر هزینه */}
             <div className="">
-              <div className="title text-lg font-semibold">فیلتر هزینه </div>
+              <div className="parent-filter group">
+                <div className="text-lg font-semibold flex justify-between ">
+                  <div className="title"> فیلتر قیمت کالا </div>
+                  <div className="icon text-xl ">
+                    <i className="bi bi-caret-down group-hover:text-blue-300 hidden group-hover:block group-hover:animate-bounce group-hover:duration-700"></i>
+                    <i className="bi bi-caret-up group-hover:hidden "></i>
+                  </div>
+                </div>{" "}
+              </div>
             </div>
             {/* فیلتر دسته بندی محصول */}
             <div className="">
-              <div className="title text-lg font-semibold">
-                فیلتر دسته بندی محصول{" "}
-              </div>
-              <div className="subtitle">
-                <div className="category">
-                  <div className="">طرحدار</div>
+              <div className="parent-filter group">
+                <div className="text-lg font-semibold flex justify-between ">
+                  <div className="title">فیلتر دسته بندی محصول </div>
+                  <div className="icon text-xl ">
+                    <i className="bi bi-caret-down group-hover:text-blue-300 hidden group-hover:block group-hover:animate-bounce group-hover:duration-700"></i>
+                    <i className="bi bi-caret-up group-hover:hidden "></i>
+                  </div>
                 </div>
-                <div className="category">
-                  <div className="">طرحدار</div>
-                </div>
-                <div className="category">
-                  <div className="">طرحدار</div>
+                <div className="subtitle group-hover:flex flex-col hidden">
+                  <div className="category">
+                    <div className="">طرحدار</div>
+                  </div>
+                  <div className="category">
+                    <div className="">طرحدار</div>
+                  </div>
+                  <div className="category">
+                    <div className="">طرحدار</div>
+                  </div>
                 </div>
               </div>
             </div>
             {/*فیلتر برند محصول */}
             <div className="">
-              <div className="title text-lg font-semibold">
-                فیلتر برند محصول{" "}
-              </div>
-              <div className="subtitle">
-                <div className="category">
-                  <div className="">سامسونگ</div>
+              <div className="parent-filter group ">
+                <div className=" text-lg font-semibold flex justify-between">
+                  <div className="title"> فیلتر برند محصول</div>
+                  <div className="icon text-xl ">
+                    <i className="bi bi-caret-down group-hover:text-blue-300 hidden group-hover:block group-hover:animate-bounce group-hover:duration-700"></i>
+                    <i className="bi bi-caret-up group-hover:hidden "></i>
+                  </div>
                 </div>
-                <div className="category">
-                  <div className="">سامسونگ</div>
-                </div>
-                <div className="category">
-                  <div className="">سامسونگ</div>
+                <div className="subtitle  group-hover:flex flex-col hidden">
+                  <div className="category">
+                    <div className="">سامسونگ</div>
+                  </div>
+                  <div className="category">
+                    <div className="">سامسونگ</div>
+                  </div>
+                  <div className="category">
+                    <div className="">سامسونگ</div>
+                  </div>
                 </div>
               </div>
             </div>
             {/* فیلتر وصعیت موجودی */}
             <div className="">
-              <div className="title text-lg font-semibold">
-                فیلتر وصعیت موجودی{" "}
+              <div className="parent-filter group">
+                <div className="text-lg font-semibold flex justify-between ">
+                  <div className="title"> فیلتر وصعیت موجودی </div>
+                  <div className="icon text-xl ">
+                    <i className="bi bi-caret-down group-hover:text-blue-300 hidden group-hover:block group-hover:animate-bounce group-hover:duration-700"></i>
+                    <i className="bi bi-caret-up group-hover:hidden "></i>
+                  </div>
+                </div>
               </div>
-              <div className="subtitle"></div>
+              <div className="subtitle  group-hover:flex flex-col hidden">
+                <div className="category">
+                  <div className="">سامسونگ</div>
+                </div>
+                <div className="category">
+                  <div className="">سامسونگ</div>
+                </div>
+                <div className="category">
+                  <div className="">سامسونگ</div>
+                </div>
+              </div>
             </div>
           </div>
         </div>
@@ -92,7 +128,7 @@ const Qhab = ({products}: {products: product[]}) => {
           {/* titr */}
           <div className="row grid grid-flow-col auto-cols-auto px-1 py-3 border-b">
             {/* filter */}
-            <div className="flex gap-2 col-span-2 lg:hidden ">
+            <div className="flex gap-2 col-span-2 x:hidden ">
               <FilterButtom filter={filter} setFilter={setFilter} />
             </div>
             <div className="col col-span-1 flex justify-end ">
@@ -103,7 +139,7 @@ const Qhab = ({products}: {products: product[]}) => {
             </div>
           </div>
           {/* product */}
-          <div className="row p-1 grid w-full my-2  lg:grid-cols-5 md:grid-cols-3 sm:grid-cols-2  grid-cols-2 gap-3">
+          <div className="row p-1 grid   w-full my-2 2xl:grid-cols-5   lg:grid-cols-4 md:grid-cols-3 sm:grid-cols-2  grid-cols-2 gap-3">
             {products.map((item) => {
               return (
                 <div className="col p-1 m-1  bg-white h-full  justify-center   flex flex-col group rounded-md">
@@ -132,7 +168,7 @@ const Qhab = ({products}: {products: product[]}) => {
                   </div>
                   <div className="body px-3 flex flex-col justify-center gap-2 w-full h-1/3 ">
                     {/* title */}
-                    <div className=" text-lg line-clamp-2 group-hover:line-clamp-none text-center   h-[54px]  ">
+                    <div className=" text-lg line-clamp-2  text-center  mb-2   h-[54px]   ">
                       {item.title}
                     </div>
                     {/* model */}
