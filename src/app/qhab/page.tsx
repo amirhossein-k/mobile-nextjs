@@ -4,8 +4,11 @@ import Image from "next/image";
 import Link from "next/link";
 import React, {useState} from "react";
 import {product} from "../../../types";
+import {GetProduct} from "../../../actions/GetProduct";
 
-const QhabMain = () => {
+const QhabMain = async () => {
+  const listproduct = await GetProduct();
+  console.log(listproduct);
   const products: product[] = [
     {title: "قاب1", model: "s21", price: "200$", classs: ""},
     {title: "تراول-ماگ-میکسر-درم", model: "a31", price: "200$", classs: ""},
@@ -32,7 +35,7 @@ const QhabMain = () => {
 
   return (
     <div className="continer min-h-full h-fit  bg-white   " dir="rtl">
-      <Qhab products={products} />
+      <Qhab products={listproduct.product} />
     </div>
   );
 };

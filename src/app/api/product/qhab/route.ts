@@ -11,17 +11,15 @@ export const POST = async (req: NextRequest) => {
 
     const {title, model, price, classs, class2, price_offer} = reqBody;
 
-    console.log(title);
     const newProduct = new Product({
       title,
       model,
       price,
-      classs,
-      class2,
-      price_offer,
+      classs: classs || " ",
+      class2: class2 ? class2 : " ",
+      price_offer: price_offer ? price_offer : " ",
     } as product);
 
-    console.log(newProduct);
     const savedProduct = await newProduct.save();
     if (savedProduct) {
       return NextResponse.json(
@@ -31,6 +29,25 @@ export const POST = async (req: NextRequest) => {
           savedProduct,
         },
         {status: 201}
+      );
+    }
+  } catch (error: any) {
+    return NextResponse.json({error: error.massage}, {status: 500});
+  }
+};
+
+export const GET = async (req: NextRequest) => {
+  try {
+    const product = await Product.find();
+
+    if (product) {
+      return NextResponse.json(
+        {
+          message: "بارگذاری شد",
+          success: true,
+          product,
+        },
+        {status: 200}
       );
     }
   } catch (error: any) {
