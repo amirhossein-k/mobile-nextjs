@@ -23,7 +23,7 @@ export const GetProduct = async () => {
     console.log(data, "yu");
     return data;
   } catch (error: any) {
-    return error;
+    // return error;
     throw error.response.data.error;
   }
 };
