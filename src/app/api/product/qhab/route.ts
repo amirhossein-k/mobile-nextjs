@@ -2,6 +2,7 @@ import {ConnectDb} from "@/db/dbConfig";
 import Product from "@/models/productModel";
 import {NextRequest, NextResponse} from "next/server";
 import {product} from "../../../../../types";
+import {error} from "console";
 
 ConnectDb();
 
@@ -52,6 +53,9 @@ export const GET = async (req: NextRequest) => {
     };
     if (product !== undefined) {
       return NextResponse.json(sdendd, {status: 200});
+    }
+    if (product === undefined) {
+      return NextResponse.json({error: ""}, {status: 400});
     }
   } catch (error: any) {
     return NextResponse.json({error: error}, {status: 500});
