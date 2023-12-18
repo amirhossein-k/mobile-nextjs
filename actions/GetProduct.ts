@@ -13,7 +13,7 @@ export const GetProduct = async () => {
   try {
     const options: AxiosRequestConfig = {
       method: "GET",
-      url: "http://localhost:3000/api/product/qhab",
+      url: "http://localhost:3000/api/product/qhab/1",
       headers: {
         "Content-Type": "application/json",
       },
