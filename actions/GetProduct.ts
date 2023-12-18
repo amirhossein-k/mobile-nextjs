@@ -7,6 +7,7 @@ interface getproduct {
   message: string;
   success: boolean;
   product: product[];
+  error?: any;
 }
 export const GetProduct = async () => {
   try {
