@@ -42,7 +42,7 @@ interface getproduct {
   product: product[];
 }
 
-export const GET = async (req: NextRequest) => {
+export const GET = async () => {
   try {
     const product = await Product.find();
 
@@ -55,6 +55,6 @@ export const GET = async (req: NextRequest) => {
       return NextResponse.json(sdendd, {status: 200});
     }
   } catch (error: any) {
-    return NextResponse.json({error: error || undefined}, {status: 500});
+    return NextResponse.json({}, {status: 500});
   }
 };
