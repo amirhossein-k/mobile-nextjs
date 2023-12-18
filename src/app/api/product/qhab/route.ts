@@ -57,7 +57,7 @@ export const GET = async (req: NextRequest) => {
     if (product === undefined) {
       return NextResponse.json({error: ""}, {status: 400});
     }
-  } catch (error: any) {
-    return NextResponse.json({error: error}, {status: 500});
+  } catch (error: any | undefined) {
+    return NextResponse.json({error: error || undefined}, {status: 500});
   }
 };
