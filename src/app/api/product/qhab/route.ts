@@ -51,14 +51,7 @@ export const GET = async (req: NextRequest) => {
       product,
     };
     if (product !== undefined) {
-      return NextResponse.json(
-        {
-          message: "بارگذاری شد",
-          success: true,
-          product,
-        },
-        {status: 200}
-      );
+      return NextResponse.json(sdendd, {status: 200});
     }
   } catch (error: any) {
     return NextResponse.json({error: error.message}, {status: 500});
