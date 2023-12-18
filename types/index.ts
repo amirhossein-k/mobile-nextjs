@@ -65,7 +65,7 @@ export interface product {
   title: string;
   model: string;
   price: string;
-  class?: string;
+  classs?: string;
   class2?: string;
   price_offer?: string;
 }

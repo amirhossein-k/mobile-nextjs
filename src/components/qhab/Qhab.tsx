@@ -145,9 +145,9 @@ const Qhab = ({products}: {products: product[]}) => {
                 <div className="col p-1 m-1  bg-white h-full  justify-center   flex flex-col group rounded-md">
                   {/* img product */}
                   <div
-                    className={`header rounded-md overflow-hidden  w-full h-[250px] border-2 relative ${item.class}`}
+                    className={`header rounded-md overflow-hidden  w-full h-[250px] border-2 relative ${item.classs}`}
                   >
-                    {item.class && (
+                    {item.classs && (
                       <span
                         className={`${item.class2} absolute top-0 left-1 z-30`}
                       >
