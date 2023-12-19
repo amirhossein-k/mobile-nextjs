@@ -8,7 +8,7 @@ const ItemBox = ({item}: {item: product}) => {
     <div className="col p-1 m-1  bg-white h-full  justify-center   flex sm:flex-col group rounded-md">
       {/* img product */}
       <div
-        className={`header rounded-md overflow-hidden  sm:w-full w-2/3 sm:h-[250px] h-[210px] border-2 relative ${item.classs}`}
+        className={`header rounded-md overflow-hidden  sm:w-full w-3/4 sm:h-[250px] h-[210px] border-2 relative ${item.classs}`}
       >
         {item.classs !== " " && (
           <span
@@ -60,7 +60,7 @@ const ItemBox = ({item}: {item: product}) => {
           typeof item.class2 === "string" ? (
             <>
               <span className="line-through	 ">{item.price}</span>
-              <span className={`${item.class2} flex`}>
+              <span className={`${item.class2} flex gap-1`}>
                 {item.price_offer}
                 <Image
                   quality={100}
@@ -72,7 +72,16 @@ const ItemBox = ({item}: {item: product}) => {
               </span>
             </>
           ) : (
-            <span className="text-ellipsis">{item.price}</span>
+            <span className="text-ellipsis flex gap-1">
+              {item.price}
+              <Image
+                quality={100}
+                width={20}
+                height={30}
+                src={"https://uploade.storage.iran.liara.space/dollar2.png"}
+                alt=""
+              />
+            </span>
           )}
         </div>
 
