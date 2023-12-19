@@ -41,11 +41,15 @@ export const GetProduct = async () => {
     if (data) {
       console.log("data hast");
       var check_error = false;
-      const checkk = typeof data === undefined ? true : check_error;
+      const dataa = undefined;
+      const checkk = typeof dataa === "undefined" ? true : check_error;
 
       if (!checkk) {
+        console.log(checkk);
+        console.log(data.data);
         return data.data;
       } else {
+        console.log(datamodify);
         return datamodify;
       }
     }

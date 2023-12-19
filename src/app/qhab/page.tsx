@@ -36,7 +36,7 @@ const QhabMain = async () => {
 
   return (
     <div className="continer min-h-full h-fit  bg-white   " dir="rtl">
-      {typeof listproduct === undefined ? (
+      {typeof listproduct === "undefined" ? (
         <Qhab products={products} />
       ) : (
         <Qhab products={listproduct?.product || []} />
