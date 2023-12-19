@@ -6,7 +6,7 @@ import React, {useState} from "react";
 import {getproductt, product} from "../../../types";
 import {GetProduct} from "../../../actions/GetProduct";
 import {AxiosResponse} from "axios";
-
+import {StyledEngineProvider} from "@mui/material/styles";
 const QhabMain = async () => {
   const listproduct = await GetProduct();
   // console.log(listproduct, "page qhab");
@@ -37,7 +37,9 @@ const QhabMain = async () => {
 
   return (
     <div className="continer min-h-full h-fit  bg-white   " dir="rtl">
-      {listproduct !== undefined && <Qhab products={listproduct} />}
+      <StyledEngineProvider injectFirst>
+        {listproduct !== undefined && <Qhab products={listproduct} />}
+      </StyledEngineProvider>
     </div>
   );
 };

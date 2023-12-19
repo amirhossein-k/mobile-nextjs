@@ -10,6 +10,9 @@
     "postinstall": "prisma generate"
   },
   "dependencies": {
+    "@emotion/react": "^11.11.1",
+    "@emotion/styled": "^11.11.0",
+    "@mui/material": "^5.15.1",
     "@prisma/client": "^5.2.0",
     "@reduxjs/toolkit": "^1.9.5",
     "@tailwindcss/container-queries": "^0.1.1",

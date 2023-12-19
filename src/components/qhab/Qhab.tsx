@@ -1,14 +1,61 @@
 "use client";
-import React, {useState} from "react";
+import React, {
+  EventHandler,
+  ReactElement,
+  ReactEventHandler,
+  ReactNode,
+  useState,
+} from "react";
 import FilterButtom from "../filter/FilterButtom";
 import Image from "next/image";
 import Link from "next/link";
 import {product} from "../../../types";
 import FilterParent from "../filter/FilterParent";
 import ItemBox from "../itembox/ItemBox";
-
+import Select from "@mui/material/Select";
+import {
+  Checkbox,
+  InputLabel,
+  ListItemText,
+  MenuItem,
+  OutlinedInput,
+  SelectChangeEvent,
+} from "@mui/material";
 const Qhab = ({products}: {products: product[]}) => {
-  const [filter, setFilter] = useState<boolean>(false);
+  const [filterActive, setFilterActive] = useState<boolean>(false);
+  const [filter, setFilter] = useState("");
+  const [status, setStatus] = useState("جدیدترین");
+  const filterhandler = (e: React.ChangeEvent<HTMLInputElement>) => {
+    console.log(e.target.innerHTML, "e");
+    setFilter(e.target.innerHTML);
+  };
+  const handleChange = (event: SelectChangeEvent<typeof status>) => {
+    const {
+      target: {value},
+    } = event;
+    setStatus(
+      // On autofill we get a stringified value.
+      typeof value === "string" ? value : value
+    );
+  };
+  const ITEM_HEIGHT = 45;
+  const ITEM_PADDING_TOP = 18;
+  const MenuProps = {
+    PaperProps: {
+      style: {
+        maxHeight: ITEM_HEIGHT * 6.5 + ITEM_PADDING_TOP,
+        width: 200,
+      },
+    },
+  };
+  const names = [
+    "جدیدترین",
+    "پربازیدترین",
+    "قدیمی ترین",
+    "گران ترین",
+    "ارزان ترین",
+  ];
+  console.log(status);
   return (
     <>
       <div className="row  bg-slate-50   text-md">ادرس زیر مجموعه</div>
@@ -20,7 +67,7 @@ const Qhab = ({products}: {products: product[]}) => {
 
           <div
             className={` grid-flow-row x:grid  ${
-              filter
+              filterActive
                 ? " fixed z-[100] bg-[#1a1b1cf5] text-sky-50 top-0 h-fit w-full right-0 p-2"
                 : "hidden"
             }`}
@@ -30,7 +77,7 @@ const Qhab = ({products}: {products: product[]}) => {
               <div className="close   flex gap-2">
                 <i
                   className="bi bi-x-lg p-2 text-lg hover:scale-105 cursor-pointer"
-                  onClick={(e) => setFilter(!filter)}
+                  onClick={(e) => setFilterActive(!filterActive)}
                 ></i>
                 <div className="title  p-2 text-lg">فیلترها</div>
               </div>
@@ -104,12 +151,30 @@ const Qhab = ({products}: {products: product[]}) => {
           <div className="row grid grid-flow-col auto-cols-auto px-1 py-3 border-b">
             {/* filter */}
             <div className="flex gap-2 col-span-2 x:hidden ">
-              <FilterButtom filter={filter} setFilter={setFilter} />
+              <FilterButtom
+                filterActive={filterActive}
+                setFilterActive={setFilterActive}
+              />
             </div>
-            <div className="col col-span-1 flex justify-end ">
-              <div className="p-2  border-2 shadow-slate-500 shadow-shadow-one hover:scale-105 hover:shadow-shadow-white hover:shadow-slate-300 cursor-pointer">
-                <i className="bi bi-sort-down  text-xl"></i>
-                <span className="p-3 text-lg">مرتب سازی</span>
+            <div className="col col-span-1  flex justify-end  ">
+              <div className="p-2   w-fit flex   ">
+                <i className="bi p-2 bi-sort-down group-focus/item:bg-red-400  text-xl  "></i>
+                <Select
+                  className="w-full  border-blue-400  border "
+                  // labelId="demo-multiple-checkbox-label"
+                  // id="demo-multiple-checkbox"
+                  value={status}
+                  onChange={handleChange}
+                  input={<OutlinedInput label="Tag" />}
+                  MenuProps={MenuProps}
+                >
+                  {names.map((name) => (
+                    <MenuItem key={name} value={name}>
+                      {/* <Checkbox checked={status.indexOf(name) > -1} /> */}
+                      <ListItemText primary={name} />
+                    </MenuItem>
+                  ))}
+                </Select>
               </div>
             </div>
           </div>
