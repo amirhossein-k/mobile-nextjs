@@ -20,6 +20,7 @@ export const GetProduct = async () => {
     const config = {
       headers: {
         "Content-Type": "application/json",
+        data: "",
       },
     };
     // const data = await axios.get(
@@ -32,22 +33,27 @@ export const GetProduct = async () => {
       headers: {
         "Content-Type": "application/json",
       },
-      responseType: "json",
     };
 
     // const data = await axios<undefined>(options);
-    const data: any = await axios(options);
+    const data: any = await axios.get(
+      "http://localhost:3000/api/product/qhab",
+      config
+    );
     // console.log("objectgggggggggg");
     console.log(data, "yu");
     if (data) {
       console.log("data hast");
       var check_error = false;
-      const dataa = undefined;
-      const checkk = typeof data === "undefined" ? true : check_error;
+
+      var checkk =
+        typeof data === "undefined" || data.data === "undefined"
+          ? true
+          : check_error;
 
       if (!checkk) {
         console.log(checkk);
-        // console.log(data.data);
+        console.log("OPO", data);
         return data;
       } else {
         console.log(datamodify);
