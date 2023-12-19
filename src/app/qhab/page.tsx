@@ -36,7 +36,7 @@ const QhabMain = async () => {
 
   return (
     <div className="continer min-h-full h-fit  bg-white   " dir="rtl">
-      <Qhab products={listproduct?.product} />
+      <Qhab products={listproduct?.data} />
     </div>
   );
 };

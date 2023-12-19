@@ -1,40 +1,24 @@
-import {ConnectDb} from "@/db/dbConfig";
+import prisma from "@/db/prismaDb";
 import Product from "@/models/productModel";
 import {NextRequest, NextResponse} from "next/server";
 import {product} from "../../../../../types";
-import {error} from "console";
-
-ConnectDb();
 
 export const POST = async (req: NextRequest) => {
-  try {
-    const reqBody = await req.json();
+  const reqBody = await req.json();
 
-    const {title, model, price, classs, class2, price_offer} = reqBody;
+  const {title, model, price, classs, class2, price_offer} = reqBody;
 
-    const newProduct = new Product({
+  const product = await prisma.products.create({
+    data: {
       title,
       model,
       price,
-      classs: classs || " ",
-      class2: class2 ? class2 : " ",
-      price_offer: price_offer ? price_offer : " ",
-    } as product);
-
-    const savedProduct = await newProduct.save();
-    if (savedProduct) {
-      return NextResponse.json(
-        {
-          message: "ذخیره شد",
-          success: true,
-          savedProduct,
-        },
-        {status: 201}
-      );
-    }
-  } catch (error: any) {
-    return NextResponse.json({error: error.massage}, {status: 500});
-  }
+      classs,
+      class2,
+      price_offer,
+    },
+  });
+  return NextResponse.json(product);
 };
 interface getproduct {
   message: string;
@@ -43,18 +27,6 @@ interface getproduct {
 }
 
 export const GET = async () => {
-  try {
-    const product = await Product.find();
-
-    var sdendd: getproduct = {
-      message: "بارگذاری شد",
-      success: true,
-      product,
-    };
-    if (product !== undefined) {
-      return NextResponse.json(sdendd, {status: 200});
-    }
-  } catch (error: any) {
-    return NextResponse.json({}, {status: 500});
-  }
+  const productList = await prisma.products.findMany({});
+  return NextResponse.json(productList);
 };

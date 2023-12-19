@@ -25,3 +25,14 @@ model CategoryItem{
   linkk   String
   
 }
+model Products{
+id     String @id @default(auto()) @map("_id") @db.ObjectId
+title String
+model String
+price String
+classs  String?
+class2 String?
+price_offer String?
+createdAt DateTime @default(now())
+updatedAt DateTime @updatedAt
+}
