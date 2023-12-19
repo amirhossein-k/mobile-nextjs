@@ -16,7 +16,7 @@ export const GetProduct = async () => {
         "Content-Type": "application/json",
       },
     };
-    const {data} = await axios.get(
+    const data = await axios.get(
       "http://localhost:3000/api/product/qhab/1",
       config
     );
@@ -30,7 +30,11 @@ export const GetProduct = async () => {
     console.log("objectgggggggggg");
     // const data = await axios(options);
     console.log(data, "yu");
-    return data;
+    if (data !== undefined) {
+      if (data.data !== undefined) {
+        return data;
+      }
+    }
   } catch (error: any) {
     // return error;
     throw error.response.data.error;
