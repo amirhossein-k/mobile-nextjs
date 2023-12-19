@@ -9,7 +9,7 @@ import {AxiosResponse} from "axios";
 
 const QhabMain = async () => {
   const listproduct = await GetProduct();
-
+  console.log(listproduct, "page qhab");
   const products: product[] = [
     {title: "قاب1", model: "s21", price: "200$", classs: ""},
     {title: "تراول-ماگ-میکسر-درم", model: "a31", price: "200$", classs: ""},

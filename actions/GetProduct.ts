@@ -39,8 +39,10 @@ export const GetProduct = async () => {
     const data = await axios<undefined>(options);
     console.log(data, "yu");
     if (data) {
+      console.log("data hast");
       return data.data;
     } else {
+      console.log("undefinded shode");
       return datamodify;
     }
   } catch (error: any) {
