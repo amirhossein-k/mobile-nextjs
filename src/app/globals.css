@@ -4,11 +4,11 @@
 
 @layer base {
   body {
-    @apply h-full antialiased dark:bg-neutral-950 dark:text-neutral-50;
+    @apply h-full antialiased;
   }
 
   html {
-    background: linear-gradient(to right, #c6c6c6, #e6dfdf, #bfc4c4);
+    background: linear-gradient(to right, #c6c6c6, #e6dfdf, #bfc4c4) !important;
 
     /* background: url("../../public/6.jpg");
     background-repeat: repeat;
