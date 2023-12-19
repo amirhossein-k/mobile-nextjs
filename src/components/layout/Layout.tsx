@@ -2,7 +2,7 @@ import {cn} from "../../../utils/cn";
 
 import {cva, type VariantProps} from "class-variance-authority";
 
-const variants = cva(" rounded-3xl    dark:bg-neutral-900    ", {
+const variants = cva(" rounded-3xl       ", {
   variants: {
     size: {
       categoryMain: " col-span-4 row-span-1 md:row-span-2  h-fit bg-stone-300",
