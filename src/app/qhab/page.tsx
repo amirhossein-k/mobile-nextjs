@@ -10,6 +10,7 @@ import {AxiosResponse} from "axios";
 const QhabMain = async () => {
   const listproduct: AxiosResponse | any = await GetProduct();
   console?.log(listproduct, "dd");
+  const rr = undefined;
   const products: product[] = [
     {title: "قاب1", model: "s21", price: "200$", classs: ""},
     {title: "تراول-ماگ-میکسر-درم", model: "a31", price: "200$", classs: ""},
@@ -36,7 +37,8 @@ const QhabMain = async () => {
 
   return (
     <div className="continer min-h-full h-fit  bg-white   " dir="rtl">
-      <Qhab products={listproduct?.data} />
+      {rr && <Qhab products={listproduct?.data} />}
+      {/* {rr && <Qhab products={products} />} */}
     </div>
   );
 };
