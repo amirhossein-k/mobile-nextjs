@@ -65,9 +65,12 @@ export interface product {
   title: string;
   model: string;
   price: string;
-  classs?: string;
-  class2?: string;
-  price_offer?: string;
+  classs?: string | null;
+  class2?: string | null;
+
+  price_offer?: string | null;
+  createdAt: Date;
+  updatedAt: Date;
 }
 export interface getproductt {
   message: string;
