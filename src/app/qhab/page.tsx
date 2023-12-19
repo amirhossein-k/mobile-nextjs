@@ -9,7 +9,26 @@ import {AxiosResponse} from "axios";
 
 const QhabMain = async () => {
   const listproduct = await GetProduct();
-  console.log(listproduct, "page qhab");
+  // console.log(listproduct, "page qhab");
+  var check_error = false;
+
+  if (listproduct) {
+    console.log(listproduct);
+    check_error = typeof listproduct === "undefined" ? true : false;
+    const datamodify: getproductt = {
+      message: "error",
+      product: [],
+      success: false,
+      error: true,
+    };
+    if (!check_error) {
+      console.log(check_error);
+      console.log(listproduct.data);
+    } else {
+      console.log(datamodify);
+    }
+  }
+
   const products: product[] = [
     {title: "قاب1", model: "s21", price: "200$", classs: ""},
     {title: "تراول-ماگ-میکسر-درم", model: "a31", price: "200$", classs: ""},
@@ -36,10 +55,10 @@ const QhabMain = async () => {
 
   return (
     <div className="continer min-h-full h-fit  bg-white   " dir="rtl">
-      {typeof listproduct === "undefined" ? (
+      {check_error ? (
         <Qhab products={products} />
       ) : (
-        <Qhab products={listproduct?.product || []} />
+        <Qhab products={listproduct?.data || []} />
       )}
       {/* {listproduct} */}
     </div>

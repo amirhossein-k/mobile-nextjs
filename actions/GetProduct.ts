@@ -36,7 +36,7 @@ export const GetProduct = async () => {
     };
 
     // const data = await axios<undefined>(options);
-    const data = await axios(options);
+    const data: any = await axios(options);
     // console.log("objectgggggggggg");
     console.log(data, "yu");
     if (data) {
@@ -47,8 +47,8 @@ export const GetProduct = async () => {
 
       if (!checkk) {
         console.log(checkk);
-        console.log(data.data);
-        return data.data;
+        // console.log(data.data);
+        return data;
       } else {
         console.log(datamodify);
         return datamodify;
