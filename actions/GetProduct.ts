@@ -27,23 +27,16 @@ export const GetProduct = async () => {
     // );
     const options: AxiosRequestConfig = {
       method: "GET",
-      url: "http://localhost:3000/api/product/qhab/1",
+      url: "http://localhost:3000/api/product/qhab",
       headers: {
         "Content-Type": "application/json",
       },
+      responseType: "json",
     };
-    axios
-      .get("http://localhost:3000/api/product/qhab", options)
-      .then((response: AxiosResponse | undefined) => {
-        console.log(response?.data);
-        if (response === undefined) {
-          return datamodify;
-        }
-        return response?.data;
-      });
-    // console.log("objectgggggggggg");
-    // // const data = await axios(options);
-    // console.log(data, "yu");
+
+    console.log("objectgggggggggg");
+    const data = await axios<undefined>(options);
+    console.log(data, "yu");
 
     // return data;
   } catch (error: any) {
