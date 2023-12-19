@@ -36,6 +36,9 @@ export const GetProduct = async () => {
       .get("http://localhost:3000/api/product/qhab")
       .then((response: AxiosResponse | undefined) => {
         console.log(response?.data);
+        if (response == undefined) {
+          return datamodify;
+        }
         return response?.data;
       });
     // console.log("objectgggggggggg");
