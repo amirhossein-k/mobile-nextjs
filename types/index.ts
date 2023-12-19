@@ -69,3 +69,9 @@ export interface product {
   class2?: string;
   price_offer?: string;
 }
+export interface getproductt {
+  message: string;
+  success: boolean;
+  product: product[];
+  error?: any;
+}

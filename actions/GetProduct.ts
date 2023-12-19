@@ -1,6 +1,6 @@
 "use server";
 
-import axios, {AxiosRequestConfig} from "axios";
+import axios, {AxiosRequestConfig, AxiosResponse} from "axios";
 import {product} from "../types";
 
 interface getproduct {
@@ -21,10 +21,10 @@ export const GetProduct = async () => {
         "Content-Type": "application/json",
       },
     };
-    const data = await axios.get(
-      "http://localhost:3000/api/product/qhab",
-      config
-    );
+    // const data = await axios.get(
+    //   "http://localhost:3000/api/product/qhab",
+    //   config
+    // );
     // const options: AxiosRequestConfig = {
     //   method: "GET",
     //   url: "http://localhost:3000/api/product/qhab/1",
@@ -32,11 +32,17 @@ export const GetProduct = async () => {
     //     "Content-Type": "application/json",
     //   },
     // };
-    console.log("objectgggggggggg");
-    // const data = await axios(options);
-    console.log(data, "yu");
+    axios
+      .get("http://localhost:3000/api/product/qhab")
+      .then((response: AxiosResponse | undefined) => {
+        console.log(response?.data);
+        return response?.data;
+      });
+    // console.log("objectgggggggggg");
+    // // const data = await axios(options);
+    // console.log(data, "yu");
 
-    return data;
+    // return data;
   } catch (error: any) {
     // return error;
     throw error.response.data.error;

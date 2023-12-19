@@ -3,12 +3,12 @@ import Qhab from "@/components/qhab/Qhab";
 import Image from "next/image";
 import Link from "next/link";
 import React, {useState} from "react";
-import {product} from "../../../types";
+import {getproductt, product} from "../../../types";
 import {GetProduct} from "../../../actions/GetProduct";
 import {AxiosResponse} from "axios";
 
 const QhabMain = async () => {
-  const listproduct: AxiosResponse | any = await GetProduct();
+  const listproduct = await GetProduct();
   console?.log(listproduct, "dd");
   const rr = undefined;
   const products: product[] = [
@@ -38,10 +38,11 @@ const QhabMain = async () => {
   return (
     <div className="continer min-h-full h-fit  bg-white   " dir="rtl">
       {listproduct != undefined ? (
-        <Qhab products={listproduct?.data || ""} />
+        <Qhab products={listproduct || ""} />
       ) : (
         <Qhab products={products} />
       )}
+      {/* {listproduct} */}
     </div>
   );
 };
