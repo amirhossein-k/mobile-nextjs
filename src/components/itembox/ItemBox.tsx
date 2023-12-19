@@ -38,7 +38,9 @@ const ItemBox = ({item}: {item: product}) => {
         <div
           className={`price flex justify-center gap-2 group-hover:scale-105 `}
         >
-          {item.price_offer !== " " ? (
+          {item.price_offer &&
+          item.class2 !== " " &&
+          typeof item.class2 === "string" ? (
             <>
               <span className={item.class2}>{item.price_offer}</span>
               <span className="line-through	">{item.price}</span>
