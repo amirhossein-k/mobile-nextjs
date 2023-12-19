@@ -40,10 +40,13 @@ export const GetProduct = async () => {
     console.log(data, "yu");
     if (data) {
       console.log("data hast");
-      return data.data;
-    } else {
-      console.log("undefinded shode");
-      return datamodify;
+      var check_error = false;
+      typeof data === undefined ? (check_error = true) : check_error;
+      if (!check_error) {
+        return data.data;
+      } else {
+        return datamodify;
+      }
     }
   } catch (error: any) {
     // return error;
