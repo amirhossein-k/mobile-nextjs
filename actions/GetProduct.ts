@@ -25,18 +25,18 @@ export const GetProduct = async () => {
     //   "http://localhost:3000/api/product/qhab",
     //   config
     // );
-    // const options: AxiosRequestConfig = {
-    //   method: "GET",
-    //   url: "http://localhost:3000/api/product/qhab/1",
-    //   headers: {
-    //     "Content-Type": "application/json",
-    //   },
-    // };
+    const options: AxiosRequestConfig = {
+      method: "GET",
+      url: "http://localhost:3000/api/product/qhab/1",
+      headers: {
+        "Content-Type": "application/json",
+      },
+    };
     axios
-      .get("http://localhost:3000/api/product/qhab")
+      .get("http://localhost:3000/api/product/qhab", options)
       .then((response: AxiosResponse | undefined) => {
         console.log(response?.data);
-        if (response == undefined) {
+        if (response === undefined) {
           return datamodify;
         }
         return response?.data;
