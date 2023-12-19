@@ -16,30 +16,21 @@ export const GetProduct = async () => {
       product: [],
       success: false,
     };
-    const config = {
+    const response = await fetch("http://localhost:3000/api/product/qhab/1", {
+      method: "get", // *GET, POST, PUT, DELETE, etc.
+      mode: "cors", // no-cors, *cors, same-origin
+      cache: "no-cache", // *default, no-cache, reload, force-cache, only-if-cached
+
       headers: {
         "Content-Type": "application/json",
+        // 'Content-Type': 'application/x-www-form-urlencoded',
       },
-    };
-    const data = await axios.get(
-      "http://localhost:3000/api/product/qhab/1",
-      config
-    );
-    // const options: AxiosRequestConfig = {
-    //   method: "GET",
-    //   url: "http://localhost:3000/api/product/qhab/1",
-    //   headers: {
-    //     "Content-Type": "application/json",
-    //   },
-    // };
-    console.log("objectgggggggggg");
-    // const data = await axios(options);
-    console.log(data, "yu");
-
-    if (data === undefined) {
-      return datamodify;
-    }
-    return data;
+      redirect: "follow", // manual, *follow, error
+      referrerPolicy: "no-referrer", // no-referrer, *no-referrer-when-downgrade, origin, origin-when-cross-origin, same-origin, strict-origin, strict-origin-when-cross-origin, unsafe-url
+    });
+    const jsonData = await response.json();
+    console.log(jsonData);
+    return jsonData; // parses JSON response into native JavaScript objects
   } catch (error: any) {
     // return error;
     throw error.response.data.error;
