@@ -11,6 +11,11 @@ interface getproduct {
 }
 export const GetProduct = async () => {
   try {
+    const datamodify: getproduct = {
+      message: "error",
+      product: [],
+      success: false,
+    };
     const config = {
       headers: {
         "Content-Type": "application/json",
@@ -31,6 +36,9 @@ export const GetProduct = async () => {
     // const data = await axios(options);
     console.log(data, "yu");
 
+    if (data === undefined) {
+      return datamodify;
+    }
     return data;
   } catch (error: any) {
     // return error;
