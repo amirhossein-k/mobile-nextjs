@@ -17,7 +17,7 @@ export const GET = async () => {
       return NextResponse.json(sdendd, {status: 200});
     }
     if (product === undefined) {
-      return NextResponse.json({error: "خطا"}, {status: 500});
+      return NextResponse.json(sdendd);
     }
   } catch (error) {
     return NextResponse.json({}, {status: 500});

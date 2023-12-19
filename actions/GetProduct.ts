@@ -36,6 +36,7 @@ export const GetProduct = async () => {
     return jsonData; // parses JSON response into native JavaScript objects
   } catch (error: any) {
     // return error;
-    throw error.response.data.error;
+    console.log(error);
+    // throw error.response.data.error;
   }
 };
