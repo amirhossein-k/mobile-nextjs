@@ -114,7 +114,7 @@ const Qhab = ({products}: {products: product[]}) => {
             </div>
           </div>
           {/* product */}
-          <div className="row p-1 grid   w-full my-2 2xl:grid-cols-5   lg:grid-cols-4 md:grid-cols-3 sm:grid-cols-2  grid-cols-2 gap-3">
+          <div className="row p-1 grid   w-full my-2 2xl:grid-cols-5   lg:grid-cols-4 md:grid-cols-3 sm:grid-cols-2  grid-cols-1 gap-3">
             {products.map((item) => {
               return <ItemBox item={item} />;
             })}
