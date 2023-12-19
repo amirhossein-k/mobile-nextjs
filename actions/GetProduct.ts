@@ -7,7 +7,7 @@ interface getproduct {
   message: string;
   success: boolean;
   product: product[];
-  error?: any;
+  error?: boolean;
 }
 export const GetProduct = async () => {
   try {
@@ -15,6 +15,7 @@ export const GetProduct = async () => {
       message: "error",
       product: [],
       success: false,
+      error: true,
     };
     const config = {
       headers: {
@@ -37,8 +38,11 @@ export const GetProduct = async () => {
     console.log("objectgggggggggg");
     const data = await axios<undefined>(options);
     console.log(data, "yu");
-
-    // return data;
+    if (data) {
+      return data.data;
+    } else {
+      return datamodify;
+    }
   } catch (error: any) {
     // return error;
     throw error.response.data.error;
