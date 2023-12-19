@@ -55,12 +55,7 @@ const QhabMain = async () => {
 
   return (
     <div className="continer min-h-full h-fit  bg-white   " dir="rtl">
-      {check_error ? (
-        <Qhab products={products} />
-      ) : (
-        <Qhab products={listproduct?.data || []} />
-      )}
-      {/* {listproduct} */}
+      {listproduct !== undefined && <Qhab products={listproduct.data} />}
     </div>
   );
 };
