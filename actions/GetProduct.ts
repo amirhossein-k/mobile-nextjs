@@ -30,11 +30,8 @@ export const GetProduct = async () => {
     console.log("objectgggggggggg");
     // const data = await axios(options);
     console.log(data, "yu");
-    if (data !== undefined) {
-      if (data.data !== undefined) {
-        return data;
-      }
-    }
+
+    return data;
   } catch (error: any) {
     // return error;
     throw error.response.data.error;

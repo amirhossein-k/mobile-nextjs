@@ -5,9 +5,10 @@ import Link from "next/link";
 import React, {useState} from "react";
 import {product} from "../../../types";
 import {GetProduct} from "../../../actions/GetProduct";
+import {AxiosResponse} from "axios";
 
 const QhabMain = async () => {
-  const listproduct = await GetProduct();
+  const listproduct: AxiosResponse | undefined = await GetProduct();
   // console.log(listproduct.data);
   const products: product[] = [
     {title: "قاب1", model: "s21", price: "200$", classs: ""},
