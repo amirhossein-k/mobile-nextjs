@@ -11,6 +11,8 @@ import Image from "next/image";
 import Link from "next/link";
 import {product} from "../../../types";
 import FilterParent from "../filter/FilterParent";
+import FilterPrice from "../filter/FilterPrice";
+
 import ItemBox from "../itembox/ItemBox";
 import Select from "@mui/material/Select";
 import {
@@ -21,10 +23,16 @@ import {
   OutlinedInput,
   SelectChangeEvent,
 } from "@mui/material";
+import Geran from "../filter/Sort/Geran";
+import Arzan from "../filter/Sort/Arzan";
+
+import Jadid from "../filter/Sort/Jadid";
+import Qadimi from "../filter/Sort/Qadimi";
 const Qhab = ({products}: {products: product[]}) => {
   const [filterActive, setFilterActive] = useState<boolean>(false);
   const [filter, setFilter] = useState("");
   const [status, setStatus] = useState("جدیدترین");
+  const [value1, setValue1] = useState([0, 200000]);
   const filterhandler = (e: React.ChangeEvent<HTMLInputElement>) => {
     console.log(e.target.innerHTML, "e");
     setFilter(e.target.innerHTML);
@@ -55,9 +63,12 @@ const Qhab = ({products}: {products: product[]}) => {
     "گران ترین",
     "ارزان ترین",
   ];
-  console.log(status);
+  // /////////////////////////////
+
+  //////////////////
   return (
     <>
+      {status}
       <div className="row  bg-slate-50   text-md">ادرس زیر مجموعه</div>
       {/* <div className="row">موضوع دسته بندی</div> */}
       <div className="grid x:grid-flow-col grid-flow-row  auto-cols-fr  bg-slate-50  ">
@@ -90,6 +101,11 @@ const Qhab = ({products}: {products: product[]}) => {
             <div className="">
               <div className="parent-filter group">
                 <FilterParent title_Filter={" فیلتر قیمت کالا "} />
+                <div className="subtitle  group-hover:flex flex-col hidden ">
+                  <div className="category w-full relative bg-blue-200">
+                    <FilterPrice setValue1={setValue1} value1={value1} />
+                  </div>
+                </div>
               </div>
             </div>
             {/* فیلتر دسته بندی محصول */}
@@ -156,6 +172,7 @@ const Qhab = ({products}: {products: product[]}) => {
                 setFilterActive={setFilterActive}
               />
             </div>
+            {/* sort filter */}
             <div className="col col-span-1  flex justify-end  ">
               <div className="p-2   w-fit flex   ">
                 <i className="bi p-2 bi-sort-down group-focus/item:bg-red-400  text-xl  "></i>
@@ -180,9 +197,15 @@ const Qhab = ({products}: {products: product[]}) => {
           </div>
           {/* product */}
           <div className="row p-1 grid   w-full my-2 2xl:grid-cols-5   lg:grid-cols-4 md:grid-cols-3 sm:grid-cols-2  grid-cols-1 gap-3">
-            {products.map((item) => {
-              return <ItemBox item={item} />;
-            })}
+            {status === "گران ترین" ? (
+              <Geran value1={value1} products={products} />
+            ) : status === "ارزان ترین" ? (
+              <Arzan value1={value1} products={products} />
+            ) : status === "قدیمی ترین" ? (
+              <Qadimi value1={value1} products={products} />
+            ) : (
+              <Jadid value1={value1} products={products} />
+            )}
           </div>
         </div>
       </div>
