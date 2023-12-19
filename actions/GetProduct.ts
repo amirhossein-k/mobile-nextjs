@@ -29,6 +29,9 @@ export const GetProduct = async () => {
       referrerPolicy: "no-referrer", // no-referrer, *no-referrer-when-downgrade, origin, origin-when-cross-origin, same-origin, strict-origin, strict-origin-when-cross-origin, unsafe-url
     });
     const jsonData = await response.json();
+    if (jsonData === undefined) {
+      return datamodify;
+    }
     console.log(jsonData);
     return jsonData; // parses JSON response into native JavaScript objects
   } catch (error: any) {
