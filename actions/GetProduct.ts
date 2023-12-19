@@ -35,8 +35,9 @@ export const GetProduct = async () => {
       responseType: "json",
     };
 
-    console.log("objectgggggggggg");
-    const data = await axios<undefined>(options);
+    // const data = await axios<undefined>(options);
+    const data = await axios(options);
+    // console.log("objectgggggggggg");
     console.log(data, "yu");
     if (data) {
       console.log("data hast");
