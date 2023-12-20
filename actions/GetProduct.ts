@@ -11,7 +11,11 @@ interface getproduct {
 }
 export const GetProduct = async () => {
   try {
-    const listprodeuct = await prisma.products.findMany({});
+    const listprodeuct = await prisma.products.findMany({
+      include: {
+        category_product: true,
+      },
+    });
     console.log(listprodeuct);
 
     if (listprodeuct) return listprodeuct;

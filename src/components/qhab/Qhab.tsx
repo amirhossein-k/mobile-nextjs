@@ -4,6 +4,7 @@ import React, {
   ReactElement,
   ReactEventHandler,
   ReactNode,
+  useEffect,
   useState,
 } from "react";
 import FilterButtom from "../filter/FilterButtom";
@@ -28,11 +29,14 @@ import Arzan from "../filter/Sort/Arzan";
 
 import Jadid from "../filter/Sort/Jadid";
 import Qadimi from "../filter/Sort/Qadimi";
+import CheckBox from "../filter/CheckBox/CheckBox";
 const Qhab = ({products}: {products: product[]}) => {
   const [filterActive, setFilterActive] = useState<boolean>(false);
   const [filter, setFilter] = useState("");
   const [status, setStatus] = useState("جدیدترین");
   const [value1, setValue1] = useState([0, 200000]);
+  const [CheckBoxFilterList, setCheckBoxFilterList] = useState<string[]>([]);
+
   const filterhandler = (e: React.ChangeEvent<HTMLInputElement>) => {
     console.log(e.target.innerHTML, "e");
     setFilter(e.target.innerHTML);
@@ -63,7 +67,26 @@ const Qhab = ({products}: {products: product[]}) => {
     "گران ترین",
     "ارزان ترین",
   ];
+
   // /////////////////////////////
+  const CheckBoxFilter = (e: React.ChangeEvent<HTMLInputElement>) => {
+    setCheckBoxFilterList((prev) =>
+      prev.filter((item) => item !== e.target.value)
+    );
+    console.log(CheckBoxFilterList);
+    // if (CheckBoxFilterList[0] === "") {
+    //   CheckBoxFilterList.pop();
+    // }
+
+    setCheckBoxFilterList((prev) => [...prev, e.target.value]);
+    console.log(CheckBoxFilterList, "pp");
+    if (!e.target.checked) {
+      console.log("object");
+      setCheckBoxFilterList((prev) =>
+        prev.filter((item) => item !== e.target.value)
+      );
+    }
+  };
 
   //////////////////
   return (
@@ -112,15 +135,24 @@ const Qhab = ({products}: {products: product[]}) => {
             <div className="">
               <div className="parent-filter group">
                 <FilterParent title_Filter="فیلتر دسته بندی محصول " />
-                <div className="subtitle group-hover:flex flex-col hidden">
-                  <div className="category">
-                    <div className="">طرحدار</div>
+                <div className="subtitle group-hover:flex flex-col hidden p-2">
+                  <div className="category bg-blue-200 text-black flex gap-4 p-3 text-lg">
+                    <CheckBox
+                      namecheckbox={"طرحدار"}
+                      CheckBoxFilter={CheckBoxFilter}
+                    />
                   </div>
-                  <div className="category">
-                    <div className="">طرحدار</div>
+                  <div className="category bg-blue-200 text-black flex gap-4 p-3 text-lg">
+                    <CheckBox
+                      namecheckbox={"دخترانه"}
+                      CheckBoxFilter={CheckBoxFilter}
+                    />
                   </div>
-                  <div className="category">
-                    <div className="">طرحدار</div>
+                  <div className="category bg-blue-200 text-black flex gap-4 p-3 text-lg">
+                    <CheckBox
+                      namecheckbox={"طرحدار"}
+                      CheckBoxFilter={CheckBoxFilter}
+                    />
                   </div>
                 </div>
               </div>
@@ -129,33 +161,45 @@ const Qhab = ({products}: {products: product[]}) => {
             <div className="">
               <div className="parent-filter group ">
                 <FilterParent title_Filter="فیلتر برند محصول " />
-                <div className="subtitle  group-hover:flex flex-col hidden">
-                  <div className="category">
-                    <div className="">سامسونگ</div>
+                <div className="subtitle  group-hover:flex flex-col hidden p-2">
+                  <div className="category bg-blue-200 text-black flex gap-4 p-3 text-lg">
+                    <CheckBox
+                      namecheckbox={"سامسونگ"}
+                      CheckBoxFilter={CheckBoxFilter}
+                    />
                   </div>
-                  <div className="category">
-                    <div className="">سامسونگ</div>
+                  <div className="category bg-blue-200 text-black flex gap-4 p-3 text-lg">
+                    <CheckBox
+                      namecheckbox={"پسرانه"}
+                      CheckBoxFilter={CheckBoxFilter}
+                    />
                   </div>
-                  <div className="category">
-                    <div className="">سامسونگ</div>
+                  <div className="category bg-blue-200 text-black flex gap-4 p-3 text-lg">
+                    <CheckBox
+                      namecheckbox={"سامسونگ"}
+                      CheckBoxFilter={CheckBoxFilter}
+                    />
                   </div>
                 </div>
               </div>
             </div>
             {/* فیلتر وصعیت موجودی */}
             <div className="">
-              <div className="parent-filter group">
-                <FilterParent title_Filter=" فیلتر وصعیت موجودی " />
-              </div>
-              <div className="subtitle  group-hover:flex flex-col hidden">
-                <div className="category">
-                  <div className="">سامسونگ</div>
-                </div>
-                <div className="category">
-                  <div className="">سامسونگ</div>
-                </div>
-                <div className="category">
-                  <div className="">سامسونگ</div>
+              <div className="parent-filter group ">
+                <FilterParent title_Filter="فیلتر وصعیت موجودی " />
+                <div className="subtitle  group-hover:flex flex-col hidden p-2">
+                  <div className="category bg-blue-200 text-black flex gap-4 p-3 text-lg">
+                    <CheckBox
+                      namecheckbox={"ناموجود"}
+                      CheckBoxFilter={CheckBoxFilter}
+                    />
+                  </div>
+                  <div className="category bg-blue-200 text-black flex gap-4 p-3 text-lg">
+                    <CheckBox
+                      namecheckbox={"موجود"}
+                      CheckBoxFilter={CheckBoxFilter}
+                    />
+                  </div>
                 </div>
               </div>
             </div>
@@ -198,7 +242,11 @@ const Qhab = ({products}: {products: product[]}) => {
           {/* product */}
           <div className="row p-1 grid   w-full my-2 2xl:grid-cols-5   lg:grid-cols-4 md:grid-cols-3 sm:grid-cols-2  grid-cols-1 gap-3">
             {status === "گران ترین" ? (
-              <Geran value1={value1} products={products} />
+              <Geran
+                value1={value1}
+                products={products}
+                CheckBoxFilterList={CheckBoxFilterList}
+              />
             ) : status === "ارزان ترین" ? (
               <Arzan value1={value1} products={products} />
             ) : status === "قدیمی ترین" ? (
@@ -209,6 +257,7 @@ const Qhab = ({products}: {products: product[]}) => {
           </div>
         </div>
       </div>
+      {CheckBoxFilterList}
     </>
   );
 };

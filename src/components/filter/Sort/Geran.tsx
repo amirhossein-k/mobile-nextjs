@@ -2,8 +2,22 @@
 
 import ItemBox from "@/components/itembox/ItemBox";
 import {product} from "../../../../types";
+import {memo} from "react";
 
-const Geran = ({products, value1}: {products: product[]; value1: number[]}) => {
+const Geran = ({
+  products,
+  value1,
+  CheckBoxFilterList,
+}: {
+  products: product[];
+  value1: number[];
+  CheckBoxFilterList: string[];
+}) => {
+  console.log("end render");
+  // for(var ii =0 ; ii<products.length;ii++){
+  var arrrr = ["a14", "سامسونگ", "پسرانه", "دخترانه", "شیائومی", "مردانه"];
+  // }
+
   return (
     <>
       {products
@@ -17,6 +31,7 @@ const Geran = ({products, value1}: {products: product[]; value1: number[]}) => {
             ? -1
             : 0
         )
+        // ?.filter((item) => item.category_product )
         ?.map((item) => {
           return <ItemBox item={item} />;
         })}

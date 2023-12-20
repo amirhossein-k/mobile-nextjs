@@ -67,11 +67,19 @@ export interface product {
   price: string;
   classs?: string | null;
   class2?: string | null;
-
+  category_product: category_product[];
   price_offer?: string | null;
   createdAt: Date;
   updatedAt: Date;
 }
+
+export interface category_product {
+  id: any;
+
+  title: String;
+  ownerId: any;
+}
+
 export interface getproductt {
   message: string;
   success: boolean;

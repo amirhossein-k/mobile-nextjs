@@ -6,19 +6,15 @@ import {product} from "../../../../../types";
 export const POST = async (req: NextRequest) => {
   const reqBody = await req.json();
 
-  const {title, model, price, classs, class2, price_offer} = reqBody;
+  const {title, ownerId} = reqBody;
 
-  const product = await prisma.products.create({
+  const categoryproduct = await prisma.categoryProduct.create({
     data: {
       title,
-      model,
-      price,
-      classs,
-      class2,
-      price_offer,
+      ownerId,
     },
   });
-  return NextResponse.json(product);
+  return NextResponse.json(categoryproduct);
 };
 interface getproduct {
   message: string;
@@ -27,10 +23,6 @@ interface getproduct {
 }
 
 export const GET = async () => {
-  const productList = await prisma.products.findMany({
-    include: {
-      category_product: true,
-    },
-  });
-  return NextResponse.json(productList);
+  const categoryproduct = await prisma.categoryProduct.findMany({});
+  return NextResponse.json(categoryproduct);
 };

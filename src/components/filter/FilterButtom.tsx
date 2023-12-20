@@ -10,7 +10,7 @@ const FilterButtom = ({
 }) => {
   return (
     <div
-      className={`filter-mobile   p-2 border-2 shadow-slate-500 shadow-shadow-one hover:scale-105 hover:shadow-shadow-white hover:shadow-slate-300 cursor-pointer ${
+      className={`filter-mobile   py-4 px-2  hover:scale-105  cursor-pointer ${
         filterActive ? "shadow-shadow-white" : ""
       }`}
       onClick={(e) => setFilterActive(!filterActive)}
