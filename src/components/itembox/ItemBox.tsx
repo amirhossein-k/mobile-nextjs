@@ -88,7 +88,7 @@ const ItemBox = ({item}: {item: product}) => {
         {/* order */}
         <div className="buttom  my-1 bg-slate-100 border  flex justify-center group">
           <Link
-            href=""
+            href="#"
             className="sm:w-[50%]  group-hover:scale-105 bg-slate-100   block px-1 py-2 text-center cursor-pointer group-hover:bg-blue-200 group-hover:duration-500 group-hover:animate-pulse group-hover:w-full"
           >
             ثبت سفارش

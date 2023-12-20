@@ -21,7 +21,7 @@ const Footer = () => {
       dir="rtl"
     >
       <Link
-        href=""
+        href="#"
         className="text-3xl font-medium mb-8 cursor-pointer hover:text-white"
       >
         Marloo

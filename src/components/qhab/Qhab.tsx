@@ -1,24 +1,13 @@
 "use client";
-import React, {
-  EventHandler,
-  ReactElement,
-  ReactEventHandler,
-  ReactNode,
-  useEffect,
-  useState,
-} from "react";
+import React, {useEffect, useState} from "react";
 import FilterButtom from "../filter/FilterButtom";
-import Image from "next/image";
-import Link from "next/link";
+
 import {product} from "../../../types";
 import FilterParent from "../filter/FilterParent";
 import FilterPrice from "../filter/FilterPrice";
 
-import ItemBox from "../itembox/ItemBox";
 import Select from "@mui/material/Select";
 import {
-  Checkbox,
-  InputLabel,
   ListItemText,
   MenuItem,
   OutlinedInput,
@@ -31,11 +20,20 @@ import Jadid from "../filter/Sort/Jadid";
 import Qadimi from "../filter/Sort/Qadimi";
 import CheckBox from "../filter/CheckBox/CheckBox";
 const Qhab = ({products}: {products: product[]}) => {
+  console.log("rednder");
   const [filterActive, setFilterActive] = useState<boolean>(false);
   const [filter, setFilter] = useState("");
   const [status, setStatus] = useState("جدیدترین");
   const [value1, setValue1] = useState([0, 200000]);
-  const [CheckBoxFilterList, setCheckBoxFilterList] = useState<string[]>([]);
+
+  const [CheckBoxFilterList, setCheckBoxFilterList] = useState<string[]>([
+    "a14",
+    "سامسونگ",
+    "پسرانه",
+    "دخترانه",
+    "شیائومی",
+    "مردانه",
+  ]);
 
   const filterhandler = (e: React.ChangeEvent<HTMLInputElement>) => {
     console.log(e.target.innerHTML, "e");
@@ -69,19 +67,36 @@ const Qhab = ({products}: {products: product[]}) => {
   ];
 
   // /////////////////////////////
+  useEffect(() => {
+    if (CheckBoxFilterList.length === 0) {
+      console.log("t");
+      setCheckBoxFilterList([
+        "a14",
+        "سامسونگ",
+        "پسرانه",
+        "دخترانه",
+        "شیائومی",
+        "مردانه",
+      ]);
+    }
+  }, [CheckBoxFilterList]);
   const CheckBoxFilter = (e: React.ChangeEvent<HTMLInputElement>) => {
-    setCheckBoxFilterList((prev) =>
-      prev.filter((item) => item !== e.target.value)
-    );
-    console.log(CheckBoxFilterList);
-    // if (CheckBoxFilterList[0] === "") {
-    //   CheckBoxFilterList.pop();
-    // }
+    const check_chekc: string[] = [
+      "a14",
+      "سامسونگ",
+      "پسرانه",
+      "دخترانه",
+      "شیائومی",
+      "مردانه",
+    ];
 
-    setCheckBoxFilterList((prev) => [...prev, e.target.value]);
-    console.log(CheckBoxFilterList, "pp");
+    if (CheckBoxFilterList.length === 6 && CheckBoxFilterList === check_chekc) {
+      setCheckBoxFilterList([e.target.value]);
+    } else {
+      setCheckBoxFilterList((prev) => [...prev, e.target.value]);
+    }
+
     if (!e.target.checked) {
-      console.log("object");
       setCheckBoxFilterList((prev) =>
         prev.filter((item) => item !== e.target.value)
       );
@@ -140,18 +155,21 @@ const Qhab = ({products}: {products: product[]}) => {
                     <CheckBox
                       namecheckbox={"طرحدار"}
                       CheckBoxFilter={CheckBoxFilter}
+                      CheckBoxFilterList={CheckBoxFilterList}
                     />
                   </div>
                   <div className="category bg-blue-200 text-black flex gap-4 p-3 text-lg">
                     <CheckBox
                       namecheckbox={"دخترانه"}
                       CheckBoxFilter={CheckBoxFilter}
+                      CheckBoxFilterList={CheckBoxFilterList}
                     />
                   </div>
                   <div className="category bg-blue-200 text-black flex gap-4 p-3 text-lg">
                     <CheckBox
                       namecheckbox={"طرحدار"}
                       CheckBoxFilter={CheckBoxFilter}
+                      CheckBoxFilterList={CheckBoxFilterList}
                     />
                   </div>
                 </div>
@@ -166,18 +184,21 @@ const Qhab = ({products}: {products: product[]}) => {
                     <CheckBox
                       namecheckbox={"سامسونگ"}
                       CheckBoxFilter={CheckBoxFilter}
+                      CheckBoxFilterList={CheckBoxFilterList}
                     />
                   </div>
                   <div className="category bg-blue-200 text-black flex gap-4 p-3 text-lg">
                     <CheckBox
                       namecheckbox={"پسرانه"}
                       CheckBoxFilter={CheckBoxFilter}
+                      CheckBoxFilterList={CheckBoxFilterList}
                     />
                   </div>
                   <div className="category bg-blue-200 text-black flex gap-4 p-3 text-lg">
                     <CheckBox
                       namecheckbox={"سامسونگ"}
                       CheckBoxFilter={CheckBoxFilter}
+                      CheckBoxFilterList={CheckBoxFilterList}
                     />
                   </div>
                 </div>
@@ -192,12 +213,14 @@ const Qhab = ({products}: {products: product[]}) => {
                     <CheckBox
                       namecheckbox={"ناموجود"}
                       CheckBoxFilter={CheckBoxFilter}
+                      CheckBoxFilterList={CheckBoxFilterList}
                     />
                   </div>
                   <div className="category bg-blue-200 text-black flex gap-4 p-3 text-lg">
                     <CheckBox
                       namecheckbox={"موجود"}
                       CheckBoxFilter={CheckBoxFilter}
+                      CheckBoxFilterList={CheckBoxFilterList}
                     />
                   </div>
                 </div>
@@ -248,11 +271,23 @@ const Qhab = ({products}: {products: product[]}) => {
                 CheckBoxFilterList={CheckBoxFilterList}
               />
             ) : status === "ارزان ترین" ? (
-              <Arzan value1={value1} products={products} />
+              <Arzan
+                value1={value1}
+                products={products}
+                CheckBoxFilterList={CheckBoxFilterList}
+              />
             ) : status === "قدیمی ترین" ? (
-              <Qadimi value1={value1} products={products} />
+              <Qadimi
+                value1={value1}
+                products={products}
+                CheckBoxFilterList={CheckBoxFilterList}
+              />
             ) : (
-              <Jadid value1={value1} products={products} />
+              <Jadid
+                value1={value1}
+                products={products}
+                CheckBoxFilterList={CheckBoxFilterList}
+              />
             )}
           </div>
         </div>
