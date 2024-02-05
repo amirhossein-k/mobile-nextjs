@@ -12,7 +12,7 @@ const ItemBox = ({item}: {item: product}) => {
     router.push(`/qhab/${item.title}`);
   };
   return (
-    <div className="col  p-1 m-1  bg-white h-full  justify-center   flex sm:flex-col group rounded-md">
+    <div className="col  p-1 m-1  bg-white h-full  justify-center   flex flex-col group rounded-md">
       <a
         className="q cursor-pointer"
         // href={`/qhab/${item.title}`}
@@ -21,7 +21,7 @@ const ItemBox = ({item}: {item: product}) => {
       >
         {/* img product */}
         <div
-          className={`header rounded-md overflow-hidden  sm:w-full w-3/4 sm:h-[250px] h-[210px] border-2 relative ${item.classs}`}
+          className={`header rounded-md overflow-hidden  sm:w-full  sm:h-[250px] h-[210px] border-2 relative ${item.classs}`}
         >
           {item.classs !== " " && (
             <span
