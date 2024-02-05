@@ -80,28 +80,6 @@ const Qhab = ({products}: {products: product[]}) => {
       ]);
     }
   }, [CheckBoxFilterList]);
-  const CheckBoxFilter = (e: React.ChangeEvent<HTMLInputElement>) => {
-    const check_chekc: string[] = [
-      "a14",
-      "سامسونگ",
-      "پسرانه",
-      "دخترانه",
-      "شیائومی",
-      "مردانه",
-    ];
-
-    if (CheckBoxFilterList.length === 6 && CheckBoxFilterList === check_chekc) {
-      setCheckBoxFilterList([e.target.value]);
-    } else {
-      setCheckBoxFilterList((prev) => [...prev, e.target.value]);
-    }
-
-    if (!e.target.checked) {
-      setCheckBoxFilterList((prev) =>
-        prev.filter((item) => item !== e.target.value)
-      );
-    }
-  };
 
   //////////////////
   return (
@@ -154,21 +132,24 @@ const Qhab = ({products}: {products: product[]}) => {
                   <div className="category bg-blue-200 text-black flex gap-4 p-3 text-lg">
                     <CheckBox
                       namecheckbox={"طرحدار"}
-                      CheckBoxFilter={CheckBoxFilter}
+                      // CheckBoxFilter={CheckBoxFilter}
+                      setCheckBoxFilterList={setCheckBoxFilterList}
                       CheckBoxFilterList={CheckBoxFilterList}
                     />
                   </div>
                   <div className="category bg-blue-200 text-black flex gap-4 p-3 text-lg">
                     <CheckBox
                       namecheckbox={"دخترانه"}
-                      CheckBoxFilter={CheckBoxFilter}
+                      setCheckBoxFilterList={setCheckBoxFilterList}
+                      // CheckBoxFilter={CheckBoxFilter}
                       CheckBoxFilterList={CheckBoxFilterList}
                     />
                   </div>
                   <div className="category bg-blue-200 text-black flex gap-4 p-3 text-lg">
                     <CheckBox
                       namecheckbox={"طرحدار"}
-                      CheckBoxFilter={CheckBoxFilter}
+                      setCheckBoxFilterList={setCheckBoxFilterList}
+                      // CheckBoxFilter={CheckBoxFilter}
                       CheckBoxFilterList={CheckBoxFilterList}
                     />
                   </div>
@@ -183,21 +164,24 @@ const Qhab = ({products}: {products: product[]}) => {
                   <div className="category bg-blue-200 text-black flex gap-4 p-3 text-lg">
                     <CheckBox
                       namecheckbox={"سامسونگ"}
-                      CheckBoxFilter={CheckBoxFilter}
+                      setCheckBoxFilterList={setCheckBoxFilterList}
+                      // CheckBoxFilter={CheckBoxFilter}
                       CheckBoxFilterList={CheckBoxFilterList}
                     />
                   </div>
                   <div className="category bg-blue-200 text-black flex gap-4 p-3 text-lg">
                     <CheckBox
                       namecheckbox={"پسرانه"}
-                      CheckBoxFilter={CheckBoxFilter}
+                      setCheckBoxFilterList={setCheckBoxFilterList}
+                      // CheckBoxFilter={CheckBoxFilter}
                       CheckBoxFilterList={CheckBoxFilterList}
                     />
                   </div>
                   <div className="category bg-blue-200 text-black flex gap-4 p-3 text-lg">
                     <CheckBox
                       namecheckbox={"سامسونگ"}
-                      CheckBoxFilter={CheckBoxFilter}
+                      setCheckBoxFilterList={setCheckBoxFilterList}
+                      // CheckBoxFilter={CheckBoxFilter}
                       CheckBoxFilterList={CheckBoxFilterList}
                     />
                   </div>
@@ -212,14 +196,16 @@ const Qhab = ({products}: {products: product[]}) => {
                   <div className="category bg-blue-200 text-black flex gap-4 p-3 text-lg">
                     <CheckBox
                       namecheckbox={"ناموجود"}
-                      CheckBoxFilter={CheckBoxFilter}
+                      setCheckBoxFilterList={setCheckBoxFilterList}
+                      // CheckBoxFilter={CheckBoxFilter}
                       CheckBoxFilterList={CheckBoxFilterList}
                     />
                   </div>
                   <div className="category bg-blue-200 text-black flex gap-4 p-3 text-lg">
                     <CheckBox
                       namecheckbox={"موجود"}
-                      CheckBoxFilter={CheckBoxFilter}
+                      setCheckBoxFilterList={setCheckBoxFilterList}
+                      // CheckBoxFilter={CheckBoxFilter}
                       CheckBoxFilterList={CheckBoxFilterList}
                     />
                   </div>
@@ -292,7 +278,7 @@ const Qhab = ({products}: {products: product[]}) => {
           </div>
         </div>
       </div>
-      {CheckBoxFilterList}
+      {` ${CheckBoxFilterList}`}
     </>
   );
 };

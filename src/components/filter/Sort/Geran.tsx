@@ -25,6 +25,7 @@ const Geran = ({
     )
     ?.filter((item) => {
       var u: any = item;
+
       for (var i = 0; i < item.category_product.length; i++) {
         for (var t = 0; t <= CheckBoxFilterList.length; t++) {
           u = item.category_product[i].title.includes(CheckBoxFilterList[t]);
@@ -33,7 +34,7 @@ const Geran = ({
             return u;
           }
         }
-
+        console.log(`1 ${u}`);
         if (u) {
           return u;
         }

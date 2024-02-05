@@ -1,13 +1,17 @@
 "use client";
 
+import {memo, useMemo} from "react";
+import {CheckBoxFilter} from "../../../../utils/FiltersUtileze";
 const CheckBox = ({
-  CheckBoxFilter,
+  // CheckBoxFilter,
   namecheckbox,
   CheckBoxFilterList,
+  setCheckBoxFilterList,
 }: {
-  CheckBoxFilter: any;
+  // CheckBoxFilter: any;
   namecheckbox: string;
   CheckBoxFilterList: string[];
+  setCheckBoxFilterList: any;
 }) => {
   return (
     <>
@@ -15,7 +19,9 @@ const CheckBox = ({
         <input
           className="w-5 rounded-xl border-3 "
           type="checkbox"
-          onChange={(e) => CheckBoxFilter(e, 0)}
+          onChange={(e) =>
+            CheckBoxFilter(e, CheckBoxFilterList, setCheckBoxFilterList)
+          }
           name={namecheckbox}
           value={namecheckbox}
         />
@@ -23,7 +29,9 @@ const CheckBox = ({
         <input
           className="w-5 rounded-xl border-3 cursor-pointer"
           type="checkbox"
-          onChange={(e) => CheckBoxFilter(e, 0)}
+          onChange={(e) =>
+            CheckBoxFilter(e, CheckBoxFilterList, setCheckBoxFilterList)
+          }
           name={namecheckbox}
           value={namecheckbox}
         />
@@ -33,4 +41,4 @@ const CheckBox = ({
   );
 };
 
-export default CheckBox;
+export default memo(CheckBox);
