@@ -23,3 +23,21 @@ export const GetProduct = async () => {
     throw new Error(error);
   }
 };
+
+export const GetDetailProduct = async (id: string) => {
+  try {
+    const detailproduct = await prisma.products.findUnique({
+      include: {
+        category_product: true,
+      },
+      where: {
+        id: id,
+      },
+    });
+    console.log(detailproduct);
+
+    if (detailproduct) return detailproduct;
+  } catch (error: any) {
+    throw new Error(error);
+  }
+};

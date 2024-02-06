@@ -8,8 +8,8 @@ const ItemBox = ({item}: {item: product}) => {
   const router = useRouter();
   const handleClick = (e: any) => {
     e.preventDefault();
-    console.log(item.title);
-    router.push(`/qhab/${item.title}`);
+    console.log(item.id);
+    router.push(`/qhab/${item.id}`);
   };
   return (
     <div className="col  p-1 m-1  bg-white h-full  justify-center   flex flex-col group rounded-md">

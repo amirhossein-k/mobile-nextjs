@@ -20,7 +20,7 @@ import Jadid from "../filter/Sort/Jadid";
 import Qadimi from "../filter/Sort/Qadimi";
 import CheckBox from "../filter/CheckBox/CheckBox";
 const Qhab = ({products}: {products: product[]}) => {
-  console.log("rednder");
+  // console.log("rednder");
   const [filterActive, setFilterActive] = useState<boolean>(false);
   const [filter, setFilter] = useState("");
   const [status, setStatus] = useState("جدیدترین");

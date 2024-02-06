@@ -1,4 +1,4 @@
-import {ObjectId} from "mongoose";
+import {ObjectId, Types} from "mongoose";
 import {GridItemLayout, GridItemType} from "../config/site-config";
 
 interface ADRESS {
@@ -62,6 +62,7 @@ export interface Item {
 }
 
 export interface product {
+  id: string;
   title: string;
   model: string;
   price: string;
