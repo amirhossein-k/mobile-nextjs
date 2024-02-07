@@ -16,6 +16,7 @@ export const GetProduct = async () => {
         category_product: true,
         property: true,
         colors: true,
+        model: true,
       },
     });
     console.log(listprodeuct);
