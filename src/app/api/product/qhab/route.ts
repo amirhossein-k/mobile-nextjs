@@ -26,6 +26,9 @@ export const POST = async (req: NextRequest) => {
       classs,
       class2,
       price_offer,
+      status,
+      count,
+      review,
     },
   });
   return NextResponse.json(product);
