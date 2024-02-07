@@ -6,7 +6,17 @@ import {product} from "../../../../../types";
 export const POST = async (req: NextRequest) => {
   const reqBody = await req.json();
 
-  const {title, model, price, classs, class2, price_offer} = reqBody;
+  const {
+    title,
+    model,
+    price,
+    classs,
+    class2,
+    price_offer,
+    status,
+    count,
+    review,
+  } = reqBody;
 
   const product = await prisma.products.create({
     data: {
@@ -30,6 +40,9 @@ export const GET = async () => {
   const productList = await prisma.products.findMany({
     include: {
       category_product: true,
+      colors: true,
+      property: true,
+      model: true,
     },
   });
   return NextResponse.json(productList);

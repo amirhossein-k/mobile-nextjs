@@ -1,29 +1,43 @@
+import {ColorsProduct, ModelProduct} from "../types";
+
 interface COLORS {
   model: string;
   colors: string[];
 }
 
-// {model: "redmi 11s", colors: ["red"]},
-export const pickColor = (model: string, colors: COLORS[]) => {
-  const result = colors.filter((item) => item.model === model);
-  const r3 = result.map((item) => item.colors);
-  console.log(r3[0]);
-  if (result) {
-    return r3[0];
+export const pickColor = (Status: any, colors: ColorsProduct[]) => {
+  const rr = colors.map((item) => item.Colors.split("-"));
+
+  const result = colors.filter((item) => item.model === Status);
+
+  const target = colors.indexOf(result[0]);
+
+  if (result.length !== 0) {
+    return rr[target];
   } else {
-    return ["white"];
+    return [""];
   }
 };
 
 export const pickColorCSS = (color: string) => {
   switch (color) {
-    case "blue":
-      return "text-blue-500";
-    case "red":
-      return "text-red-500";
-    case "pink":
-      return "text-pink-500";
+    case "ابی":
+      return "blue";
+    case "قرمز":
+      return "red";
+    case "صورتی":
+      return "#f719d2";
+    case "سفید":
+      return "white";
+    case "زرد":
+      return "yellow";
+    case "مشکی":
+      return "black";
+    case "سبز":
+      return "green";
+    case "قهوه ای":
+      return "brown";
     default:
-      return "text-green-500";
+      return "black";
   }
 };

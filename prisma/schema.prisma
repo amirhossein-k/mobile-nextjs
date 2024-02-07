@@ -28,16 +28,28 @@ model CategoryItem{
 model Products{
 id     String @id @default(auto()) @map("_id") @db.ObjectId
 title String
-model String
+model ModelProduct[]  @relation("model")
 price String
 classs  String?
 class2 String?
 price_offer String?
 category_product  CategoryProduct[]  @relation("category_product")
+colors ColorsProduct[] @relation("colors")
+status  Boolean
+count String
+review String
+property  PropertyProduct[]  @relation("property")
 
 
 createdAt DateTime @default(now())
 updatedAt DateTime @updatedAt
+}
+
+model ModelProduct{
+  id        String @id @default(auto()) @map("_id") @db.ObjectId
+  title String
+   modelOwn Products @relation("model",fields: [ownerId],references: [id])
+    ownerId String @db.ObjectId
 }
 
 model CategoryProduct {
@@ -45,4 +57,19 @@ model CategoryProduct {
     title   String
     categoryOwn Products @relation("category_product",fields: [ownerId],references: [id])
     ownerId String @db.ObjectId
+}
+
+model ColorsProduct{
+  id  String @id @default(auto()) @map("_id") @db.ObjectId
+  model String
+  Colors String
+  colorOwn Products @relation("colors",fields: [ownerId],references: [id])
+  ownerId String @db.ObjectId 
+}
+
+model PropertyProduct{
+   id  String @id @default(auto()) @map("_id") @db.ObjectId
+   title String
+  propertyOwn Products @relation("property",fields: [ownerId],references: [id])
+  ownerId String @db.ObjectId 
 }

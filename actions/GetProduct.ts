@@ -14,6 +14,8 @@ export const GetProduct = async () => {
     const listprodeuct = await prisma.products.findMany({
       include: {
         category_product: true,
+        property: true,
+        colors: true,
       },
     });
     console.log(listprodeuct);
@@ -29,6 +31,9 @@ export const GetDetailProduct = async (id: string) => {
     const detailproduct = await prisma.products.findUnique({
       include: {
         category_product: true,
+        property: true,
+        colors: true,
+        model: true,
       },
       where: {
         id: id,

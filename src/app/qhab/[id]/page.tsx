@@ -14,12 +14,18 @@ export default async function ProductDetails({
   const details: product | undefined = await GetDetailProduct(params.id ?? " ");
   console.log(details);
   console.log(typeof params.id);
+  console.log(details?.colors);
+  const colorsDefault = [{model: "", Colors: "", id: "", ownerId: ""}];
+  const modelDefault = [{title: "", id: "", ownerId: ""}];
   return (
     <div className="main p-2">
       {/* header (images - main detail) */}
       <Header details={details} />
       {/* colors */}
-      <ColorsPicker />
+      <ColorsPicker
+        colors={details?.colors ?? colorsDefault}
+        model={details?.model ?? modelDefault}
+      />
       {/* price */}
       {details?.price ? <Price price={Number(details.price)} /> : <>0</>}
       {/* addCart */}

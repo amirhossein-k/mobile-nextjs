@@ -60,15 +60,34 @@ export interface Item {
   title?: string;
   item?: Itemitem[];
 }
+interface PropertyProduct {
+  title: string;
+}
+export interface ColorsProduct {
+  model: String;
+  Colors: String;
+  id: any;
+  ownerId: any;
+}
+export interface ModelProduct {
+  title: String;
 
+  id: any;
+  ownerId: any;
+}
 export interface product {
   id: string;
   title: string;
-  model: string;
+  model: ModelProduct[];
   price: string;
   classs?: string | null;
   class2?: string | null;
   category_product: category_product[];
+  status: boolean;
+  count: string;
+  review: string;
+  property: PropertyProduct[];
+  colors: ColorsProduct[];
   price_offer?: string | null;
   createdAt: Date;
   updatedAt: Date;
