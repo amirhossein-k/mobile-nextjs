@@ -22,10 +22,18 @@ export default async function ProductDetails({
       {/* header (images - main detail) */}
       <Header details={details} />
       {/* colors */}
-      <ColorsPicker
+      {details?.colors ? (
+        <ColorsPicker
+          colors={details?.colors ?? colorsDefault}
+          model={details?.model ?? modelDefault}
+        />
+      ) : (
+        <></>
+      )}
+      {/* <ColorsPicker
         colors={details?.colors ?? colorsDefault}
         model={details?.model ?? modelDefault}
-      />
+      /> */}
       {/* price */}
       {details?.price ? <Price price={Number(details.price)} /> : <>0</>}
       {/* addCart */}
