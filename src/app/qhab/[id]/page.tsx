@@ -17,6 +17,7 @@ export default async function ProductDetails({
   console.log(details?.colors);
   const colorsDefault = [{model: "", Colors: "", id: "", ownerId: ""}];
   const modelDefault = [{title: "", id: "", ownerId: ""}];
+
   return (
     <div className="main p-2">
       {/* header (images - main detail) */}

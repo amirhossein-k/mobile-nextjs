@@ -11,6 +11,10 @@ const ItemBox = ({item}: {item: product}) => {
     console.log(item.id);
     router.push(`/qhab/${item.id}`);
   };
+
+  const categoey = item.category_product.filter(
+    (product) => product.defaultCat === true
+  );
   return (
     <div className="col  p-1 m-1  bg-white h-full  justify-center   flex flex-col group rounded-md">
       <a
@@ -50,7 +54,12 @@ const ItemBox = ({item}: {item: product}) => {
           </div>
           {/* model */}
           <div className="midler-body flex justify-between">
-            <div className="model p-1 w-fit">{item.model}</div>
+            <div className="model p-1 w-fit flex gap-2">
+              {/* {item.model} */}
+              {categoey.map((item) => (
+                <div key={item.id}>{item.title}</div>
+              ))}
+            </div>
             <div className="star-point  p-1 w-fit">
               <span className="flex  gap-2 text-sm">
                 <span className="">4.2</span>

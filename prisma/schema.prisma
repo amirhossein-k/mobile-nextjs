@@ -55,6 +55,7 @@ model ModelProduct{
 model CategoryProduct {
     id        String @id @default(auto()) @map("_id") @db.ObjectId
     title   String
+    defaultCat Boolean
     categoryOwn Products @relation("category_product",fields: [ownerId],references: [id])
     ownerId String @db.ObjectId
 }

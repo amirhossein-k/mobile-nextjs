@@ -6,11 +6,12 @@ import {product} from "../../../../../types";
 export const POST = async (req: NextRequest) => {
   const reqBody = await req.json();
 
-  const {title, ownerId} = reqBody;
+  const {title, defaultCat, ownerId} = reqBody;
 
   const categoryproduct = await prisma.categoryProduct.create({
     data: {
       title,
+      defaultCat,
       ownerId,
     },
   });

@@ -95,7 +95,7 @@ export interface product {
 
 export interface category_product {
   id: any;
-
+  defaultCat: boolean;
   title: String;
   ownerId: any;
 }
