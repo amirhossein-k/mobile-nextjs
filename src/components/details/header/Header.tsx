@@ -37,9 +37,12 @@ export default function Header({details}: {details: product | undefined}) {
           <h1 className="text-2xl">{details?.title}</h1>
         </div>
         <div className="flex gap-2  p-1">
-          {reoo(details?.review ?? "0").map((item) => {
+          {reoo(details?.review ?? "0").map((item, inx) => {
             return (
-              <i className="bi bi-star-fill text-yellow-500" key={item.id}></i>
+              <i
+                className="bi bi-star-fill text-yellow-500"
+                key={item.id + inx}
+              ></i>
             );
           })}
           {/* <i className="bi bi-star-fill text-yellow-500"></i> */}

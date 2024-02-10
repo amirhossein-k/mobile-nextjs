@@ -16,13 +16,13 @@ export default async function ProductDetails(props: Props) {
   const details: product | undefined = await GetDetailProduct(
     props.params.id ?? " "
   );
-  console.log(details);
-  console.log(typeof props.params.id);
-  console.log(details?.colors);
+  // console.log(details);
+  // console.log(typeof props.params.id);
+  // console.log(details?.colors);
   const colorsDefault = [{model: "", Colors: "", id: "", ownerId: ""}];
   const modelDefault = [{title: "", id: "", ownerId: ""}];
   const searchParams = props.searchParams;
-  console.log(searchParams);
+  // console.log(searchParams);
   return (
     <div className="main p-2">
       {/* header (images - main detail) */}
