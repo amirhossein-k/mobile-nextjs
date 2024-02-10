@@ -47,7 +47,11 @@ export default function Header({details}: {details: product | undefined}) {
         {/* ویژگی */}
         <ul className="list-disc list-inside">
           {details?.property.map((item) => {
-            return <li className="text-lg">{item.title} </li>;
+            return (
+              <li className="text-lg" key={item.title}>
+                {item.title}
+              </li>
+            );
           })}
         </ul>
       </div>
