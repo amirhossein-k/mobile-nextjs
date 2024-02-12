@@ -5,7 +5,7 @@ import ColorsPicker from "@/components/details/colors/ColorsPicker";
 import Price from "@/components/details/price/Price";
 import Description from "@/components/details/description/Description";
 import AddCart from "@/components/details/addCart/AddCart";
-import ParentColorPicker from "@/components/details/colors/ParentColorPicker";
+
 import HandleModel from "@/components/details/model/HandleModel";
 import Load from "@/components/kossher/Load";
 import {Suspense} from "react";
