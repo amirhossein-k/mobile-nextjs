@@ -106,3 +106,26 @@ export interface getproductt {
   product: product[];
   error?: any;
 }
+
+interface NEWORDER {
+  counter: string;
+  color: string;
+}
+interface LISTORDERSHOP extends product, NEWORDER {}
+export type LISTORDERNEW = Omit<
+  LISTORDERSHOP,
+  | "property"
+  | "colors"
+  | "counter"
+  | "category_product"
+  | "class2"
+  | "classs"
+  | "review"
+  | "createdAt"
+  | "updatedAt"
+  | "model"
+>;
+
+export interface LISTORDERNEW1 extends LISTORDERNEW {
+  model: string;
+}

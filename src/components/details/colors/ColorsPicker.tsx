@@ -4,7 +4,7 @@ import {pickColor, pickColorCSS} from "../../../../utils/ColorPicker";
 import {ColorsProduct, ModelProduct} from "../../../../types";
 import Model from "../model/Model";
 import bcrypt from "bcryptjs";
-import {useRouter, useSearchParams} from "next/navigation";
+import {usePathname, useRouter, useSearchParams} from "next/navigation";
 
 const ColorsPicker = ({
   colors,
@@ -18,6 +18,8 @@ const ColorsPicker = ({
   const [Status, setStatus] = useState(model[0].title ?? "");
   console.log(Status, "sss");
   // const model = "redmi 12s";
+  const urltarget = usePathname();
+  console.log(urltarget);
   const modelDefault: ModelProduct[] = [{title: "", id: "", ownerId: ""}];
 
   const handelCallback = useCallback(
@@ -36,16 +38,26 @@ const ColorsPicker = ({
         title: Status,
         color: e.currentTarget.getAttribute("color"),
       };
-
-      router.push(
-        `/qhab/${model[0].ownerId}?${createQueryString("id-title-color", data)}`
-      );
+      if (counter) {
+        router.push(
+          `${urltarget}?${createQueryString("id-title-color", data)}`
+        );
+      } else {
+        router.push(
+          `/qhab/${model[0].ownerId}?${createQueryString(
+            "id-title-color",
+            data
+          )}`
+        );
+      }
     },
     [Status]
   );
 
   const paramas = useSearchParams();
   const router = useRouter();
+  const counter = paramas.get("counter");
+  console.log(paramas.get("counter"));
 
   const createQueryString = useCallback(
     (name: string, value: any) => {

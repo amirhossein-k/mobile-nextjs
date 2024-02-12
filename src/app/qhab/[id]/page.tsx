@@ -7,6 +7,8 @@ import Description from "@/components/details/description/Description";
 import AddCart from "@/components/details/addCart/AddCart";
 import ParentColorPicker from "@/components/details/colors/ParentColorPicker";
 import HandleModel from "@/components/details/model/HandleModel";
+import Load from "@/components/kossher/Load";
+import {Suspense} from "react";
 
 type Props = {
   params: {id: string};
@@ -22,36 +24,42 @@ export default async function ProductDetails(props: Props) {
   const colorsDefault = [{model: "", Colors: "", id: "", ownerId: ""}];
   const modelDefault = [{title: "", id: "", ownerId: ""}];
   const searchParams = props.searchParams;
-  // console.log(searchParams);
+  console.log(searchParams);
   return (
     <div className="main p-2">
-      {/* header (images - main detail) */}
-      <Header details={details} />
-      {/* colors */}
-      {details?.colors ? (
-        <ColorsPicker
-          colors={details?.colors ?? colorsDefault}
-          model={details?.model ?? modelDefault}
-        >
-          <HandleModel
-            id={searchParams.id ?? ""}
-            title={searchParams.title}
-            color={searchParams.color}
-          />
-        </ColorsPicker>
-      ) : (
-        <></>
-      )}
-      {/* <ColorsPicker
+      <Load />
+
+      <Suspense fallback={true}>
+        {/* header (images - main detail) */}
+        <Header details={details} />
+        {/* colors */}
+
+        {details?.colors ? (
+          <ColorsPicker
+            colors={details?.colors ?? colorsDefault}
+            model={details?.model ?? modelDefault}
+          >
+            <HandleModel
+              id={searchParams.id ?? ""}
+              title={searchParams.title}
+              color={searchParams.color}
+            />
+          </ColorsPicker>
+        ) : (
+          <></>
+        )}
+
+        {/* <ColorsPicker
         colors={details?.colors ?? colorsDefault}
         model={details?.model ?? modelDefault}
       /> */}
-      {/* price */}
-      {details?.price ? <Price price={Number(details.price)} /> : <>0</>}
-      {/* addCart */}
-      <AddCart {...props} />
-      {/* description-review */}
-      <Description />
+        {/* price */}
+        {details?.price ? <Price price={Number(details.price)} /> : <>0</>}
+        {/* addCart */}
+        <AddCart {...props} />
+        {/* description-review */}
+        <Description />
+      </Suspense>
     </div>
   );
 }

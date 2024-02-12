@@ -2,7 +2,12 @@
 import {useRouter, useSearchParams, usePathname} from "next/navigation";
 import React, {useCallback, useEffect, useRef, useState} from "react";
 
-const Counter = ({id}: {[key: string]: string | string[] | undefined}) => {
+const Counter = ({
+  id,
+  color_product,
+}: {
+  [key: string]: string | string[] | undefined;
+}) => {
   const [counter, setCounter] = useState(0);
   const paramas = useSearchParams();
   const router = useRouter();
@@ -19,11 +24,14 @@ const Counter = ({id}: {[key: string]: string | string[] | undefined}) => {
     setCounter(counter - 1);
   };
   useEffect(() => {
+    console.log("run");
     if (urltarget === `/qhab/${id}`) {
+      console.log("1");
       router.push(
         `/qhab/${id}?${createQueryString("counter", String(counter))}`
       );
     } else {
+      console.log("2");
       router.push(
         `/qhab/${urltarget}?${createQueryString("counter", String(counter))}`
       );
@@ -31,7 +39,7 @@ const Counter = ({id}: {[key: string]: string | string[] | undefined}) => {
     if (counter < 0) {
       setCounter(0);
     }
-  }, [counter]);
+  }, [counter, urltarget, color_product]);
 
   const createQueryString = useCallback(
     (name: string, value: string) => {

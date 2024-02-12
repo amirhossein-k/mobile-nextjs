@@ -5,6 +5,9 @@ import {initialState} from "./SideBar";
 import axios from "axios";
 import {useRouter} from "next/navigation";
 import {toast} from "react-toastify";
+import {AppDispatch} from "../../../redux/store";
+import {useDispatch} from "react-redux";
+import {SyncOrder} from "../../../redux/features/added_order";
 
 const LeftSide = ({
   navbarOpen,
@@ -14,6 +17,7 @@ const LeftSide = ({
   navbarOpen: any;
 }) => {
   const router = useRouter();
+  const dispatch = useDispatch<AppDispatch>();
   let Griditems: GridItemInterface[] = [
     {
       layout: "2x2",
@@ -53,6 +57,7 @@ const LeftSide = ({
           },
           success: {
             render({data}: any) {
+              dispatch(SyncOrder(true));
               setTimeout(() => {
                 router.push("/register");
               }, 1500);

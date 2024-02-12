@@ -26,6 +26,8 @@ interface Tokken {
 export const GetDataFromTokken = async (req: NextRequest) => {
   try {
     const tokken = req.cookies.get("tokken")?.value || "";
+    console.log(tokken);
+
     // console.log("ttttttttt", tokken.body);
     const decodedTokken: Tokken | JwtPayload = jwt.verify(
       tokken,

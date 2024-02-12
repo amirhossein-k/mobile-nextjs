@@ -6,12 +6,28 @@ import styles from "@/styles/navbar.module.css";
 import Image from "next/image";
 import one from "../../public/logo.svg";
 import useWindowSize from "../../hooks/size";
+import {useDispatch} from "react-redux";
+import {AppDispatch, useAppSelector} from "../../redux/store";
+import {SyncOrder} from "../../redux/features/added_order";
+import {LISTORDERNEW} from "../../types";
+
+interface ResGetOrderDetail {
+  message: string;
+  success: boolean;
+  data: LISTORDERNEW[];
+}
 const Navbarr = () => {
   const [open, setOpen] = useState(false);
   const [search, setsearch] = useState(false);
   const [metr, setMetr] = useState(768);
 
   const {width, height} = useWindowSize();
+  const [order, setOrder] = useState<LISTORDERNEW[]>();
+  const dispatch = useDispatch<AppDispatch>();
+  const hasUpdateOrder = useAppSelector(
+    (state) => state.syncOrder.value.syncorder
+  );
+  console.log(hasUpdateOrder, "update - order");
 
   useEffect(() => {
     if (width) {
@@ -22,26 +38,66 @@ const Navbarr = () => {
       }
     }
   }, [width]);
+  const getOrderDetail = async () => {
+    // const update = await fetch(
+    //   "/api/users/list"
+    // {
+    //   cache: "no-cache",
+    //   next: {tags: ["update"]},
+    // }
+    // );
+    const requestOptions: any = {
+      method: "GET",
+      headers: {"Content-Type": "application/json"},
+    };
+    const response = await fetch("/api/users/list");
+
+    const data: ResGetOrderDetail = await response.json();
+    console.log(data);
+
+    setOrder(data.data);
+  };
+  useEffect(() => {
+    if (hasUpdateOrder) {
+      console.log("updated success");
+      dispatch(SyncOrder(false));
+      // get detail order
+      getOrderDetail();
+    }
+    //  else {
+    //   getOrderDetail();
+    // }
+  }, [hasUpdateOrder]);
+
+  console.log("navbar");
 
   return (
     <nav className="flex justify-between items-center min-h-[1vh]  h-full  mx-auto relative bg-[#000000]">
       {/* left nav */}
       <div className="nav-link flex justify-between items-center h-full ">
         <ul className="flex gap-6 justify-between p-1 ">
-          <li className="border rounded-md bg-white min-w-1/2 text-stone-600 py-2 px-3 hover:text-sky-500 cursor-pointer">
-            <Link href="/register">
-              <i className="bi bi-person text-xl " />
+          <li className="border rounded-md bg-white  min-w-1/2 text-stone-600  hover:text-sky-500 cursor-pointer">
+            <Link href="/register" className="w-full h-full block ">
+              <i className="bi bi-person text-xl w-full h-full block   py-2 px-3" />
             </Link>
           </li>
-          <li className="border rounded-md bg-white min-w-1/2 text-stone-600 py-2 px-3 hover:text-sky-500 cursor-pointer">
-            <i className="bi bi-cart font-semibold text-xl" />
+          <li className="border rounded-md bg-white min-w-1/2 text-stone-600  hover:text-sky-500 cursor-pointer relative">
+            <Link
+              href="/checkout/cart"
+              className="w-full h-full block py-2 px-3"
+            >
+              <i className="bi bi-cart font-semibold text-xl" />
+              <span className="absolute top-0 text-sky-500 z-40 font-bold text-md ">
+                {order?.length}
+              </span>
+            </Link>
           </li>
 
           <li
             onClick={() => setsearch(!search)}
-            className="border rounded-md bg-white min-w-1/2 text-stone-600 py-2 px-3 hover:text-sky-500 cursor-pointer flex items-center"
+            className="border rounded-md bg-white min-w-1/2 text-stone-600  hover:text-sky-500 cursor-pointer flex items-center"
           >
-            <i className="bi bi-search text-xl " />
+            <i className="bi bi-search text-xl w-full h-full block   py-2 px-3" />
           </li>
         </ul>
       </div>

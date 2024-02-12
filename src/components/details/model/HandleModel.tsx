@@ -10,7 +10,8 @@ const HandleModel = async ({
 }) => {
   // const
   const onDay = 24 * 60 * 60 * 1000;
-  // cookies().set('')
+
+  // cookies().set("color", color ? color[0] : "", {expires: Date.now() - onDay});
 
   return (
     <div>

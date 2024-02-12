@@ -6,6 +6,9 @@ import axios from "axios";
 import {useRouter} from "next/navigation";
 import {ObjectId} from "mongoose";
 import {toast} from "react-toastify";
+import {useDispatch} from "react-redux";
+import {AppDispatch} from "../../redux/store";
+import {SyncOrder} from "../../redux/features/added_order";
 interface StyleFormUser {
   singup: boolean;
   setSingup: any;
@@ -21,6 +24,7 @@ interface UserLoginRes {
 }
 
 const Form = ({stylee}: {stylee: StyleFormUser}) => {
+  const dispatch = useDispatch<AppDispatch>();
   const router = useRouter();
   const registerUSers = async (e: FormData) => {
     try {
@@ -34,6 +38,7 @@ const Form = ({stylee}: {stylee: StyleFormUser}) => {
         success: {
           render({data}: any) {
             stylee.setSingup(false);
+            dispatch(SyncOrder(true));
             return data.message;
           },
         },
@@ -59,6 +64,7 @@ const Form = ({stylee}: {stylee: StyleFormUser}) => {
         error: "لطفا ایمیل و پسورد خود را چک کنید",
       });
       const res = await login;
+      dispatch(SyncOrder(true));
 
       setTimeout(() => {
         router.push(`/profile`);
