@@ -7,6 +7,7 @@ import {GetDataFromTokken} from "../../../../../helpers/getDataFromTokken";
 import {product} from "@/../types/index";
 import {ObjectId} from "mongoose";
 import {cookies} from "next/headers";
+import {LISTORDERNEW1} from "../../../../../types/index";
 ConnectDb();
 
 interface ADDRESS {
@@ -95,18 +96,86 @@ export const POST = async (req: NextRequest) => {
           (x: LISTORDERNEW) =>
             // x.color !== productColor &&
             x.model !== productTitle && x.id === productId
-        )
+        ) ||
+        user.listordershop.every((x: LISTORDERNEW) => x.id !== productId)
       ) {
         console.log("new");
         // if new
         // save product information in user
+        user.listordershop.push(ItemListOrder);
+      } else if (
+        !user.listordershop.find(
+          (x: LISTORDERNEW) =>
+            x.model === productTitle &&
+            x.id === productId &&
+            x.color === productColor
+        )
+      ) {
+        // new 2
+        console.log("new1");
         user.listordershop.push(ItemListOrder);
       } else {
         console.log("old");
         // if exist in list
         console.log(user.listordershop);
         console.log(productCount);
+        console.log(productColor);
+        console.log(productId);
+        console.log(productTitle);
+        console.log(
+          user.listordershop.every((x: LISTORDERNEW) => x.id !== productId)
+        );
+        //
+        console.log(
+          user.listordershop.every(
+            (x: LISTORDERNEW) =>
+              // x.color !== productColor &&
 
+              x.color !== productColor &&
+              x.model !== productTitle &&
+              x.id === productId
+          )
+        );
+        // rrrrr
+        // Product.model.find(
+        //   (x: LISTORDERNEW) =>
+        //     x.model === productTitle &&
+        //     x.id === productId &&
+        //     x.color === productColor
+        // )
+        console.log(
+          !user.listordershop.find(
+            (x: LISTORDERNEW) =>
+              x.model === productTitle &&
+              x.id === productId &&
+              x.color === productColor
+          )
+        );
+
+        //
+        console.log(
+          user.listordershop.every(
+            (x: LISTORDERNEW) =>
+              x.model === productTitle &&
+              x.color !== productColor &&
+              x.id === productId
+          )
+        );
+        console.log(
+          user.listordershop.every(
+            (x: LISTORDERNEW) =>
+              // x.color !== productColor &&
+              x.id === productId ||
+              (x.color !== productColor && x.model !== productTitle)
+          )
+        );
+        console.log(
+          user.listordershop.every(
+            (x: LISTORDERNEW) =>
+              // x.color !== productColor &&
+              x.model !== productTitle && x.id === productId
+          )
+        );
         // const indextOrder = user.listordershop.findIndex(
         //   (item: LISTORDERNEW) => {
         //     item.id === productId && item.model === productTitle;

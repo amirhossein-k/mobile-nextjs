@@ -20,6 +20,7 @@ const Navbarr = () => {
   const [open, setOpen] = useState(false);
   const [search, setsearch] = useState(false);
   const [metr, setMetr] = useState(768);
+  const [oneTime, setOneTime] = useState(true);
 
   const {width, height} = useWindowSize();
   const [order, setOrder] = useState<LISTORDERNEW[]>();
@@ -56,17 +57,16 @@ const Navbarr = () => {
     console.log(data);
 
     setOrder(data.data);
+    dispatch(SyncOrder(false));
   };
   useEffect(() => {
-    if (hasUpdateOrder) {
+    if (hasUpdateOrder || oneTime) {
       console.log("updated success");
-      dispatch(SyncOrder(false));
+      // dispatch(SyncOrder(true));
       // get detail order
       getOrderDetail();
+      setOneTime(false);
     }
-    //  else {
-    //   getOrderDetail();
-    // }
   }, [hasUpdateOrder]);
 
   console.log("navbar");

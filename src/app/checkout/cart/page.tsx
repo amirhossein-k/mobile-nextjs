@@ -4,8 +4,16 @@ import {Suspense, useEffect, useState} from "react";
 import {LISTORDERNEW1} from "../../../../types";
 import Image from "next/image";
 import {useDispatch} from "react-redux";
-import {AppDispatch} from "../../../../redux/store";
+import {AppDispatch, useAppSelector} from "../../../../redux/store";
 import {SyncOrder} from "../../../../redux/features/added_order";
+import BoxList from "@/components/cart/BoxList";
+
+import Loading from "./loading";
+interface ResGetOrderDetail {
+  message: string;
+  success: boolean;
+  data: LISTORDERNEW1[];
+}
 interface ResGetOrderDetail {
   message: string;
   success: boolean;
@@ -18,11 +26,11 @@ const page = () => {
   const [totalPriceAfter, setTotalPriceAfter] = useState<number>();
   const dispatch = useDispatch<AppDispatch>();
   const [orderUpdate, setOrderUpdate] = useState<boolean>(true);
-  interface ResGetOrderDetail {
-    message: string;
-    success: boolean;
-    data: LISTORDERNEW1[];
-  }
+
+  const hasUpdateOrder = useAppSelector(
+    (state) => state.syncOrder.value.syncorder
+  );
+  console.log(hasUpdateOrder);
   const getOrderDetail = async () => {
     const response = await fetch("/api/users/list");
 
@@ -43,14 +51,16 @@ const page = () => {
     setTotalPriceAfter(totalafter);
     setOrder(data.data);
     setOrderUpdate(false);
-    dispatch(SyncOrder(true));
+    dispatch(SyncOrder(false));
   };
   useEffect(() => {
-    if (orderUpdate) {
+    if (orderUpdate || hasUpdateOrder) {
+      console.log("run cart");
       getOrderDetail();
+      // dispatch(SyncOrder(false));
     }
     // get detail order
-  }, [orderUpdate]);
+  }, [orderUpdate, hasUpdateOrder]);
   console.log(order);
   console.log(sood);
   //   console.log(sod);
@@ -68,116 +78,63 @@ const page = () => {
             <span className="text-lg">سبد خرید</span>
             <span className=" flex items-center ">{order?.length} کالا</span>
           </div>
-          <Suspense fallback={<>Loading...</>}>
-            {order?.map((product, inx) => {
-              return (
-                <div className="detail_product flex flex-col   p-2 border my-1 rounded-sm">
-                  {/* box product */}
-                  <div className="box_product">
-                    {/* detail product */}
-                    <div className="main_detail_product flex flex-row gap-2">
-                      <div className="img_box border border-black relative">
-                        <Image
-                          quality={100}
-                          width={100}
-                          height={100}
-                          //   fill={true}
-                          src={
-                            "https://uploade.storage.iran.liara.space/default.png"
-                          }
-                          alt=""
-                        />
-                      </div>
-                      <div className="detail_box">
-                        <div className="title flex gap-3 ">
-                          <h1 className="font-bold text-lg">{product.title}</h1>
-                        </div>
-                        <div className="color flex gap-3 text-md">
-                          <span>
-                            <i className="bi bi-palette"></i>
-                          </span>
-                          <h1>{product.color}</h1>
-                        </div>
-                        <div className="model flex gap-3 text-md">
-                          <span>
-                            <i className="bi bi-tag"></i>
-                          </span>
-                          <h1>{product.model}</h1>
-                        </div>
-                      </div>
-                    </div>
-                    {/* paymnet box -order */}
-                    <div className="detail_payment_product flex flex-row gap-4 items-center my-3">
-                      <div className="count_box flex flex-row border px-3 py-1 gap-2 ">
-                        <div className="">+</div>
-                        <div className="counter">{product.count}</div>
-                        <div className="">-</div>
-                      </div>
-                      <div className="price_box">
-                        <div className="offer offer-text text-sm flex gap-2 text-ellipsis ">
-                          <div className="">سود شما </div>
-                          {Number(product.count) *
-                            (Number(product.price) -
-                              Number(product.price_offer))}
-                        </div>
-                        <div className="asl flex">
-                          {Number(product.price) * Number(product.count)}
-                          <Image
-                            quality={100}
-                            width={20}
-                            height={30}
-                            src={
-                              "https://uploade.storage.iran.liara.space/dollar2.png"
-                            }
-                            alt=""
-                          />
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              );
-            })}
-          </Suspense>
+          {/* <Suspense fallback={<Loading />}> */}
+          {order?.map((product, inx) => {
+            return (
+              <BoxList
+                product={product}
+                inx={inx}
+                key={`${inx}-${product.id}`}
+              />
+            );
+          })}
+          {/* </Suspense> */}
         </div>
         {/* payment box- left side */}
         <div className="detail_patyment flex flex-col md:w-[300px] w-full ">
           <div className="parent  border p-2 border-[#b7b7b7] bg-white my-1 rounded-md">
-            <div className="box1 flex flex-row gap-3 justify-between">
-              <div className="title">قیمت کالاها ({order?.length})</div>
-              <div className="body flex">
-                {totalPrice}{" "}
+            <div className="box1 flex flex-row gap-3 justify-between text-[#777]">
+              <div className="title ">قیمت کالاها ({order?.length})</div>
+              <div className="body flex ">
+                {totalPrice ? totalPrice.toLocaleString("de-DE") : ""}
                 <Image
                   quality={100}
                   width={20}
                   height={30}
-                  src={"https://uploade.storage.iran.liara.space/dollar2.png"}
+                  src={
+                    "https://uploade.storage.iran.liara.space/dollar_kam.png"
+                  }
                   alt=""
                 />
               </div>
             </div>
             <div className="box2 flex flex-row gap-3 justify-between">
-              <div className="title">جمع سبد خرید</div>
+              <div className="title text-lg ">جمع سبد خرید</div>
               <div className="body flex">
-                {totalPriceAfter}{" "}
+                {totalPriceAfter ? totalPriceAfter.toLocaleString("de-DE") : ""}
                 <Image
                   quality={100}
                   width={20}
                   height={30}
                   src={"https://uploade.storage.iran.liara.space/dollar2.png"}
                   alt=""
+                  className=""
                 />
               </div>
             </div>
             <div className="box3 flex flex-row gap-3 justify-between">
-              <div className="title offer offer-text">سود شما از خرید</div>
-              <div className="body flex ">
-                {sood}
+              <div className="title offer offer-text text-lg">
+                سود شما از خرید
+              </div>
+              <div className="body flex offer offer-text">
+                {sood ? sood.toLocaleString("de-DE") : ""}
                 <Image
                   quality={100}
                   width={20}
                   height={30}
-                  src={"https://uploade.storage.iran.liara.space/dollar2.png"}
+                  src={
+                    "https://uploade.storage.iran.liara.space/dollar_litred.png"
+                  }
                   alt=""
                 />
               </div>

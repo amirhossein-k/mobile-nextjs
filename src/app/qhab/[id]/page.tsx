@@ -7,7 +7,7 @@ import Description from "@/components/details/description/Description";
 import AddCart from "@/components/details/addCart/AddCart";
 
 import HandleModel from "@/components/details/model/HandleModel";
-import Load from "@/components/kossher/Load";
+
 import {Suspense} from "react";
 
 type Props = {
@@ -27,8 +27,6 @@ export default async function ProductDetails(props: Props) {
   console.log(searchParams);
   return (
     <div className="main p-2">
-      <Load />
-
       <Suspense fallback={true}>
         {/* header (images - main detail) */}
         <Header details={details} />

@@ -38,6 +38,7 @@ const AddToBasket = async ({
   // console.log(counter_product);
   const router = useRouter();
   const urltarget = usePathname();
+  console.log(title_product);
   const registerUSers = async (e: any) => {
     try {
       const requestOptions: any = {
