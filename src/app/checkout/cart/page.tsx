@@ -40,12 +40,17 @@ const page = () => {
     var totalbefore = 0;
     var totalafter = 0;
     data.data.forEach((product, index) => {
-      sod +=
-        Number(product.count) *
-        (Number(product.price) - Number(product.price_offer));
+      sod += Number(product.count) * Number(product.price_offer);
       totalbefore += Number(product.count) * Number(product.price);
-      totalafter += Number(product.count) * Number(product.price_offer);
+      if (product.price_offer !== " ") {
+        totalafter +=
+          Number(product.count) *
+          (Number(product.price) - Number(product.price_offer));
+      } else {
+        totalafter += Number(product.count) * Number(product.price);
+      }
     });
+    console.log(totalbefore);
     setSood(sod);
     setTotalPrice(totalbefore);
     setTotalPriceAfter(totalafter);

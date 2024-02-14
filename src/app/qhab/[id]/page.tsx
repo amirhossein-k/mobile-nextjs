@@ -9,6 +9,7 @@ import AddCart from "@/components/details/addCart/AddCart";
 import HandleModel from "@/components/details/model/HandleModel";
 
 import {Suspense} from "react";
+import Toast from "@/components/toast/Toast";
 
 type Props = {
   params: {id: string};
@@ -27,6 +28,7 @@ export default async function ProductDetails(props: Props) {
   console.log(searchParams);
   return (
     <div className="main p-2">
+      <Toast />
       <Suspense fallback={true}>
         {/* header (images - main detail) */}
         <Header details={details} />

@@ -1,6 +1,7 @@
 "use client";
 import {useRouter, useSearchParams, usePathname} from "next/navigation";
 import React, {useCallback, useEffect, useRef, useState} from "react";
+import {useAppSelector} from "../../../../redux/store";
 
 const Counter = ({
   id,
@@ -13,6 +14,9 @@ const Counter = ({
   const router = useRouter();
 
   const urltarget = usePathname();
+  const hasUpdateOrder = useAppSelector(
+    (state) => state.syncOrder.value.syncorder
+  );
 
   const counterRef = useRef(counter);
   const claa = useCallback(() => {
@@ -49,6 +53,9 @@ const Counter = ({
     },
     [paramas]
   );
+  useEffect(() => {
+    setCounter(0);
+  }, [hasUpdateOrder]);
 
   return (
     <>

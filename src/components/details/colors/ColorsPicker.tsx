@@ -1,10 +1,11 @@
 "use client";
-import React, {useCallback, useState} from "react";
+import React, {useCallback, useEffect, useState} from "react";
 import {pickColor, pickColorCSS} from "../../../../utils/ColorPicker";
 import {ColorsProduct, ModelProduct} from "../../../../types";
 import Model from "../model/Model";
 import bcrypt from "bcryptjs";
 import {usePathname, useRouter, useSearchParams} from "next/navigation";
+import {useAppSelector} from "../../../../redux/store";
 
 const ColorsPicker = ({
   colors,
@@ -57,6 +58,9 @@ const ColorsPicker = ({
   const paramas = useSearchParams();
   const router = useRouter();
   const counter = paramas.get("counter");
+  const hasUpdateOrder = useAppSelector(
+    (state) => state.syncOrder.value.syncorder
+  );
   console.log(paramas.get("counter"));
 
   const createQueryString = useCallback(
@@ -74,6 +78,11 @@ const ColorsPicker = ({
     },
     [paramas]
   );
+  useEffect(() => {
+    if (hasUpdateOrder) {
+      router.replace(urltarget);
+    }
+  }, [counter, hasUpdateOrder]);
 
   // color set on cookie
   // const hanleColorSet = async (e: React.SyntheticEvent) => {

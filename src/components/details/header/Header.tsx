@@ -1,5 +1,6 @@
 import {product} from "../../../../types";
 import Model from "../model/Model";
+import ImagesProduct from "./ImagesProduct";
 
 export default function Header({details}: {details: product | undefined}) {
   const reo = details?.review;
@@ -11,14 +12,14 @@ export default function Header({details}: {details: product | undefined}) {
     return count;
   };
   return (
-    <div className="header flex mb-7 sm:flex-row flex-col-reverse bg-red-300">
+    <div className="header flex mb-7 sm:flex-row flex-col-reverse ">
       {/* images */}
-      <div className="images sm:w-[50%] w-full h-full flex justify-center items-center border border-black">
-        images
+      <div className="images sm:w-[50%] w-full h-full flex justify-center items-center border border-black md:my-0 my-2">
+        <ImagesProduct />
       </div>
       {/* detail */}
       <div
-        className="detail sm:w-[50%] w-full bg-blue-300 flex flex-col gap-2"
+        className="detail sm:w-[50%] w-full bg-slate-100 flex flex-col gap-2"
         dir="rtl"
       >
         <div className=" flex sm:flex-col flex-row w-full  ">

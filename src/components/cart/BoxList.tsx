@@ -32,6 +32,7 @@ const BoxList = ({product, inx}: {inx: number; product: LISTORDERNEW1}) => {
     console.log(data);
     dispatch(SyncOrder(true));
   };
+
   return (
     <div
       className="detail_product relative flex flex-col   p-3 border my-1 rounded-sm shadow-sky-300 shadow-shadow-one"
@@ -89,9 +90,9 @@ const BoxList = ({product, inx}: {inx: number; product: LISTORDERNEW1}) => {
             <div className="offer offer-text justify-center items-center text-sm flex gap-2 text-ellipsis ">
               <div className="">سود شما </div>
               {(
-                Number(product.count) *
-                (Number(product.price) - Number(product.price_offer))
+                Number(product.count) * Number(product.price_offer)
               ).toLocaleString("de-DE")}
+              {/* {sod.toLocaleString("de-DE")} */}
               <Image
                 quality={100}
                 width={20}
@@ -104,9 +105,10 @@ const BoxList = ({product, inx}: {inx: number; product: LISTORDERNEW1}) => {
               />
             </div>
             <div className="asl flex">
-              {(Number(product.price) * Number(product.count)).toLocaleString(
-                "de-DE"
-              )}
+              {(
+                (Number(product.price) - Number(product.price_offer)) *
+                Number(product.count)
+              ).toLocaleString("de-DE")}
               <Image
                 quality={100}
                 width={20}
