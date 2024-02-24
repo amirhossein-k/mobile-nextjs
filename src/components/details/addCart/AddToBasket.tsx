@@ -41,8 +41,8 @@ const AddToBasket = ({
   const hasUpdateOrder = useAppSelector(
     (state) => state.syncOrder.value.syncorder
   );
-  console.log(title_product);
-  console.log(urltarget);
+  // console.log(title_product);
+  // console.log(urltarget);
   const registerUSers = async (e: any) => {
     try {
       console.log(urltarget);
@@ -168,10 +168,10 @@ const AddToBasket = ({
       router.replace(urltarget);
     }
   }, [urltarget, hasUpdateOrder]);
-  console.log(urltarget);
+  // console.log(urltarget);
   return (
     <form
-      className="mx-2 bg-red-400 px-3 py-2 rounded-md text-lg"
+      className="mx-2 bg-blue-200 hover:bg-blue-300 px-3 py-2 rounded-md text-lg"
       action={(e) => registerUSers(e)}
     >
       {children}

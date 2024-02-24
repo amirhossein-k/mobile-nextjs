@@ -60,7 +60,7 @@ export interface Item {
   title?: string;
   item?: Itemitem[];
 }
-interface PropertyProduct {
+export interface PropertyProduct {
   title: string;
 }
 export interface ColorsProduct {

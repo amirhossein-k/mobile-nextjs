@@ -6,6 +6,7 @@ import CounterCartOrder from "./CounterCartOrder";
 import {useDispatch} from "react-redux";
 import {AppDispatch, useAppSelector} from "../../../redux/store";
 import {SyncOrder} from "../../../redux/features/added_order";
+import {useRouter} from "next/navigation";
 interface ResGetOrderDetail {
   message: string;
   success: boolean;
@@ -14,6 +15,12 @@ interface ResGetOrderDetail {
 const BoxList = ({product, inx}: {inx: number; product: LISTORDERNEW1}) => {
   const dispatch = useDispatch<AppDispatch>();
 
+  const router = useRouter();
+  const handleClick = (e: any) => {
+    e.preventDefault();
+    console.log(product.id);
+    router.push(`/qhab/${product.id}`);
+  };
   const handleDeelete = async (e: React.SyntheticEvent) => {
     // e.preventDefault();
     const requestOptions: any = {
@@ -58,7 +65,10 @@ const BoxList = ({product, inx}: {inx: number; product: LISTORDERNEW1}) => {
             />
           </div>
           <div className="detail_box">
-            <div className="title flex gap-3 ">
+            <div
+              className="title flex gap-3 cursor-pointer"
+              onClick={handleClick}
+            >
               <h1 className="font-bold text-lg">{product.title}</h1>
             </div>
             <div className="color flex gap-3 text-md">

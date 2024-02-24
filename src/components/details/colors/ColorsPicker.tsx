@@ -109,32 +109,34 @@ const ColorsPicker = ({
         />
         {/* <h2 className="text-lg">{details?.model} </h2> */}
       </div>
-      <div className="colors p-1 flex gap-2" dir="rtl">
-        <div className="title">colors:</div>
-        <div className="main flex flex-row gap-2">
-          {pickColor(Status, colors).map((color, index) => {
-            return (
-              <div
-                className={`px-3 py-2 w-[30px] h-[30px]  border rounded-md  text-lg   `}
-                key={index + color}
-                color={color}
-                style={{
-                  borderColor: pickColorCSS(color),
-                  backgroundColor: pickColorCSS(color),
-                }}
-                // onClick={(e) => {
+      <div className="colors p-1 flex gap-2 justify-between" dir="rtl">
+        <div className="title flex">
+          colors:
+          <div className="main flex flex-row gap-2">
+            {pickColor(Status, colors).map((color, index) => {
+              return (
+                <div
+                  className={`px-3 py-2 w-[30px] h-[30px]  border rounded-md  text-lg   `}
+                  key={index + color}
+                  color={color}
+                  style={{
+                    borderColor: pickColorCSS(color),
+                    backgroundColor: pickColorCSS(color),
+                  }}
+                  // onClick={(e) => {
 
-                //   handelCallback(e);
-                // }}
-                onClick={handelCallback}
-              >
-                {/* {color} */}
-              </div>
-            );
-          })}
+                  //   handelCallback(e);
+                  // }}
+                  onClick={handelCallback}
+                >
+                  {/* {color} */}
+                </div>
+              );
+            })}
+          </div>
         </div>
+        {children}
       </div>
-      {children}
     </>
   );
 };

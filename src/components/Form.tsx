@@ -104,7 +104,7 @@ const Form = ({stylee}: {stylee: StyleFormUser}) => {
         <form className={styles.signup} action={(e) => registerUSers(e)}>
           <pre></pre>
           <div className={styles.field}>
-            <label htmlFor="name">Password:</label>
+            <label htmlFor="name">name:</label>
             <input type="text" placeholder="name..." name="name" />
           </div>
           <div className={styles.field}>

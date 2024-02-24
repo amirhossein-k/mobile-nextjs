@@ -12,9 +12,9 @@ export default function Header({details}: {details: product | undefined}) {
     return count;
   };
   return (
-    <div className="header flex mb-7 sm:flex-row flex-col-reverse ">
+    <div className="header flex mb-7 sm:flex-row flex-col ">
       {/* images */}
-      <div className="images sm:w-[50%] w-full h-full flex justify-center items-center border border-black md:my-0 my-2">
+      <div className="images sm:w-[50%] w-full h-full flex justify-center items-center   md:my-0 ">
         <ImagesProduct />
       </div>
       {/* detail */}

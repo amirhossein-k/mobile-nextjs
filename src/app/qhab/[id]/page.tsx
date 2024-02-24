@@ -10,6 +10,7 @@ import HandleModel from "@/components/details/model/HandleModel";
 
 import {Suspense} from "react";
 import Toast from "@/components/toast/Toast";
+import Describe from "@/components/details/description/Describe";
 
 type Props = {
   params: {id: string};
@@ -27,7 +28,7 @@ export default async function ProductDetails(props: Props) {
   const searchParams = props.searchParams;
   console.log(searchParams);
   return (
-    <div className="main p-2">
+    <div className="main p-2 bg-slate-100">
       <Toast />
       <Suspense fallback={true}>
         {/* header (images - main detail) */}
@@ -39,11 +40,7 @@ export default async function ProductDetails(props: Props) {
             colors={details?.colors ?? colorsDefault}
             model={details?.model ?? modelDefault}
           >
-            <HandleModel
-              id={searchParams.id ?? ""}
-              title={searchParams.title}
-              color={searchParams.color}
-            />
+            <HandleModel id={searchParams.id ?? ""} details={details} />
           </ColorsPicker>
         ) : (
           <></>
@@ -54,11 +51,18 @@ export default async function ProductDetails(props: Props) {
         model={details?.model ?? modelDefault}
       /> */}
         {/* price */}
-        {details?.price ? <Price price={Number(details.price)} /> : <>0</>}
+        {/* {details?.price ? <Price price={Number(details.price)} /> : <>0</>} */}
         {/* addCart */}
         <AddCart {...props} />
         {/* description-review */}
-        <Description />
+        {/* <Description /> */}
+        <Description>
+          {searchParams.review ? (
+            <>rebirw</>
+          ) : (
+            <Describe describe={details?.property ?? [{title: ""}]} />
+          )}
+        </Description>
       </Suspense>
     </div>
   );
