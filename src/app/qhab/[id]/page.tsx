@@ -21,6 +21,7 @@ export default async function ProductDetails(props: Props) {
   const details: product | undefined = await GetDetailProduct(
     props.params.id ?? " "
   );
+  console.log(details);
   // console.log(details);
   // console.log(typeof props.params.id);
   // console.log(details?.colors);

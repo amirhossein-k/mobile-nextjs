@@ -89,8 +89,16 @@ export interface product {
   property: PropertyProduct[];
   colors: ColorsProduct[];
   price_offer?: string | null;
+  productImage: ProductImage[];
   createdAt: Date;
   updatedAt: Date;
+}
+
+export interface ProductImage {
+  id: string;
+  defaultImage: boolean;
+  childImage: string;
+  ownerId: string;
 }
 
 export interface category_product {

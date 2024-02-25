@@ -15,7 +15,15 @@ export default function Header({details}: {details: product | undefined}) {
     <div className="header flex mb-7 sm:flex-row flex-col ">
       {/* images */}
       <div className="images sm:w-[50%] w-full h-full flex justify-center items-center   md:my-0 ">
-        <ImagesProduct />
+        {details && (
+          <ImagesProduct
+            images={
+              details.productImage ?? [
+                {id: "", defaultImage: "", childImage: "", ownerId: ""},
+              ]
+            }
+          />
+        )}
       </div>
       {/* detail */}
       <div

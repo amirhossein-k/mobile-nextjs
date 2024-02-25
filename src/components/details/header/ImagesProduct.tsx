@@ -3,38 +3,15 @@ import Image from "next/image";
 import React, {useCallback, useRef, useState} from "react";
 import styles from "@/styles/ImagesProduct.module.css";
 import useWindowSize from "../../../../hooks/size";
-const productImage = {
-  id: "",
-  defaultImage: "https://uploade.storage.iran.liara.space/9.jpg",
-  childImage: [
-    {
-      id: "",
-      imageUrl: "https://uploade.storage.iran.liara.space/6.jpeg",
-    },
-    {
-      id: "",
-      imageUrl: "https://uploade.storage.iran.liara.space/7.jpeg",
-    },
-    {
-      id: "",
-      imageUrl: "https://uploade.storage.iran.liara.space/1.jpeg",
-    },
-    {
-      id: "",
-      imageUrl: "https://uploade.storage.iran.liara.space/3.jpeg",
-    },
-    {
-      id: "",
-      imageUrl: "https://uploade.storage.iran.liara.space/5.jpeg",
-    },
-  ],
-};
-const ImagesProduct = () => {
+import {ProductImage} from "../../../../types";
+const ImagesProduct = ({images}: {images: ProductImage[]}) => {
+  console.log(images);
   const [defaultImage, setDefaultImage] = useState<string>(
-    productImage.defaultImage
+    images.filter((item) => item.defaultImage === true)[0].childImage
   );
-  const [childImage, setChildImage] = useState(productImage.childImage);
+  const [childImage, setChildImage] = useState(images);
 
+  console.log(childImage);
   const handleChangeImage = async (e: React.SyntheticEvent) => {
     const target = e.currentTarget.getAttribute("data-Src");
 
@@ -42,7 +19,7 @@ const ImagesProduct = () => {
     if (target && de) {
       setChildImage((valuep) =>
         valuep.map((item) =>
-          item.imageUrl === target ? {...item, imageUrl: defaultImage} : item
+          item.childImage === target ? {...item, imageUrl: defaultImage} : item
         )
       );
       setDefaultImage(target);
@@ -130,9 +107,9 @@ const ImagesProduct = () => {
                   // height={100}
                   className="bg-cover border cursor-pointer overflow-hidden rounded-xl"
                   fill
-                  src={child.imageUrl}
+                  src={child.childImage}
                   alt=""
-                  data-Src={child.imageUrl}
+                  data-Src={child.childImage}
                   onClick={(e) => handleChangeImage(e)}
                 />
               </div>

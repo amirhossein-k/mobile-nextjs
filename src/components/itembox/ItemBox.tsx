@@ -43,7 +43,10 @@ const ItemBox = ({item}: {item: product}) => {
             }}
             quality={100}
             // className="group-hover:scale-105 object-fill"
-            src="https://uploade.storage.iran.liara.space/877f451b0473f25e77266ed7cefe90450c354035_1630311086.jpg"
+            src={
+              item.productImage.filter((item) => item.defaultImage === true)[0]
+                .childImage
+            }
           />
         </div>
         {/* body */}

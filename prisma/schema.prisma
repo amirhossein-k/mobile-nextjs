@@ -39,11 +39,25 @@ status  Boolean
 count String
 review String
 property  PropertyProduct[]  @relation("property")
-
+productImage ProductImage[]  @relation("productImage")
 
 createdAt DateTime @default(now())
 updatedAt DateTime @updatedAt
 }
+model ProductImage{
+  id        String @id @default(auto()) @map("_id") @db.ObjectId
+  defaultImage Boolean
+  childImage      String  
+  ImageOwn Products @relation("productImage",fields: [ownerId],references: [id])
+  ownerId String @db.ObjectId
+}
+
+// model ChildImageItem{
+//   id        String @id @default(auto()) @map("_id") @db.ObjectId 
+//   imageUrl String
+//   ProductImageOwn ProductImage @relation(fields: [ownerId],references: [id])
+//   ownerId String @db.ObjectId
+// }
 
 model ModelProduct{
   id        String @id @default(auto()) @map("_id") @db.ObjectId

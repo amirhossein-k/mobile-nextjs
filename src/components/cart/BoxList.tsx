@@ -60,7 +60,11 @@ const BoxList = ({product, inx}: {inx: number; product: LISTORDERNEW1}) => {
               // height={100}
               className="object-cover"
               fill={true}
-              src={"https://uploade.storage.iran.liara.space/default.png"}
+              src={
+                product.productImage.filter(
+                  (item) => item.defaultImage === true
+                )[0].childImage
+              }
               alt=""
             />
           </div>

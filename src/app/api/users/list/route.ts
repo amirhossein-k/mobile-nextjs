@@ -4,7 +4,7 @@ import User from "@/models/userModel";
 import {NextRequest, NextResponse} from "next/server";
 import prisma from "@/db/prismaDb";
 import {GetDataFromTokken} from "../../../../../helpers/getDataFromTokken";
-import {product} from "@/../types/index";
+import {ProductImage, product} from "@/../types/index";
 import {ObjectId} from "mongoose";
 import {cookies} from "next/headers";
 import {LISTORDERNEW1} from "../../../../../types/index";
@@ -42,6 +42,7 @@ interface USER {
   isAdmin: boolean;
   address: ADDRESS[];
   listordershop: LISTORDERNEW[];
+  productImage: ProductImage[];
 }
 export const POST = async (req: NextRequest) => {
   try {
@@ -60,6 +61,7 @@ export const POST = async (req: NextRequest) => {
         colors: true,
         property: true,
         model: true,
+        productImage: true,
       },
     });
     if (Product) {
@@ -81,6 +83,7 @@ export const POST = async (req: NextRequest) => {
         model: productTitle,
         title: Product.title,
         price_offer: Product?.price_offer,
+        productImage: Product.productImage,
         // model:productTitle
       };
 
