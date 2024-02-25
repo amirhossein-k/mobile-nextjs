@@ -11,6 +11,7 @@ import HandleModel from "@/components/details/model/HandleModel";
 import {Suspense} from "react";
 import Toast from "@/components/toast/Toast";
 import Describe from "@/components/details/description/Describe";
+import Review from "@/components/details/review/Review";
 
 type Props = {
   params: {id: string};
@@ -58,7 +59,7 @@ export default async function ProductDetails(props: Props) {
         {/* <Description /> */}
         <Description>
           {searchParams.review ? (
-            <>rebirw</>
+            <Review />
           ) : (
             <Describe describe={details?.property ?? [{title: ""}]} />
           )}

@@ -44,16 +44,16 @@ const Description = ({children}: {children: React.ReactNode}) => {
       {/* title */}
       <div className="title flex gap-2   w-[50%] mx-auto p-1 rounded-md my-3">
         <span
-          className={`p-2 bg-blue-200 flex-1 rounded-lg text-center cursor-pointer  ${
-            open ? "border-b-4  border-0" : ""
+          className={`p-2 bg-blue-200 flex-1 rounded-lg  text-lg text-center cursor-pointer  ${
+            open ? "border-b-4 text-blue-500  border-0" : ""
           }`}
           onClick={() => handleDes()}
         >
           توضیحات
         </span>
         <span
-          className={`p-2 bg-blue-200 flex-1 rounded-lg text-center cursor-pointer ${
-            !open ? "border-b-4  border-0" : ""
+          className={`p-2 bg-blue-200 flex-1 rounded-lg text-center text-lg cursor-pointer ${
+            !open ? "border-b-4 text-blue-500  border-0" : ""
           }`}
           onClick={() => handleReviw()}
         >
