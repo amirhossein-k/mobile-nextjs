@@ -10,6 +10,7 @@ import "swiper/css/scrollbar";
 import "swiper/css/navigation";
 import "swiper/css/pagination";
 import Footer from "@/components/footer/Footer";
+import {Providers} from "./Providers";
 export const metadata: Metadata = {
   title: "marloo",
   description: "قاب های حرفه ای",
@@ -33,8 +34,10 @@ export default function RootLayout({children}: {children: React.ReactNode}) {
           <header>
             <Navbarr />
           </header>
+
           {children}
 
+          {/* {children} */}
           {/* <div className="flex flex-col h-full">{children}</div> */}
         </ReduxProvider>
         {/* <footer> */}

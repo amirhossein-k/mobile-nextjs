@@ -62,6 +62,7 @@ const Counter = ({
       <button onClick={() => handleClick2()} className="hover:text-red-500">
         <i className="bi bi-dash-circle-dotted text-[30px]"></i>
       </button>
+
       <span className=" text-lg p-1">{counter}</span>
       <button onClick={() => claa()} className="hover:text-blue-500">
         <i className="bi bi-plus-circle-dotted font-semibold text-[30px]"></i>

@@ -17,6 +17,8 @@ const ColorsPicker = ({
   children: React.ReactNode;
 }) => {
   const [Status, setStatus] = useState(model[0].title ?? "");
+  const [color, setColor] = useState<string | undefined>();
+
   console.log(Status, "sss");
   // const model = "redmi 12s";
   const urltarget = usePathname();
@@ -31,6 +33,7 @@ const ColorsPicker = ({
           "color"
         )} and title: ${Status} and id: ${model[0].ownerId}`
       );
+      setColor(e.currentTarget.getAttribute("color") ?? "");
       const hashedID = bcrypt.hashSync(model[0].ownerId, 10);
       console.log(hashedID);
 
@@ -116,11 +119,19 @@ const ColorsPicker = ({
             {pickColor(Status, colors).map((color, index) => {
               return (
                 <div
-                  className={`px-3 py-2 w-[30px] h-[30px]  border rounded-md  text-lg   `}
+                  className={`px-3 py-2 w-[30px] h-[30px]  border rounded-md  text-lg  ${
+                    paramas.get("color") ? `` : ""
+                  } `}
                   key={index + color}
                   color={color}
                   style={{
-                    borderColor: pickColorCSS(color),
+                    borderColor:
+                      paramas.get("color") === color
+                        ? "white"
+                        : pickColorCSS(color),
+                    borderWidth: paramas.get("color") === color ? "3px" : "1px",
+                    borderStyle:
+                      paramas.get("color") === color ? "dotted" : "solid",
                     backgroundColor: pickColorCSS(color),
                   }}
                   // onClick={(e) => {

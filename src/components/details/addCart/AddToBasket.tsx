@@ -46,7 +46,7 @@ const AddToBasket = ({
   const registerUSers = async (e: any) => {
     try {
       console.log(urltarget);
-      if (id && title_product && counter_product && color_product) {
+      if (id && title_product && counter_product && color_product !== "") {
         const requestOptions: any = {
           method: "POST",
           headers: {"Content-Type": "application/json"},

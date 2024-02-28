@@ -15,6 +15,7 @@ import IphoneMain from "@/components/IponeMain/IphoneMain";
 import SamsungMain from "@/components/samsung/SamsungMain";
 import XiamiMain from "@/components/xiami/XiamiMain";
 import Blogs from "@/components/blogs/Blogs";
+import {ChakraProvider} from "@chakra-ui/react";
 export default async function Home() {
   // const category: CategoryMain[] = resjson.data;
   const category = await getCategoryMain();

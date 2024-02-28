@@ -12,6 +12,8 @@ import {Suspense} from "react";
 import Toast from "@/components/toast/Toast";
 import Describe from "@/components/details/description/Describe";
 import Review from "@/components/details/review/Review";
+import Link from "next/link";
+import {headers} from "next/headers";
 
 type Props = {
   params: {id: string};
@@ -21,6 +23,7 @@ export default async function ProductDetails(props: Props) {
   const details: product | undefined = await GetDetailProduct(
     props.params.id ?? " "
   );
+
   console.log(details);
   // console.log(details);
   // console.log(typeof props.params.id);
@@ -29,8 +32,33 @@ export default async function ProductDetails(props: Props) {
   const modelDefault = [{title: "", id: "", ownerId: ""}];
   const searchParams = props.searchParams;
   console.log(searchParams);
+
+  const heads = headers();
+
+  const pathname = heads.get("next-url");
+  console.log(pathname);
+
+  console.log(pathname?.includes("qhab"));
+
   return (
     <div className="main p-2 bg-slate-100">
+      <div className=" p-2 shadow-card my-1 block">
+        {pathname && (
+          <div className="flex flex-row-reverse  gap-3  text-md">
+            <Link href={"/"} className="hover:text-black text-blue-400">
+              خانه
+            </Link>
+            <div className="">--</div>
+            <Link href={"/qhab"} className="hover:text-black text-blue-400">
+              قاب ها
+            </Link>
+            <div className="">--</div>
+            <Link href={pathname} className="hover:text-black text-blue-400">
+              {details?.title}
+            </Link>
+          </div>
+        )}
+      </div>
       <Toast />
       <Suspense fallback={true}>
         {/* header (images - main detail) */}

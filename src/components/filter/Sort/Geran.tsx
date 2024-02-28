@@ -2,6 +2,7 @@
 
 import ItemBox from "@/components/itembox/ItemBox";
 import {product} from "../../../../types";
+import {Suspense} from "react";
 
 const Geran = ({
   products,
@@ -43,11 +44,13 @@ const Geran = ({
     });
 
   return (
-    <>
+    <Suspense fallback={<>loading....</>}>
+      {/* // <> */}
       {er?.map((item: any) => {
         return <ItemBox item={item} />;
       })}
-    </>
+      {/* </> */}
+    </Suspense>
   );
 };
 

@@ -1,6 +1,7 @@
 "use client";
 import ItemBox from "@/components/itembox/ItemBox";
 import {product} from "../../../../types";
+import {Suspense} from "react";
 
 const Jadid = ({
   products,
@@ -34,11 +35,11 @@ const Jadid = ({
       return u;
     });
   return (
-    <>
+    <Suspense fallback={<>loading....</>}>
       {er?.map((item: product) => {
         return <ItemBox item={item} key={item.title} />;
       })}
-    </>
+    </Suspense>
   );
 };
 

@@ -1,5 +1,5 @@
 "use client";
-import React, {useEffect, useState} from "react";
+import React, {Suspense, useEffect, useState} from "react";
 import FilterButtom from "../filter/FilterButtom";
 
 import {product} from "../../../types";
@@ -19,6 +19,7 @@ import Arzan from "../filter/Sort/Arzan";
 import Jadid from "../filter/Sort/Jadid";
 import Qadimi from "../filter/Sort/Qadimi";
 import CheckBox from "../filter/CheckBox/CheckBox";
+import Link from "next/link";
 const Qhab = ({products}: {products: product[]}) => {
   // console.log("rednder");
   const [filterActive, setFilterActive] = useState<boolean>(false);
@@ -84,8 +85,19 @@ const Qhab = ({products}: {products: product[]}) => {
   //////////////////
   return (
     <>
-      {status}
-      <div className="row  bg-slate-50   text-md">ادرس زیر مجموعه</div>
+      <div className="row  bg-slate-50   text-md">
+        <div className=" p-2 shadow-card my-1 block">
+          <div className="flex   gap-3  text-md">
+            <Link href={"/"} className="hover:text-black text-blue-400">
+              خانه
+            </Link>
+            <div className="">--</div>
+            <Link href={"/qhab"} className="hover:text-black text-blue-400">
+              قاب ها
+            </Link>
+          </div>
+        </div>
+      </div>
       {/* <div className="row">موضوع دسته بندی</div> */}
       <div className="grid x:grid-flow-col grid-flow-row  auto-cols-fr  bg-slate-50  ">
         {/* filter - right side*/}
