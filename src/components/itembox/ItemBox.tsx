@@ -3,6 +3,7 @@ import Link from "next/link";
 import React from "react";
 import {product} from "../../../types";
 import {useRouter} from "next/navigation";
+import {Bounce, toast} from "react-toastify";
 
 const ItemBox = ({item}: {item: product}) => {
   const router = useRouter();
@@ -10,6 +11,20 @@ const ItemBox = ({item}: {item: product}) => {
     e.preventDefault();
     console.log(item.id);
     router.push(`/qhab/${item.id}`);
+    loadingClick();
+  };
+  const loadingClick = async () => {
+    toast("🦄 لطفا صبر کنید", {
+      position: "top-right",
+      autoClose: 5000,
+      hideProgressBar: false,
+      closeOnClick: true,
+      pauseOnHover: true,
+      draggable: true,
+      progress: undefined,
+      theme: "light",
+      transition: Bounce,
+    });
   };
 
   const categoey = item.category_product.filter(

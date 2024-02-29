@@ -16,6 +16,7 @@ import SamsungMain from "@/components/samsung/SamsungMain";
 import XiamiMain from "@/components/xiami/XiamiMain";
 import Blogs from "@/components/blogs/Blogs";
 import {ChakraProvider} from "@chakra-ui/react";
+import Toast from "@/components/toast/Toast";
 export default async function Home() {
   // const category: CategoryMain[] = resjson.data;
   const category = await getCategoryMain();
@@ -220,6 +221,7 @@ export default async function Home() {
   return (
     <main className="relative flex flex-col items-center flex-1 w-full h-full ">
       <div className="container-fluid  relative  w-full h-full px-1 ">
+        <Toast />
         {/* {category !== undefined && <CategoryItem category={category} />} */}
         <div className="grid w-full grid-cols-4  py-4 auto-rows-auto gap-2 h-max">
           {category !== undefined &&

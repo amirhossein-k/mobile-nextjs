@@ -5,9 +5,23 @@ import {CategoryMain, CategoryMainItem} from "../../../types";
 import GridCategoryItem from "./GridCategory";
 import Image from "next/image";
 import Link from "next/link";
+import {Bounce, toast} from "react-toastify";
 const CategoryItem = ({category}: {category: CategoryMainItem[]}) => {
   // const [categoryMain, setCategoryMain] = useState<CategoryMainItem[]>();
 
+  const loadingClick = async () => {
+    toast("🦄 لطفا صبر کنید", {
+      position: "top-right",
+      autoClose: 5000,
+      hideProgressBar: false,
+      closeOnClick: true,
+      pauseOnHover: true,
+      draggable: true,
+      progress: undefined,
+      theme: "light",
+      transition: Bounce,
+    });
+  };
   return (
     <div className=" ">
       <div
@@ -18,6 +32,7 @@ const CategoryItem = ({category}: {category: CategoryMainItem[]}) => {
             <Link
               href={item.linkk ?? ""}
               className="overflow-hidden  relative rounded bg-green-200 h-full flex items-center justify-center"
+              onClick={loadingClick}
             >
               <Image
                 src={item.pic}
