@@ -20,10 +20,11 @@ const HandleModel = async ({
       {/* <h1>{title}</h1>
       <h2>{color}</h2> */}
       {/* <h3>id:{id}</h3> */}
-      <h2 className="">
+      <h2 className="flex gap-3 text-lg">
+        <div className="">قیمت محصول:</div>
         {details && Number(details.price).toLocaleString("de-DE")}
       </h2>
-      <h3>تومان</h3>
+      <h3 className="text-lg">تومان</h3>
     </div>
   );
 };

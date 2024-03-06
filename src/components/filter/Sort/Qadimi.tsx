@@ -3,10 +3,12 @@ import ItemBox from "@/components/itembox/ItemBox";
 import {product} from "../../../../types";
 
 const Qadimi = ({
+  soldOut,
   products,
   value1,
   CheckBoxFilterList,
 }: {
+  soldOut: boolean;
   products: product[];
   value1: number[];
   CheckBoxFilterList: string[];
@@ -14,6 +16,9 @@ const Qadimi = ({
   const er: any = products
     ?.filter(function (x) {
       return Number(x.price) >= value1[0] && Number(x.price) <= value1[1];
+    })
+    ?.filter(function (x) {
+      return x.status === soldOut;
     })
     ?.filter((item) => {
       var u: any = item;

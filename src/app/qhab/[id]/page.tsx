@@ -83,7 +83,7 @@ export default async function ProductDetails(props: Props) {
         {/* price */}
         {/* {details?.price ? <Price price={Number(details.price)} /> : <>0</>} */}
         {/* addCart */}
-        <AddCart {...props} />
+        <AddCart props={props} detail={details} />
         {/* description-review */}
         {/* <Description /> */}
         <Description>

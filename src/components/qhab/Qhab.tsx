@@ -20,12 +20,14 @@ import Jadid from "../filter/Sort/Jadid";
 import Qadimi from "../filter/Sort/Qadimi";
 import CheckBox from "../filter/CheckBox/CheckBox";
 import Link from "next/link";
+import CheckBoxSold from "../filter/CheckBox/CheckBoxSold";
 const Qhab = ({products}: {products: product[]}) => {
   // console.log("rednder");
   const [filterActive, setFilterActive] = useState<boolean>(false);
   const [filter, setFilter] = useState("");
   const [status, setStatus] = useState("جدیدترین");
   const [value1, setValue1] = useState([0, 200000]);
+  const [soldOut, setSoldOut] = useState(true);
 
   const [CheckBoxFilterList, setCheckBoxFilterList] = useState<string[]>([
     "a14",
@@ -206,17 +208,19 @@ const Qhab = ({products}: {products: product[]}) => {
                 <FilterParent title_Filter="فیلتر وصعیت موجودی " />
                 <div className="subtitle  group-hover:flex flex-col hidden p-2">
                   <div className="category bg-blue-200 text-black flex gap-4 p-3 text-lg">
-                    <CheckBox
+                    <CheckBoxSold
+                      soldOut={soldOut}
                       namecheckbox={"ناموجود"}
-                      setCheckBoxFilterList={setCheckBoxFilterList}
+                      setSoldOut={setSoldOut}
                       // CheckBoxFilter={CheckBoxFilter}
                       CheckBoxFilterList={CheckBoxFilterList}
                     />
                   </div>
                   <div className="category bg-blue-200 text-black flex gap-4 p-3 text-lg">
-                    <CheckBox
+                    <CheckBoxSold
+                      soldOut={soldOut}
                       namecheckbox={"موجود"}
-                      setCheckBoxFilterList={setCheckBoxFilterList}
+                      setSoldOut={setSoldOut}
                       // CheckBoxFilter={CheckBoxFilter}
                       CheckBoxFilterList={CheckBoxFilterList}
                     />
@@ -264,24 +268,28 @@ const Qhab = ({products}: {products: product[]}) => {
           <div className="row p-1 grid   w-full my-2 2xl:grid-cols-5   lg:grid-cols-4 md:grid-cols-3 sm:grid-cols-2  grid-cols-1 gap-3">
             {status === "گران ترین" ? (
               <Geran
+                soldOut={soldOut}
                 value1={value1}
                 products={products}
                 CheckBoxFilterList={CheckBoxFilterList}
               />
             ) : status === "ارزان ترین" ? (
               <Arzan
+                soldOut={soldOut}
                 value1={value1}
                 products={products}
                 CheckBoxFilterList={CheckBoxFilterList}
               />
             ) : status === "قدیمی ترین" ? (
               <Qadimi
+                soldOut={soldOut}
                 value1={value1}
                 products={products}
                 CheckBoxFilterList={CheckBoxFilterList}
               />
             ) : (
               <Jadid
+                soldOut={soldOut}
                 value1={value1}
                 products={products}
                 CheckBoxFilterList={CheckBoxFilterList}

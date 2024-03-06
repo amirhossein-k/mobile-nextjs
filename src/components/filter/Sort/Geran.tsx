@@ -5,17 +5,23 @@ import {product} from "../../../../types";
 import {Suspense} from "react";
 
 const Geran = ({
+  soldOut,
   products,
   value1,
   CheckBoxFilterList,
 }: {
+  soldOut: boolean;
   products: product[];
   value1: number[];
   CheckBoxFilterList: string[];
 }) => {
+  console.log(CheckBoxFilterList, "ff");
   const er: any = products
     ?.filter(function (x) {
       return Number(x.price) >= value1[0] && Number(x.price) <= value1[1];
+    })
+    ?.filter(function (x) {
+      return x.status === soldOut;
     })
     ?.sort((p1, p2) =>
       Number(p1.price) < Number(p2.price)

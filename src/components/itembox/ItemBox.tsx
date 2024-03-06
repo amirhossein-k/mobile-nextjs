@@ -40,9 +40,18 @@ const ItemBox = ({item}: {item: product}) => {
       >
         {/* img product */}
         <div
-          className={`header rounded-md overflow-hidden  sm:w-full  sm:h-[250px] h-[210px] border-2 relative ${item.classs}`}
+          className={`header rounded-md overflow-hidden  sm:w-full  sm:h-[250px] h-[210px] border-2 relative  ${
+            item.status ? item.classs : ""
+          }`}
         >
-          {item.classs !== " " && (
+          <div
+            className={`${
+              item.status ? "hidden" : "flex bg-blue-400"
+            } z-50 relative font-bold text-lg opacity-[55%] w-full  h-full justify-center items-center  `}
+          >
+            ناموجود
+          </div>
+          {item.classs !== " " && item.status && (
             <span
               className={`${item.class2} absolute top-0 sm:left-1 right-1 z-30`}
             >
@@ -86,16 +95,55 @@ const ItemBox = ({item}: {item: product}) => {
             </div>
           </div>
           {/* count-storage */}
-          <div className="count-storage text-red-500 font-semibold text-sm">
-            <span className="">تنها</span>
-            <span className="p-1">{1}</span>
-            <span className="">عدد در انبار باقی مانده</span>
-          </div>
+          {item.status ? (
+            <div className="count-storage text-red-500 font-semibold text-sm">
+              <span className="">تنها</span>
+              <span className="p-1">{1}</span>
+              <span className="">عدد در انبار باقی مانده</span>
+            </div>
+          ) : (
+            <div className="text-center text-red-600">ناموجود</div>
+          )}
           {/* price */}
           <div
             className={`price flex  justify-center gap-2 group-hover:scale-105 `}
           >
-            {item.price_offer &&
+            {item.status ? (
+              item.price_offer &&
+              item.class2 !== " " &&
+              typeof item.class2 === "string" ? (
+                <>
+                  <span className="line-through	 ">{item.price}</span>
+                  <span className={`${item.class2} flex gap-1`}>
+                    {item.price_offer}
+                    <Image
+                      quality={100}
+                      width={20}
+                      height={30}
+                      src={
+                        "https://uploade.storage.iran.liara.space/dollar2.png"
+                      }
+                      alt=""
+                    />
+                  </span>
+                </>
+              ) : (
+                <span className="text-ellipsis flex gap-1">
+                  {item.price}
+                  <Image
+                    quality={100}
+                    width={20}
+                    height={30}
+                    src={"https://uploade.storage.iran.liara.space/dollar2.png"}
+                    alt=""
+                  />
+                </span>
+              )
+            ) : (
+              <div className=""></div>
+            )}
+            {/* {
+            item.price_offer &&
             item.class2 !== " " &&
             typeof item.class2 === "string" ? (
               <>
@@ -122,18 +170,19 @@ const ItemBox = ({item}: {item: product}) => {
                   alt=""
                 />
               </span>
-            )}
+            )} */}
           </div>
         </div>
       </a>
       {/* order */}
       <div className="buttom  my-1 bg-slate-100 border  flex justify-center group">
-        <span
+        <Link
+          href={`qhab/${item.id}`}
           // href="#"
           className="sm:w-[50%]  group-hover:scale-105 bg-slate-100   block px-1 py-2 text-center cursor-pointer group-hover:bg-blue-200 group-hover:duration-500 group-hover:animate-pulse group-hover:w-full"
         >
           ثبت سفارش
-        </span>
+        </Link>
       </div>
       {/* add */}
     </div>

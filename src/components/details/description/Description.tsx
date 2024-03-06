@@ -81,7 +81,7 @@ const Description = ({children}: {children: React.ReactNode}) => {
   return (
     <ChakraProvider>
       <div className="description  p-2 mb-3 " dir="rtl">
-        <div className="">{loading ? <>true</> : <>false</>}</div>
+        <div className="h-9"></div>
         {loading ? (
           <div className="flex justify-center">
             <Spinner
