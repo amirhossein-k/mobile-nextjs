@@ -16,7 +16,7 @@ const ItemBox = ({item}: {item: product}) => {
   const loadingClick = async () => {
     toast("🦄 لطفا صبر کنید", {
       position: "top-right",
-      autoClose: 5000,
+      autoClose: 7000,
       hideProgressBar: false,
       closeOnClick: true,
       pauseOnHover: true,

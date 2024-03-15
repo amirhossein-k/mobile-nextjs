@@ -8,7 +8,7 @@ import Image from "next/image";
 const NewProduct = ({item}: {item: Item}) => {
   return (
     <div
-      className="flex flex-col sm:w-[95%] md:w-[95%] lg:w-[92%] m-auto h-[480px] bg-[#5b95cf] p-1 shadow-shadow-one "
+      className="flex flex-col sm:w-[95%] md:w-[95%] lg:w-[95%] m-auto h-[480px]  p-1 py-2 shadow-shadow-one "
       dir="rtl"
     >
       <div className="header p-2 flex justify-between">
@@ -48,7 +48,7 @@ const NewProduct = ({item}: {item: Item}) => {
           clickable: true,
         }}
         modules={[Keyboard, Scrollbar, Navigation, Pagination]}
-        className="mySwiper"
+        className="mySwiper "
       >
         {item.item?.map((itt, index) => {
           return (

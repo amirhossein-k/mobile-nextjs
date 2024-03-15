@@ -39,6 +39,7 @@ const ImagesProduct = ({images}: {images: ProductImage[]}) => {
   //     }
   //   }
   // }, [width]);
+
   const handel = useCallback(
     (e: React.SyntheticEvent, scrollAmount: any) => {
       const top = e.currentTarget.getAttribute("data-top");
@@ -86,14 +87,14 @@ const ImagesProduct = ({images}: {images: ProductImage[]}) => {
         ref={containerRef}
       >
         <span
-          className=" text-2xl font-bold md:a text-black shadow-card2 sticky  w-fit flex justify-center items-center h-fit  md:top-6 top-16 z-50 left-10 lg:left-24"
+          className=" text-3xl font-bold cursor-pointer text-black shadow-card2 sticky  w-fit flex justify-center items-center h-fit  md:top-6 top-16 z-50 left-10 lg:left-[50%] md:left-[50%]"
           onClick={(e) => handel(e, ITEM_WIDTH)}
           data-top="1"
         >
           {width && width < 768 ? (
-            <i className="bi bi-caret-left-fill absolute"></i>
+            <i className="bi bi-caret-left-fill absolute arrow-my"></i>
           ) : (
-            <i className="bi bi-caret-up-fill absolute"></i>
+            <i className="bi bi-caret-up-fill absolute arrow-my"></i>
           )}
         </span>
 
@@ -117,14 +118,14 @@ const ImagesProduct = ({images}: {images: ProductImage[]}) => {
           );
         })}
         <span
-          className="flex text-2xl font-bold text-black shadow-card2   justify-center items-cente w-fit h-fit sticky   md:bottom-0  bottom-12 top-14 z-50 md:left-10 lg:left-24 right-8"
+          className="flex text-3xl font-bold text-black cursor-pointer  justify-center items-cente w-fit h-fit sticky   md:bottom-0  bottom-12 top-14 z-50 md:left-10 lg:left-[47%] right-8"
           onClick={(e) => handel(e, ITEM_WIDTH)}
           data-top="0"
         >
           {width && width < 768 ? (
-            <i className="bi bi-caret-right-fill"></i>
+            <i className="bi bi-caret-right-fill arrow-my"></i>
           ) : (
-            <i className="bi bi-caret-down-fill"></i>
+            <i className="bi bi-caret-down-fill arrow-my"></i>
           )}
         </span>
       </div>

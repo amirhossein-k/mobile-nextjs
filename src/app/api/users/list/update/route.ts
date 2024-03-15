@@ -43,6 +43,7 @@ export const POST = async (req: NextRequest) => {
         model: target.model,
         title: target.title,
         price_offer: target.price_offer,
+        productImage: target.productImage,
       };
       user.listordershop[indexTarget] = rr;
       console.log(user.listordershop[indexTarget]);

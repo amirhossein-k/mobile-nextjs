@@ -7,12 +7,17 @@ const CheckBox = ({
   namecheckbox,
   CheckBoxFilterList,
   setCheckBoxFilterList,
+  title,
 }: {
   // CheckBoxFilter: any;
   namecheckbox: string;
   CheckBoxFilterList: string[];
   setCheckBoxFilterList: any;
+  title: string;
 }) => {
+  console.log(CheckBoxFilterList);
+  console.log(title);
+  console.log(CheckBoxFilterList.find((item) => item === title) ? true : false);
   return (
     <>
       {CheckBoxFilterList.length === 0 ? (
@@ -24,6 +29,10 @@ const CheckBox = ({
           }
           name={namecheckbox}
           value={namecheckbox}
+          defaultChecked={
+            // true
+            CheckBoxFilterList.find((item) => item === title) ? false : true
+          }
         />
       ) : (
         <input
@@ -34,6 +43,10 @@ const CheckBox = ({
           }
           name={namecheckbox}
           value={namecheckbox}
+          defaultChecked={
+            // true
+            title === CheckBoxFilterList[0] ? true : false
+          }
         />
       )}
       <label className="col">{namecheckbox}</label>

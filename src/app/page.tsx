@@ -52,7 +52,7 @@ export default async function Home() {
         },
         {
           pic: "https://uploade.storage.iran.liara.space/daniel-fazio-DzqeB43HfnE-unsplash.jpg",
-          title: "قاب های مردانه",
+          title: "قاب های پسرانه",
         },
         {
           pic: "https://uploade.storage.iran.liara.space/daniel-korpai-tE_kGhscUTU-unsplash.jpg",

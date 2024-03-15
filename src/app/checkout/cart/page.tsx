@@ -84,15 +84,16 @@ const page = () => {
             <span className=" flex items-center ">{order?.length} کالا</span>
           </div>
           {/* <Suspense fallback={<Loading />}> */}
-          {order?.map((product, inx) => {
-            return (
-              <BoxList
-                product={product}
-                inx={inx}
-                key={`${inx}-${product.id}`}
-              />
-            );
-          })}
+          {order &&
+            order?.map((product, inx) => {
+              return (
+                <BoxList
+                  product={product}
+                  inx={inx}
+                  key={`${inx}-${product.id}`}
+                />
+              );
+            })}
           {/* </Suspense> */}
         </div>
         {/* payment box- left side */}

@@ -136,4 +136,5 @@ export type LISTORDERNEW = Omit<
 
 export interface LISTORDERNEW1 extends LISTORDERNEW {
   model: string;
+  productImage: ProductImage[];
 }

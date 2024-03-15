@@ -39,6 +39,7 @@ const BoxList = ({product, inx}: {inx: number; product: LISTORDERNEW1}) => {
     console.log(data);
     dispatch(SyncOrder(true));
   };
+  console.log(product);
 
   return (
     <div
@@ -61,9 +62,10 @@ const BoxList = ({product, inx}: {inx: number; product: LISTORDERNEW1}) => {
               className="object-cover"
               fill={true}
               src={
-                product.productImage.filter(
+                product?.productImage?.filter(
                   (item) => item.defaultImage === true
-                )[0].childImage
+                )[0].childImage ??
+                "https://uploade.storage.iran.liara.space/my.png"
               }
               alt=""
             />

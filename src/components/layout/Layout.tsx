@@ -9,7 +9,7 @@ const variants = cva(" rounded-3xl       ", {
       slider:
         " col-span-full  row-span-1  md:row-span-4  h-full w-full bg-stone-300",
       banner: " p-2 col-span-full row-span-2   w-full",
-      offer: "col-span-full  row-span-1  h-fit w-full bg-stone-200  p-2",
+      offer: "p-2 col-span-full   row-span-1   w-full    p-2 ",
       newproduct: "p-2 col-span-full   row-span-1   w-full    p-2 ",
     },
   },

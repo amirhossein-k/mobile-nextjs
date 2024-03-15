@@ -1,16 +1,19 @@
+"use client";
 import React from "react";
 import {Item} from "../../../types";
 import Image from "next/image";
 import Link from "next/link";
+import {Swiper, SwiperSlide} from "swiper/react";
+import {Keyboard, Navigation, Pagination, Scrollbar} from "swiper/modules";
 
 const Offer = ({item}: {item: Item}) => {
   return (
     <div
-      className=" w-[98%] mx-auto grid  auto-rows-[300px] lg:auto-rows-[380px] grid-flow-col  auto-cols-[190px]  gap-2  overflow-x-auto bg-patern1 p-3 "
+      className="flex-row flex sm:w-[95%] md:w-[95%] lg:w-[95%] m-auto h-[380px]  py-2 shadow-shadow-one    bg-patern1 p-3 "
       dir="rtl"
     >
-      <div className="h-full w-[100%] bg-slate-200-300 rounded  flex flex-col gap-3  relative  p-2  text-white hover:text-purple-300 overflow-hidden cursor-default bg-[#5b95cf]">
-        <div className=" relative  h-[90%] lg:h-[70%] ">
+      <div className="h-full w-[270px]  bg-slate-200-300 rounded  flex flex-col gap-3 lg:col-span-1 col-span-2  relative  p-1  text-white hover:text-purple-300 overflow-hidden cursor-default bg-[#5b95cf]">
+        <div className=" relative   h-[90%] lg:h-[70%] ">
           <Image
             alt=""
             src={"https://uploade.storage.iran.liara.space/offer%20copy.png"}
@@ -33,39 +36,79 @@ const Offer = ({item}: {item: Item}) => {
           </div>
         </div>
       </div>
-      {item.item?.map((item) => {
-        return (
-          <Link
-            href={"/"}
-            className={`h-full w-[100%] bg-slate-200-300 rounded  flex flex-col gap-3  relative  p-2 group hover:bg-purple-300 text-white hover:text-black overflow-hidden cursor-pointer bg-[#5b95cf] shadow `}
-          >
-            <div className=" relative  h-[60%] lg:h-[65%] rounded-md overflow-hidden">
-              <Image
-                alt=""
-                src={item.pic ?? ""}
-                fill
-                style={{objectFit: "fill"}}
-                quality={100}
-                // width={1500}
-                // height={1500}
-              />
-            </div>
-            <div className=" flex text-lg  flex-col gap-2  justify-center items-center  flex-1">
-              {/* header */}
-              <div className="bg-sky-700 group-hover:bg-purple-400 rounded p-1 w-full text-base  truncate">
-                {item.title}
-              </div>
-              {/* price */}
-              <div className="flex justify-around gap-2 p-1 ">
-                <span className="">1.555 تومان</span>
-                <span className="rounded-lg  bg-purple-200 px-2 text-black  flex justify-center items-center">
-                  3%
-                </span>
-              </div>
-            </div>
-          </Link>
-        );
-      })}
+      <Swiper
+        slidesPerView={1}
+        centeredSlides={false}
+        slidesPerGroupSkip={2}
+        grabCursor={true}
+        keyboard={{
+          enabled: true,
+        }}
+        breakpoints={{
+          500: {
+            slidesPerView: 2,
+            slidesPerGroup: 5,
+          },
+          769: {
+            slidesPerView: 3,
+            slidesPerGroup: 2,
+          },
+          1180: {
+            slidesPerView: 4,
+            slidesPerGroup: 2,
+          },
+          1550: {
+            slidesPerView: 5,
+            slidesPerGroup: 2,
+          },
+        }}
+        scrollbar={true}
+        navigation={true}
+        pagination={{
+          clickable: true,
+        }}
+        modules={[Keyboard, Scrollbar, Navigation, Pagination]}
+        className="mySwiper "
+      >
+        {item.item?.map((item, index) => {
+          return (
+            <SwiperSlide
+              className="px-5 shadow w-full h-full "
+              key={item.title + index + item.pic}
+            >
+              <Link
+                href={"/"}
+                className={`h-full w-[100%] bg-slate-200-300 rounded  flex flex-col gap-3  relative  p-2 group hover:bg-purple-300 text-white hover:text-black overflow-hidden cursor-pointer bg-[#5b95cf] shadow `}
+              >
+                <div className=" relative  h-[60%] lg:h-[65%] rounded-md overflow-hidden">
+                  <Image
+                    alt=""
+                    src={item.pic ?? ""}
+                    fill
+                    style={{objectFit: "fill"}}
+                    quality={100}
+                    // width={1500}
+                    // height={1500}
+                  />
+                </div>
+                <div className=" flex text-lg  flex-col gap-2  justify-center items-center  flex-1">
+                  {/* header */}
+                  <div className="bg-sky-700 group-hover:bg-purple-400 rounded p-1 w-full text-base  truncate">
+                    {item.title}
+                  </div>
+                  {/* price */}
+                  <div className="flex justify-around gap-2 p-1 ">
+                    <span className="">1.555 تومان</span>
+                    <span className="rounded-lg  bg-purple-200 px-2 text-black  flex justify-center items-center">
+                      3%
+                    </span>
+                  </div>
+                </div>
+              </Link>
+            </SwiperSlide>
+          );
+        })}
+      </Swiper>
     </div>
   );
 };

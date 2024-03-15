@@ -57,7 +57,22 @@ header nav {
   .offer-text {
     @apply text-red-500;
   }
+  .offer-component {
+    overflow-x: scroll;
+  }
 }
+.swiper .swiper-button-prev {
+  color: #004ef6 !important;
+}
+.swiper .swiper-button-next {
+  color: #004ef6 !important;
+}
+.arrow-my {
+  color: #4cacff;
+}
+/* .mySwiper {
+  width: 50%;
+} */
 
 .bg-patern1 {
   background: url("https://uploade.storage.iran.liara.space/pattern.png") repeat;
