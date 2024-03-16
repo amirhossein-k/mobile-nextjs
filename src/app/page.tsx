@@ -17,6 +17,7 @@ import XiamiMain from "@/components/xiami/XiamiMain";
 import Blogs from "@/components/blogs/Blogs";
 import {ChakraProvider} from "@chakra-ui/react";
 import Toast from "@/components/toast/Toast";
+import ParentOffer from "@/components/offer/ParentOffer";
 export default async function Home() {
   // const category: CategoryMain[] = resjson.data;
   const category = await getCategoryMain();
@@ -247,7 +248,8 @@ export default async function Home() {
                 </Layout>
               ) : item.layout === "offer" ? (
                 <Layout size={"offer"} key={"g"}>
-                  <Offer item={item} />
+                  <ParentOffer item={item} />
+                  {/* <Offer item={item} /> */}
                 </Layout>
               ) : item.layout === "newproduct" ? (
                 <Layout size={"newproduct"} key={"g"}>

@@ -1,12 +1,26 @@
 "use client";
 import React from "react";
-import {Item} from "../../../types";
+import {Item, product} from "../../../types";
 import Image from "next/image";
 import Link from "next/link";
 import {Swiper, SwiperSlide} from "swiper/react";
 import {Keyboard, Navigation, Pagination, Scrollbar} from "swiper/modules";
+import {Bounce, toast} from "react-toastify";
 
-const Offer = ({item}: {item: Item}) => {
+const Offer = ({item}: {item: product[]}) => {
+  const handleToast = () => {
+    toast("🦄 لطفا صبر کنید", {
+      position: "top-right",
+      autoClose: 7000,
+      hideProgressBar: false,
+      closeOnClick: true,
+      pauseOnHover: true,
+      draggable: true,
+      progress: undefined,
+      theme: "light",
+      transition: Bounce,
+    });
+  };
   return (
     <div
       className="flex-row flex sm:w-[95%] md:w-[95%] lg:w-[95%] m-auto h-[380px]  py-2 shadow-shadow-one    bg-patern1 p-3 "
@@ -70,20 +84,43 @@ const Offer = ({item}: {item: Item}) => {
         modules={[Keyboard, Scrollbar, Navigation, Pagination]}
         className="mySwiper "
       >
-        {item.item?.map((item, index) => {
+        {item?.map((product, index) => {
           return (
             <SwiperSlide
               className="px-5 shadow w-full h-full "
-              key={item.title + index + item.pic}
+              key={product.title + index + product.id}
             >
-              <Link
-                href={"/"}
-                className={`h-full w-[100%] bg-slate-200-300 rounded  flex flex-col gap-3  relative  p-2 group hover:bg-purple-300 text-white hover:text-black overflow-hidden cursor-pointer bg-[#5b95cf] shadow `}
+              <div
+                className={`h-full w-[100%] bg-slate-200-300 rounded   group  flex flex-col gap-3  relative  p-2 group hover:bg-purple-300 text-white hover:text-black overflow-hidden  bg-[#5b95cf] shadow `}
               >
+                <div className="group-hover:flex flex-col hover:justify-between hidden absolute  top-0 right-0 z-30 w-full h-full  bg-[#adc6d0c6]">
+                  <span
+                    className="flex  p-1 justify-end mx-2 cursor-pointer"
+                    dir="ltr"
+                  >
+                    <i className="bi bi-heart text-2xl w-full text-white"></i>
+                  </span>
+                  <div className="  top-[50%] flex flex-col justify-center items-center mx-auto my-auto gap-2">
+                    <Link
+                      href={`/qhab/${product.id}`}
+                      onClick={handleToast}
+                      className="p-2 w-full items-center justify-center flex rounded-md bg-sky-400"
+                    >
+                      اطلاعات محصول
+                    </Link>
+                    <span className="p-2 flex rounded-md bg-fuchsia-300 cursor-pointer">
+                      اضافه کردن به سبد
+                    </span>
+                  </div>
+                </div>
                 <div className=" relative  h-[60%] lg:h-[65%] rounded-md overflow-hidden">
                   <Image
                     alt=""
-                    src={item.pic ?? ""}
+                    src={
+                      product?.productImage?.filter(
+                        (item) => item.defaultImage === true
+                      )[0].childImage
+                    }
                     fill
                     style={{objectFit: "fill"}}
                     quality={100}
@@ -94,7 +131,7 @@ const Offer = ({item}: {item: Item}) => {
                 <div className=" flex text-lg  flex-col gap-2  justify-center items-center  flex-1">
                   {/* header */}
                   <div className="bg-sky-700 group-hover:bg-purple-400 rounded p-1 w-full text-base  truncate">
-                    {item.title}
+                    {product.title}
                   </div>
                   {/* price */}
                   <div className="flex justify-around gap-2 p-1 ">
@@ -104,7 +141,7 @@ const Offer = ({item}: {item: Item}) => {
                     </span>
                   </div>
                 </div>
-              </Link>
+              </div>
             </SwiperSlide>
           );
         })}
