@@ -220,7 +220,7 @@ export default async function Home() {
   ];
 
   return (
-    <main className="relative flex flex-col items-center flex-1 w-full h-full -ml-2">
+    <main className="relative flex flex-col items-center flex-1 w-full h-full ">
       <div className="container-fluid  relative  w-full h-full px-1 ">
         <Toast />
         {/* {category !== undefined && <CategoryItem category={category} />} */}
