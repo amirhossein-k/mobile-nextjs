@@ -29,7 +29,7 @@ export default function RootLayout({children}: {children: React.ReactNode}) {
           href="node_modules/keen-slider/keen-slider.min.css"
         />
       </head>
-      <body className={`${inter.className} `}>
+      <body className={`${inter.className} w-fit`}>
         <ReduxProvider>
           <header>
             <Navbarr />

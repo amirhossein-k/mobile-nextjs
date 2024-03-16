@@ -21,9 +21,12 @@ const Offer = ({item}: {item: product[]}) => {
       transition: Bounce,
     });
   };
+  const handleFavorite = () => {
+    console.log("f");
+  };
   return (
     <div
-      className="flex-row flex sm:w-[95%] md:w-[95%] lg:w-[95%] m-auto h-[380px]  py-2 shadow-shadow-one    bg-patern1 p-3 "
+      className="flex-row gap-1 flex sm:w-[95%] md:w-[95%] lg:w-[95%] m-auto h-[380px]  py-2 shadow-shadow-one    bg-patern1 p-3 "
       dir="rtl"
     >
       <div className="h-full w-[270px]  bg-slate-200-300 rounded  flex flex-col gap-3 lg:col-span-1 col-span-2  relative  p-1  text-white hover:text-purple-300 overflow-hidden cursor-default bg-[#5b95cf]">
@@ -60,7 +63,7 @@ const Offer = ({item}: {item: product[]}) => {
         }}
         breakpoints={{
           500: {
-            slidesPerView: 2,
+            slidesPerView: 1,
             slidesPerGroup: 5,
           },
           769: {
@@ -87,28 +90,29 @@ const Offer = ({item}: {item: product[]}) => {
         {item?.map((product, index) => {
           return (
             <SwiperSlide
-              className="px-5 shadow w-full h-full "
+              className=" shadow w-full h-full "
               key={product.title + index + product.id}
             >
               <div
-                className={`h-full w-[100%] bg-slate-200-300 rounded   group  flex flex-col gap-3  relative  p-2 group hover:bg-purple-300 text-white hover:text-black overflow-hidden  bg-[#5b95cf] shadow `}
+                className={`h-full  w-[100%] bg-slate-200-300 rounded   group  flex flex-col gap-3  relative  p-2 group hover:bg-[#d8b4fec4] text-white hover:text-black overflow-hidden  bg-[#5b95cf] shadow `}
               >
                 <div className="group-hover:flex flex-col hover:justify-between hidden absolute  top-0 right-0 z-30 w-full h-full  bg-[#adc6d0c6]">
                   <span
-                    className="flex  p-1 justify-end mx-2 cursor-pointer"
+                    className="flex  p-1 justify-end mx-2 cursor-pointer "
                     dir="ltr"
+                    onClick={handleFavorite}
                   >
-                    <i className="bi bi-heart text-2xl w-full text-white"></i>
+                    <i className="bi bi-heart text-2xl w-full text-white md:bg-transparent mo:bg-red-600 hover:text-red-400"></i>
                   </span>
-                  <div className="  top-[50%] flex flex-col justify-center items-center mx-auto my-auto gap-2">
+                  <div className="  top-[50%] flex flex-col justify-center items-center mx-auto my-auto gap-2 text-lg font-medium">
                     <Link
                       href={`/qhab/${product.id}`}
                       onClick={handleToast}
-                      className="p-2 w-full items-center justify-center flex rounded-md bg-sky-400"
+                      className="p-2 w-full items-center justify-center flex rounded-md bg-sky-400 text-white"
                     >
                       اطلاعات محصول
                     </Link>
-                    <span className="p-2 flex rounded-md bg-fuchsia-300 cursor-pointer">
+                    <span className="p-2 flex rounded-md bg-[#cba6f2d0] text-white cursor-pointer">
                       اضافه کردن به سبد
                     </span>
                   </div>
