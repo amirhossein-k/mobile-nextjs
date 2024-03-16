@@ -10,6 +10,7 @@ import {useDispatch} from "react-redux";
 import {AppDispatch, useAppSelector} from "../../redux/store";
 import {SyncOrder} from "../../redux/features/added_order";
 import {LISTORDERNEW} from "../../types";
+import Favorite from "./favorite/Favorite";
 
 interface ResGetOrderDetail {
   message: string;
@@ -18,6 +19,7 @@ interface ResGetOrderDetail {
 }
 const Navbarr = () => {
   const [open, setOpen] = useState(false);
+  const [openFavorite, setOpenFavorite] = useState(false);
   const [search, setsearch] = useState(false);
   const [metr, setMetr] = useState(768);
   const [oneTime, setOneTime] = useState(true);
@@ -68,8 +70,11 @@ const Navbarr = () => {
       setOneTime(false);
     }
   }, [hasUpdateOrder]);
-
-  console.log("navbar");
+  const handleFavorite = (e: React.SyntheticEvent) => {
+    e.preventDefault();
+    setOpenFavorite(!openFavorite);
+    console.log("object");
+  };
 
   return (
     <nav className="flex justify-between items-center min-h-[1vh]  h-full  mx-auto relative bg-[#000000]">
@@ -87,10 +92,16 @@ const Navbarr = () => {
               className="w-full h-full block py-2 px-3"
             >
               <i className="bi bi-cart font-semibold text-xl" />
-              <span className="absolute top-0 text-sky-500 z-40 font-bold text-md ">
+              <span className="absolute top-0 text-sky-500 z-30 font-bold text-md ">
                 {order?.length}
               </span>
             </Link>
+          </li>
+          <li
+            onClick={(e) => handleFavorite(e)}
+            className="border rounded-md bg-white min-w-1/2 text-stone-600  hover:text-sky-500 cursor-pointer flex items-center"
+          >
+            <i className="bi bi-box2-heart text-xl w-full h-full block   py-2 px-3" />
           </li>
 
           <li
@@ -195,6 +206,9 @@ const Navbarr = () => {
           onClick={() => setOpen(!open)}
         ></i>
       </div>
+
+      {/* favorite bar */}
+      {openFavorite && <Favorite setOpen={setOpenFavorite} />}
     </nav>
   );
 };

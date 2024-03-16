@@ -64,7 +64,11 @@ const Offer = ({item}: {item: product[]}) => {
         breakpoints={{
           500: {
             slidesPerView: 1,
-            slidesPerGroup: 5,
+            slidesPerGroup: 1,
+          },
+          570: {
+            slidesPerView: 2,
+            slidesPerGroup: 2,
           },
           769: {
             slidesPerView: 3,
@@ -102,7 +106,7 @@ const Offer = ({item}: {item: product[]}) => {
                     dir="ltr"
                     onClick={handleFavorite}
                   >
-                    <i className="bi bi-heart text-2xl w-full text-white md:bg-transparent mo:bg-red-600 hover:text-red-400"></i>
+                    <i className="bi bi-heart text-2xl w-full text-white   hover:text-red-400"></i>
                   </span>
                   <div className="  top-[50%] flex flex-col justify-center items-center mx-auto my-auto gap-2 text-lg font-medium">
                     <Link

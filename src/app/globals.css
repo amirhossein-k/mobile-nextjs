@@ -70,6 +70,9 @@ header nav {
 .arrow-my {
   color: #4cacff;
 }
+.swiper-wrapper {
+  gap: 5px;
+}
 /* .mySwiper {
   width: 50%;
 } */

@@ -11,7 +11,7 @@ const ParentOffer = async ({item}: {item: Item}) => {
 
   return (
     <>
-      <Suspense>
+      <Suspense fallback={<>loading</>}>
         {listproduct !== undefined && <Offer item={listproduct} />}
       </Suspense>
     </>
