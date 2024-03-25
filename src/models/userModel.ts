@@ -48,6 +48,11 @@ const userSchema = new mongoose.Schema({
     require: true,
     default: [],
   },
+  listfavorite: {
+    type: Array,
+    require: true,
+    default: [],
+  },
 });
 
 const User = mongoose.models.users || mongoose.model("users", userSchema);

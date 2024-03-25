@@ -43,7 +43,7 @@ const AddToBasket = ({
   );
   // console.log(title_product);
   // console.log(urltarget);
-  const registerUSers = async (e: any) => {
+  const addNewOrder = async (e: any) => {
     try {
       console.log(urltarget);
       if (id && title_product && counter_product && color_product !== "") {
@@ -172,7 +172,7 @@ const AddToBasket = ({
   return (
     <form
       className="mx-2 bg-blue-200 hover:bg-blue-300 px-3 py-2 rounded-md text-lg"
-      action={(e) => registerUSers(e)}
+      action={(e) => addNewOrder(e)}
     >
       {children}
     </form>

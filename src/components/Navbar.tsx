@@ -11,6 +11,7 @@ import {AppDispatch, useAppSelector} from "../../redux/store";
 import {SyncOrder} from "../../redux/features/added_order";
 import {LISTORDERNEW} from "../../types";
 import Favorite from "./favorite/Favorite";
+import {SyncFavorite} from "../../redux/features/added_favorite";
 
 interface ResGetOrderDetail {
   message: string;
@@ -26,9 +27,14 @@ const Navbarr = () => {
 
   const {width, height} = useWindowSize();
   const [order, setOrder] = useState<LISTORDERNEW[]>();
+  const [lenghtFavorite, setLenghtFavorite] = useState();
   const dispatch = useDispatch<AppDispatch>();
+  const [productFav, setProductFav] = useState([]);
   const hasUpdateOrder = useAppSelector(
     (state) => state.syncOrder.value.syncorder
+  );
+  const hasUpdateFavorite = useAppSelector(
+    (state) => state.SyncFavorite.value.syncFavorite
   );
   console.log(hasUpdateOrder, "update - order");
 
@@ -70,6 +76,20 @@ const Navbarr = () => {
       setOneTime(false);
     }
   }, [hasUpdateOrder]);
+  useEffect(() => {
+    console.log("r4");
+    fetch("/api/users/favorite")
+      .then((res) => res.json())
+      .then((data) => {
+        console.log(data);
+        if (data) {
+          setProductFav(data.data);
+          console.log(data.data);
+          setLenghtFavorite(data.data.length);
+          dispatch(SyncFavorite(false));
+        }
+      });
+  }, [hasUpdateFavorite]);
   const handleFavorite = (e: React.SyntheticEvent) => {
     e.preventDefault();
     setOpenFavorite(!openFavorite);
@@ -92,16 +112,19 @@ const Navbarr = () => {
               className="w-full h-full block py-2 px-3"
             >
               <i className="bi bi-cart font-semibold text-xl" />
-              <span className="absolute top-0 text-sky-500 z-30 font-bold text-md ">
+              <span className="absolute top-0 text-sky-500 z-30 font-bold text-sm ">
                 {order?.length}
               </span>
             </Link>
           </li>
           <li
             onClick={(e) => handleFavorite(e)}
-            className="border rounded-md bg-white min-w-1/2 text-stone-600  hover:text-sky-500 cursor-pointer flex items-center"
+            className="border rounded-md bg-white min-w-1/2 text-stone-600  hover:text-sky-500 cursor-pointer flex items-center relative"
           >
-            <i className="bi bi-box2-heart text-xl w-full h-full block   py-2 px-3" />
+            <i className="bi bi-box2-heart text-xl  w-full h-full block   py-2 px-[12px]" />
+            <span className="absolute top-0 right-0 text-sky-500 z-30 font-bold text-sm ">
+              {lenghtFavorite}
+            </span>
           </li>
 
           <li
@@ -208,7 +231,13 @@ const Navbarr = () => {
       </div>
 
       {/* favorite bar */}
-      {openFavorite && <Favorite setOpen={setOpenFavorite} />}
+      {openFavorite && (
+        <Favorite
+          productFav={productFav}
+          setOpen={setOpenFavorite}
+          setLenghtFavorite={setLenghtFavorite}
+        />
+      )}
     </nav>
   );
 };
