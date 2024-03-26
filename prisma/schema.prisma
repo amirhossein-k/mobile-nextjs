@@ -40,7 +40,7 @@ count String
 review String
 property  PropertyProduct[]  @relation("property")
 productImage ProductImage[]  @relation("productImage")
-
+tags Tags[] @relation("tags")
 createdAt DateTime @default(now())
 updatedAt DateTime @updatedAt
 }
@@ -49,6 +49,12 @@ model ProductImage{
   defaultImage Boolean
   childImage      String  
   ImageOwn Products @relation("productImage",fields: [ownerId],references: [id])
+  ownerId String @db.ObjectId
+}
+model Tags {
+  id String @id @default(auto()) @map("_id") @db.ObjectId
+  title_tag String
+  tagsOwn Products @relation("tags",fields: [ownerId],references: [id])
   ownerId String @db.ObjectId
 }
 

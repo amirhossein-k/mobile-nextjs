@@ -18,6 +18,7 @@ export const GetProduct = async () => {
         colors: true,
         model: true,
         productImage: true,
+        tags: true,
       },
     });
     console.log(listprodeuct);
@@ -37,6 +38,7 @@ export const GetDetailProduct = async (id: string) => {
         colors: true,
         model: true,
         productImage: true,
+        tags: true,
       },
       where: {
         id: id,

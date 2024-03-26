@@ -84,7 +84,7 @@ const Offer = ({item}: {item: product[]}) => {
 
   return (
     <div
-      className="flex-row gap-1 flex sm:w-[95%] md:w-[95%] lg:w-[95%] m-auto h-[380px]  py-2 shadow-shadow-one    bg-patern1 p-3 "
+      className="flex-row gap-1 flex sm:w-[95%] md:w-[95%] lg:w-[96%] m-auto h-[380px]  py-2 shadow-shadow-one    bg-patern1 p-3 "
       dir="rtl"
     >
       <div className="h-full w-[270px]  bg-slate-200-300 rounded  flex flex-col gap-3 lg:col-span-1 col-span-2  relative  p-1  text-white hover:text-purple-300 overflow-hidden cursor-default bg-[#5b95cf]">

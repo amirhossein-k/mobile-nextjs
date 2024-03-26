@@ -10,7 +10,7 @@ import Offer from "@/components/offer/Offer";
 import {ToastContainer} from "react-toastify";
 import NewProduct from "@/components/newproduct/NewProduct";
 import GIfHome from "@/components/GIfHome/GIfHome";
-import {Suspense} from "react";
+import {lazy, Suspense} from "react";
 import IphoneMain from "@/components/IponeMain/IphoneMain";
 import SamsungMain from "@/components/samsung/SamsungMain";
 import XiamiMain from "@/components/xiami/XiamiMain";
@@ -18,10 +18,27 @@ import Blogs from "@/components/blogs/Blogs";
 import {ChakraProvider} from "@chakra-ui/react";
 import Toast from "@/components/toast/Toast";
 import ParentOffer from "@/components/offer/ParentOffer";
+import {GetProduct} from "../../actions/GetProduct";
+import loadable from "@loadable/component";
+import TextAnimation from "@/components/textAnimation/TextAnimation";
 export default async function Home() {
   // const category: CategoryMain[] = resjson.data;
   const category = await getCategoryMain();
   console.log(category);
+  const productList = await GetProduct();
+
+  const newProduct = productList?.filter((item) => {
+    return item.tags.find((iem) => iem.title_tag === "new");
+  });
+  const iphoneProduct = productList?.filter((item) => {
+    return item.tags.find((iem) => iem.title_tag === "iphone");
+  });
+  const samsungProduct = productList?.filter((item) => {
+    return item.tags.find((iem) => iem.title_tag === "samsung");
+  });
+  const xiamomiProduct = productList?.filter((item) => {
+    return item.tags.find((iem) => iem.title_tag === "xiamomi");
+  });
 
   const list = [
     {layout: "categoryMain"},
@@ -104,6 +121,35 @@ export default async function Home() {
     },
     {
       layout: "newproduct",
+      item: [
+        {
+          pic: "https://uploade.storage.iran.liara.space/1.jpeg",
+          title: "قاب نوتلا",
+        },
+        {
+          pic: "https://uploade.storage.iran.liara.space/5.jpeg",
+          title: "قاب دارک ",
+        },
+        {
+          pic: "https://uploade.storage.iran.liara.space/3.jpeg",
+          title: "قاب دخترکش",
+        },
+        {
+          pic: "https://uploade.storage.iran.liara.space/10.jpg",
+          title: "هنزفری اخرین  مدل",
+        },
+        {
+          pic: "https://uploade.storage.iran.liara.space/11.png",
+          title: "گردنبند وان پیس",
+        },
+        {
+          pic: "https://uploade.storage.iran.liara.space/7.jpeg",
+          title: "قاب طرح چرت پرت",
+        },
+      ],
+    },
+    {
+      layout: "text",
       item: [
         {
           pic: "https://uploade.storage.iran.liara.space/1.jpeg",
@@ -218,6 +264,9 @@ export default async function Home() {
       ],
     },
   ];
+  // const OtherComponent = loadable(() => import("../components/slider/slider"));
+
+  const OtherComponent = lazy(() => import("../components/slider/slider"));
 
   return (
     <main className="relative flex flex-col items-center flex-1 w-full h-full ">
@@ -236,7 +285,10 @@ export default async function Home() {
                 </Layout>
               ) : item.layout === "slider" ? (
                 <Layout size={"slider"} key={"g"}>
-                  <Slider category={category} />
+                  <Suspense fallback={<div>Loading...</div>}>
+                    {/* <OtherComponent /> */}
+                    <OtherComponent category={category} />
+                  </Suspense>
                 </Layout>
               ) : item.layout === "gifhome" ? (
                 <Layout size={"offer"} key={3}>
@@ -253,19 +305,23 @@ export default async function Home() {
                 </Layout>
               ) : item.layout === "newproduct" ? (
                 <Layout size={"newproduct"} key={"g"}>
-                  <NewProduct item={item} />
+                  <NewProduct item={newProduct} />
                 </Layout>
-              ) : item.layout === "newIphone" ? (
+              ) : // ) : item.layout === "text" ? (
+              //   <Layout size={"newproduct"} key={"g"}>
+              //     <TextAnimation item={newProduct} />
+              //   </Layout>
+              item.layout === "newIphone" ? (
                 <Layout size={"newproduct"} key={"g"}>
-                  <IphoneMain item={item} />
+                  <IphoneMain item={iphoneProduct} />
                 </Layout>
               ) : item.layout === "newSamsung" ? (
                 <Layout size={"newproduct"} key={"g"}>
-                  <SamsungMain item={item} />
+                  <SamsungMain item={samsungProduct} />
                 </Layout>
               ) : item.layout === "newXiami" ? (
                 <Layout size={"newproduct"} key={"g"}>
-                  <XiamiMain item={item} />
+                  <XiamiMain item={xiamomiProduct} />
                 </Layout>
               ) : item.layout === "blogs" ? (
                 <Layout size={"newproduct"} key={"g"}>

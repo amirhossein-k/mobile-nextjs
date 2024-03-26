@@ -47,6 +47,7 @@ export const GET = async () => {
       property: true,
       model: true,
       productImage: true,
+      tags: true,
     },
   });
   return NextResponse.json(productList);
