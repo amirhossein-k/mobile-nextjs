@@ -12,13 +12,16 @@ import {SyncOrder} from "../../redux/features/added_order";
 import {LISTORDERNEW} from "../../types";
 import Favorite from "./favorite/Favorite";
 import {SyncFavorite} from "../../redux/features/added_favorite";
-
 interface ResGetOrderDetail {
   message: string;
   success: boolean;
   data: LISTORDERNEW[];
 }
-const Navbarr = () => {
+const Navbarr = ({
+  tokken,
+}: {
+  tokken: {name: string; value: string} | undefined;
+}) => {
   const [open, setOpen] = useState(false);
   const [openFavorite, setOpenFavorite] = useState(false);
   const [search, setsearch] = useState(false);
@@ -78,17 +81,19 @@ const Navbarr = () => {
   }, [hasUpdateOrder]);
   useEffect(() => {
     console.log("r4");
-    fetch("/api/users/favorite")
-      .then((res) => res.json())
-      .then((data) => {
-        console.log(data);
-        if (data) {
-          setProductFav(data.data);
-          console.log(data.data);
-          setLenghtFavorite(data.data.length);
-          dispatch(SyncFavorite(false));
-        }
-      });
+    if (tokken) {
+      fetch("/api/users/favorite")
+        .then((res) => res.json())
+        .then((data) => {
+          console.log(data);
+          if (data) {
+            setProductFav(data.data);
+            console.log(data.data);
+            setLenghtFavorite(data.data.length);
+            dispatch(SyncFavorite(false));
+          }
+        });
+    }
   }, [hasUpdateFavorite]);
   const handleFavorite = (e: React.SyntheticEvent) => {
     e.preventDefault();

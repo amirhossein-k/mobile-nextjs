@@ -11,12 +11,16 @@ import "swiper/css/navigation";
 import "swiper/css/pagination";
 import Footer from "@/components/footer/Footer";
 import {Providers} from "./Providers";
+import {cookies} from "next/headers";
 export const metadata: Metadata = {
   title: "marloo",
   description: "قاب های حرفه ای",
 };
 
 export default function RootLayout({children}: {children: React.ReactNode}) {
+  const cookie = cookies();
+  const tokken = cookie.get("tokken");
+  console.log(tokken);
   return (
     <html className="" lang="en" suppressHydrationWarning={true}>
       <head>
@@ -32,7 +36,7 @@ export default function RootLayout({children}: {children: React.ReactNode}) {
       <body className={`${inter.className} `}>
         <ReduxProvider>
           <header>
-            <Navbarr />
+            <Navbarr tokken={tokken} />
           </header>
 
           {children}
