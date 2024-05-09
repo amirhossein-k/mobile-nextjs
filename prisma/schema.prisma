@@ -1,0 +1,96 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "mongodb"
+  url      = env("DATABASE_URL")
+}
+
+
+model Category{
+    id        String @id @default(auto()) @map("_id") @db.ObjectId
+    user      String 
+    
+}
+
+model CategoryItem{
+  id        String @id @default(auto()) @map("_id") @db.ObjectId
+  pic      String 
+  title  String 
+  parent  String
+  linkk   String
+  
+}
+model Products{
+id     String @id @default(auto()) @map("_id") @db.ObjectId
+title String
+model ModelProduct[]  @relation("model")
+price String
+classs  String?
+class2 String?
+price_offer String?
+category_product  CategoryProduct[]  @relation("category_product")
+colors ColorsProduct[] @relation("colors")
+status  Boolean
+count String
+review String
+property  PropertyProduct[]  @relation("property")
+productImage ProductImage[]  @relation("productImage")
+tags Tags[] @relation("tags")
+createdAt DateTime @default(now())
+updatedAt DateTime @updatedAt
+}
+model ProductImage{
+  id        String @id @default(auto()) @map("_id") @db.ObjectId
+  defaultImage Boolean
+  childImage      String  
+  ImageOwn Products @relation("productImage",fields: [ownerId],references: [id])
+  ownerId String @db.ObjectId
+}
+model Tags {
+  id String @id @default(auto()) @map("_id") @db.ObjectId
+  title_tag String
+  tagsOwn Products @relation("tags",fields: [ownerId],references: [id])
+  ownerId String @db.ObjectId
+}
+
+// model ChildImageItem{
+//   id        String @id @default(auto()) @map("_id") @db.ObjectId 
+//   imageUrl String
+//   ProductImageOwn ProductImage @relation(fields: [ownerId],references: [id])
+//   ownerId String @db.ObjectId
+// }
+
+model ModelProduct{
+  id        String @id @default(auto()) @map("_id") @db.ObjectId
+  title String
+   modelOwn Products @relation("model",fields: [ownerId],references: [id])
+    ownerId String @db.ObjectId
+}
+
+model CategoryProduct {
+    id        String @id @default(auto()) @map("_id") @db.ObjectId
+    title   String
+    defaultCat Boolean
+    categoryOwn Products @relation("category_product",fields: [ownerId],references: [id])
+    ownerId String @db.ObjectId
+}
+
+model ColorsProduct{
+  id  String @id @default(auto()) @map("_id") @db.ObjectId
+  model String
+  Colors String
+  colorOwn Products @relation("colors",fields: [ownerId],references: [id])
+  ownerId String @db.ObjectId 
+}
+
+model PropertyProduct{
+   id  String @id @default(auto()) @map("_id") @db.ObjectId
+   title String
+  propertyOwn Products @relation("property",fields: [ownerId],references: [id])
+  ownerId String @db.ObjectId 
+}
