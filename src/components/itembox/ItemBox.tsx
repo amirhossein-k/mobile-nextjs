@@ -21,6 +21,7 @@ const ItemBox = ({item}: {item: product}) => {
     router.push(`/qhab/${item.id}`);
     loadingClick();
   };
+  console.log('object')
   const loadingClick = async () => {
     toast("🦄 لطفا صبر کنید", {
       position: "top-right",
