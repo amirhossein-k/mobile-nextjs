@@ -27,10 +27,10 @@ const Description = ({children}: {children: React.ReactNode}) => {
 
   const toastId = React.useRef(null);
 
-  console.log(open);
+  // console.log(open);
   useEffect(() => {
     if (loading) {
-      console.log(paramas.get("review"));
+      // console.log(paramas.get("review"));
       setTimeout(() => {
         setLoading(false);
       }, 1000);
@@ -42,7 +42,7 @@ const Description = ({children}: {children: React.ReactNode}) => {
     router.push(
       `/qhab/${urltarget.slice(6)}?${createQueryString("review", "true")}`
     );
-    console.log(paramas.get("review"));
+    // console.log(paramas.get("review"));
 
     setOpen(false);
   };

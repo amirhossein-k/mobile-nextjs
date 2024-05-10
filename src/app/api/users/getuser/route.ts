@@ -3,10 +3,10 @@ import User from "@/models/userModel";
 import {NextRequest, NextResponse} from "next/server";
 import {GetDataFromTokken} from "../../../../../helpers/getDataFromTokken";
 
-ConnectDb();
 
 export const GET = async (req: NextRequest) => {
   try {
+    ConnectDb();
     //
 
     //

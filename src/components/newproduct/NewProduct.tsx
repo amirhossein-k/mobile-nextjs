@@ -22,7 +22,7 @@ const NewProduct = ({item}: {item: product[] | undefined}) => {
     });
   };
   const handleFavorite = () => {
-    console.log("f");
+    // console.log("f");
   };
   return (
     <div

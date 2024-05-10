@@ -19,10 +19,11 @@ interface USER {
   isAdmin: boolean;
 }
 
-ConnectDb();
 
 export const POST = async (req: NextRequest) => {
   try {
+ConnectDb();
+
     const reqBody = await req.json();
     const {email, password}: ReqLogin = reqBody;
 

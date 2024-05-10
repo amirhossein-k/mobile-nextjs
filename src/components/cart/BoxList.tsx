@@ -18,7 +18,7 @@ const BoxList = ({product, inx}: {inx: number; product: LISTORDERNEW1}) => {
   const router = useRouter();
   const handleClick = (e: any) => {
     e.preventDefault();
-    console.log(product.id);
+    // console.log(product.id);
     router.push(`/qhab/${product.id}`);
   };
   const handleDeelete = async (e: React.SyntheticEvent) => {
@@ -36,10 +36,10 @@ const BoxList = ({product, inx}: {inx: number; product: LISTORDERNEW1}) => {
     const response = await fetch("/api/users/list/delete", requestOptions);
 
     const data: ResGetOrderDetail = await response.json();
-    console.log(data);
+    // console.log(data);
     dispatch(SyncOrder(true));
   };
-  console.log(product);
+  // console.log(product);
 
   return (
     <div

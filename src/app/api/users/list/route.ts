@@ -8,7 +8,6 @@ import {ProductImage, product} from "@/../types/index";
 import {ObjectId} from "mongoose";
 import {cookies} from "next/headers";
 import {LISTORDERNEW1} from "../../../../../types/index";
-ConnectDb();
 
 interface ADDRESS {
   location: string;
@@ -46,6 +45,8 @@ interface USER {
 }
 export const POST = async (req: NextRequest) => {
   try {
+ConnectDb();
+
     const reqBody = await req.json();
     const {productId, productTitle, productCount, productColor} = reqBody;
     console.log(productId);

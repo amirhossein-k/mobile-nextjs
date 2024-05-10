@@ -20,18 +20,18 @@ const CheckBox = ({
 
   const handle = (e: React.SyntheticEvent) => {
     e.defaultPrevented;
-    console.log(e.currentTarget.getAttribute("name"));
+    // console.log(e.currentTarget.getAttribute("name"));
     const text = e.currentTarget.getAttribute("name");
 
     e.target.addEventListener("click", (e) => {
-      console.log(e);
-      console.log(text);
+      // console.log(e);
+      // console.log(text);
       text === "موجود" ? setSoldOut(true) : setSoldOut(false);
     });
 
     // setSoldOut(!status);
   };
-  console.log(soldOut);
+  // console.log(soldOut);
   return (
     <>
       {status ? (

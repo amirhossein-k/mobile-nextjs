@@ -22,23 +22,23 @@ const ColorsPicker = ({
 
 const backhandle= 1
 
-  console.log(Status, "sss");
+  // console.log(Status, "sss");
   // const model = "redmi 12s";
   const urltarget = usePathname();
-  console.log(urltarget);
+  // console.log(urltarget);
   const modelDefault: ModelProduct[] = [{title: "", id: "", ownerId: ""}];
 
   const handelCallback = useCallback(
     (e: React.SyntheticEvent) => {
       e.preventDefault();
-      console.log(
-        `my target color: ${e.currentTarget.getAttribute(
-          "color"
-        )} and title: ${Status} and id: ${model[0].ownerId}`
-      );
+      // console.log(
+      //   `my target color: ${e.currentTarget.getAttribute(
+      //     "color"
+      //   )} and title: ${Status} and id: ${model[0].ownerId}`
+      // );
       setColor(e.currentTarget.getAttribute("color") ?? "");
       const hashedID = bcrypt.hashSync(model[0].ownerId, 10);
-      console.log(hashedID);
+      // console.log(hashedID);
 
       const data = {
         id: model[0].ownerId,
@@ -67,20 +67,20 @@ const backhandle= 1
   const hasUpdateOrder = useAppSelector(
     (state) => state.syncOrder.value.syncorder
   );
-  console.log(paramas.get("counter"));
+  // console.log(paramas.get("counter"));
   ///////////
 
 
   useEffect(() => {
     window.addEventListener('popstate', ()=>{
-      console.log('one')
+      // console.log('one')
       router.replace('/qhab')
      
     });
     
     // Clean up event listener
     return () => window.removeEventListener('popstate', ()=>{
-      console.log('two')
+      // console.log('two')
     });
   }, [])
   /////////////

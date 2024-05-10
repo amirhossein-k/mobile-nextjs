@@ -28,14 +28,14 @@ const Counter = ({
     setCounter(counter - 1);
   };
   useEffect(() => {
-    console.log("run");
+    // console.log("run");
     if (urltarget === `/qhab/${id}`) {
-      console.log("1");
+      // console.log("1");
       router.push(
         `/qhab/${id}?${createQueryString("counter", String(counter))}`
       );
     } else {
-      console.log("2");
+      // console.log("2");
       router.push(
         `/qhab/${urltarget}?${createQueryString("counter", String(counter))}`
       );

@@ -39,7 +39,7 @@ const Navbarr = ({
   const hasUpdateFavorite = useAppSelector(
     (state) => state.SyncFavorite.value.syncFavorite
   );
-  console.log(hasUpdateOrder, "update - order");
+  // console.log(hasUpdateOrder, "update - order");
 
   useEffect(() => {
     if (width) {
@@ -65,7 +65,7 @@ const Navbarr = ({
     const response = await fetch("/api/users/list");
 
     const data: ResGetOrderDetail = await response.json();
-    console.log(data);
+    // console.log(data);
 
     setOrder(data.data);
     dispatch(SyncOrder(false));
@@ -80,7 +80,7 @@ const Navbarr = ({
     }
   }, [hasUpdateOrder]);
   useEffect(() => {
-    console.log("r4");
+    // console.log("r4");
     if (tokken) {
       fetch("/api/users/favorite")
         .then((res) => res.json())
@@ -98,7 +98,7 @@ const Navbarr = ({
   const handleFavorite = (e: React.SyntheticEvent) => {
     e.preventDefault();
     setOpenFavorite(!openFavorite);
-    console.log("object");
+    // console.log("object");
   };
 
   return (

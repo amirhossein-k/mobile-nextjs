@@ -63,14 +63,14 @@ const AddToBasket = ({
         const rr = await toast.promise(response, {
           pending: {
             render() {
-              console.log("object");
+              // console.log("object");
               return "منتظر بمانید";
             },
           },
 
           success: {
             render({data}: any) {
-              console.log(data);
+              // console.log(data);
               return "اضافه شد";
             },
           },
@@ -80,13 +80,13 @@ const AddToBasket = ({
             },
           },
         });
-        console.log(rr);
+        // console.log(rr);
         dispatch(SyncOrder(true));
-        console.log("object");
-        console.log(urltarget);
+        // console.log("object");
+        // console.log(urltarget);
         router.replace(urltarget);
       } else {
-        console.log("eroor");
+        // console.log("eroor");
         const myPromise = new Promise((resolve, reject) => {
           setTimeout(() => {
             const data = {
@@ -101,21 +101,21 @@ const AddToBasket = ({
         await toast.promise(myPromise, {
           pending: {
             render() {
-              console.log("object");
+              // console.log("object");
               return "منتظر بمانید";
             },
           },
 
           success: {
             render({data}: any) {
-              console.log(data);
+              // console.log(data);
 
               return "";
             },
           },
           error: {
             render({data}: any) {
-              console.log("object");
+              // console.log("object");
               return (
                 <div className="text-red-500 text-lg" dir="rtl">
                   <div className="">

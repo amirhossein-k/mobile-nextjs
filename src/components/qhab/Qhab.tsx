@@ -47,10 +47,10 @@ const Qhab = ({products}: {products: product[]}) => {
   const [CheckBoxFilterList, setCheckBoxFilterList] =
     useState<string[]>(defulat);
 
-  const filterhandler = (e: React.ChangeEvent<HTMLInputElement>) => {
-    console.log(e.target.innerHTML, "e");
-    setFilter(e.target.innerHTML);
-  };
+  // const filterhandler = (e: React.ChangeEvent<HTMLInputElement>) => {
+  //   console.log(e.target.innerHTML, "e");
+  //   setFilter(e.target.innerHTML);
+  // };
   const handleChange = (event: SelectChangeEvent<typeof status>) => {
     const {
       target: {value},

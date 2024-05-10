@@ -16,9 +16,9 @@ const AddCart = async ({
   props: Props;
   detail: product | undefined;
 }) => {
-  console.log(props.params.id);
-  console.log(props?.searchParams?.counter);
-  console.log(detail?.price.length);
+  // console.log(props.params.id);
+  // console.log(props?.searchParams?.counter);
+  // console.log(detail?.price.length);
   return (
     <div className=" flex justify-center items-center gap-3 relative">
       <Counter

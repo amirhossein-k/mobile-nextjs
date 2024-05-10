@@ -4,7 +4,7 @@ import {PropertyProduct, product} from "../../../../types";
 
 const Describe = async ({describe}: {describe: PropertyProduct[]}) => {
   describe.map((item) => {
-    console.log(item);
+    // console.log(item);
   });
   return (
     <div>

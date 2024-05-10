@@ -15,7 +15,6 @@ import IphoneMain from "@/components/IponeMain/IphoneMain";
 import SamsungMain from "@/components/samsung/SamsungMain";
 import XiamiMain from "@/components/xiami/XiamiMain";
 import Blogs from "@/components/blogs/Blogs";
-import {ChakraProvider} from "@chakra-ui/react";
 import Toast from "@/components/toast/Toast";
 import ParentOffer from "@/components/offer/ParentOffer";
 import {GetProduct} from "../../actions/GetProduct";

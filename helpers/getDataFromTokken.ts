@@ -40,3 +40,20 @@ export const GetDataFromTokken = async (req: NextRequest) => {
     throw new Error(err.message);
   }
 };
+export const GetDataFromTokkenWithTokken = async (Gettokken:string) => {
+  try {
+    const tokken = Gettokken || "";
+    console.log(tokken);
+
+    // console.log("ttttttttt", tokken.body);
+    const decodedTokken: Tokken | JwtPayload = jwt.verify(
+      tokken,
+      process.env.TOKEN_SECTET!
+    ) as Tokken;
+
+    return decodedTokken.id;
+  } catch (err: any) {
+    console.log("err");
+    throw new Error(err.message);
+  }
+};

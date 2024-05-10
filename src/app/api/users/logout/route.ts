@@ -1,10 +1,11 @@
 import {ConnectDb} from "@/db/dbConfig";
 import {NextRequest, NextResponse} from "next/server";
 
-ConnectDb();
 
 export const GET = async () => {
   try {
+ConnectDb();
+
     const response = NextResponse.json(
       {
         message: "با موفقیت از حساب کاربری خارج شدید",

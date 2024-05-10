@@ -15,9 +15,9 @@ const CheckBox = ({
   setCheckBoxFilterList: any;
   title: string;
 }) => {
-  console.log(CheckBoxFilterList);
-  console.log(title);
-  console.log(CheckBoxFilterList.find((item) => item === title) ? true : false);
+  // console.log(CheckBoxFilterList);
+  // console.log(title);
+  // console.log(CheckBoxFilterList.find((item) => item === title) ? true : false);
   return (
     <>
       {CheckBoxFilterList.length === 0 ? (
