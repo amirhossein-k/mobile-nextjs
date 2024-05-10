@@ -8,6 +8,8 @@ import {AppDispatch, useAppSelector} from "../../../redux/store";
 import {SyncUser} from "../../../redux/features/updateuser-slice";
 import {useDispatch} from "react-redux";
 import {ToastContainer} from "react-toastify";
+import LayoutDashboard from "@/components/layout/LayoutDashboard";
+import Link from "next/link";
 
 interface ResGetUserDetail {
   message: string;
@@ -58,6 +60,7 @@ const ProfilePage = () => {
     <section className="flex justify-end h-full min-h-[90vh] w-full  ">
       <div className={` flex-row h-100 w-full flex`} dir="rtl">
         <SideBar user={user!} />
+        <Link href={'/dashboard'} className="fixed left-0 bottom-0 bg-pink-300 text-white rounded-[50%] w-[80px] h-[80px] text-center flex items-center text-lg">صفحه مدیریت</Link>
       </div>
     </section>
   );

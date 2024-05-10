@@ -7,7 +7,7 @@ import {useDispatch} from "react-redux";
 import {AppDispatch, useAppSelector} from "../../../redux/store";
 import {SyncFavorite} from "../../../redux/features/added_favorite";
 import { Bounce, toast } from "react-toastify";
-
+import styles from '@/styles/favorite.module.css'
 interface ResGetOrderDetail {
   message: string;
   success: boolean;
@@ -31,7 +31,7 @@ const Favorite = ({
     toast("🦄 لطفا صبر کنید", {
       position: "top-right",
       // autoClose: 7000,
-      hideProgressBar: false,
+      hideProgressBar: true,
       closeOnClick: true,
       pauseOnHover: true,
       draggable: true,
@@ -60,6 +60,7 @@ const Favorite = ({
     console.log(product.colors);
     console.log(product);
     // e.preventDefault();
+    loadingClick()
     const requestOptions: any = {
       method: "DELETE",
       headers: {"Content-Type": "application/json"},
@@ -77,7 +78,7 @@ const Favorite = ({
     dispatch(SyncFavorite(true));
   };
   return (
-    <div className=" left-0 top-0 text-white h-full fixed bg-[#80aacce9] p-3 z-40">
+    <div className={` left-0 top-0 text-white h-full fixed overflow-y-auto scroll-smooth bg-[#80aacce9] p-3 z-40 ${styles.scrollstyle}`}>
       <div
         className="cursor-pointer hover:text-red-400 mb-3"
         onClick={() => setOpen(false)}
@@ -100,6 +101,7 @@ const Favorite = ({
                   className="flex  p-1 justify-end mx-2 cursor-pointer "
                   dir="ltr"
                   // onClick={handleFavorite}
+                  
                   onClick={(e) => handleDeelete(e, item)}
                 >
                   <i className="bi bi-trash3 text-2xl  text-white   overflow-hidden w-[25px] flex justify-center items-center hover:text-red-400"></i>

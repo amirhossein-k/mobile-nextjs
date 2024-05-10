@@ -26,6 +26,7 @@ export default async function Home() {
   const category = await getCategoryMain();
   console.log(category);
   const productList = await GetProduct();
+  console.log(productList)
 
   const newProduct = productList?.filter((item) => {
     return item.tags.find((iem) => iem.title_tag === "new");
