@@ -1,11 +1,17 @@
-import React from 'react'
+"use server";
+
+import AddProduct from "@/components/newproductAdd/AddProduct";
 
 const page = () => {
   return (
     <div>
-      new product
+      {/* <AddProduct>
+        <div className="">fff</div>
+      </AddProduct> */}
+      <AddProduct />
     </div>
-  )
-}
+    // <AddProduct/>
+  );
+};
 
-export default page
+export default page;
