@@ -17,7 +17,11 @@ const formSchema = z.object({
     .max(150, { message: "title must be less than 150 characters" })
     .trim(),
 
-  price: z.string({ required_error: "title is required" }).trim(),
+  price: z
+    .string({ required_error: "Category is required" })
+    .refine((val) => val !== "uncategorised", {
+      message: "Choose category other than uncategorised",
+    }),
 
   category: z
     .string({ required_error: "Category is required" })
@@ -25,7 +29,46 @@ const formSchema = z.object({
       message: "Choose category other than uncategorised",
     }),
 
-  status: z.boolean(),
+  status: z
+    .string({ required_error: "Name is required" })
+    .min(2, { message: "Name must be more than 5 characters" })
+    .max(50, { message: "Name must be less than 50 characters" })
+    .trim(),
+  counts: z
+    .string({ required_error: "Name is required" })
+    .min(2, { message: "Name must be more than 5 characters" })
+    .max(50, { message: "Name must be less than 50 characters" })
+    .trim(),
+  category_product: z
+    .string({ required_error: "Name is required" })
+    .min(2, { message: "Name must be more than 5 characters" })
+    .max(50, { message: "Name must be less than 50 characters" })
+    .trim(),
+  colors: z
+    .string({ required_error: "Name is required" })
+    .min(2, { message: "Name must be more than 5 characters" })
+    .max(50, { message: "Name must be less than 50 characters" })
+    .trim(),
+  property: z
+    .string({ required_error: "Name is required" })
+    .min(2, { message: "Name must be more than 5 characters" })
+    .max(50, { message: "Name must be less than 50 characters" })
+    .trim(),
+  model: z
+    .string({ required_error: "Name is required" })
+    .min(2, { message: "Name must be more than 5 characters" })
+    .max(50, { message: "Name must be less than 50 characters" })
+    .trim(),
+  product_image: z
+    .string({ required_error: "Name is required" })
+    .min(2, { message: "Name must be more than 5 characters" })
+    .max(50, { message: "Name must be less than 50 characters" })
+    .trim(),
+  tags: z
+    .string({ required_error: "Name is required" })
+    .min(2, { message: "Name must be more than 5 characters" })
+    .max(50, { message: "Name must be less than 50 characters" })
+    .trim(),
 });
 type FormSchema = z.infer<typeof formSchema>;
 
@@ -45,14 +88,28 @@ const AddProduct = () =>
       { id: "", title: "price" },
       { id: "", title: "status" },
       { id: "", title: "category" },
+      { id: "", title: "count" },
+      { id: "", title: "category-product" },
+      { id: "", title: "colors" },
+      { id: "", title: "property" },
+      { id: "", title: "model" },
+      { id: "", title: "product-image" },
+      { id: "", title: "tags" },
     ];
 
     const [formData, setFormData] = useState<z.infer<typeof formSchema>>({
       name: "",
       title: "",
       price: "0",
-      status: false,
+      status: "",
       category: "",
+      counts: "",
+      category_product: "",
+      colors: "",
+      property: "",
+      model: "",
+      product_image: "",
+      tags: "",
     });
     const [acctive, setActive] = useState("");
 
@@ -82,10 +139,10 @@ const AddProduct = () =>
       }
     };
 
-    const [formError, setFormError] = useState<z.ZodFormattedError<
-      FormSchema,
-      string
-    > | null>(null);
+    // const [formError, setFormError] = useState<z.ZodFormattedError<
+    //   FormSchema,
+    //   string
+    // > | null>(null);
     const [touchedInput, setTouchedInput] = useState<string[]>([]);
 
     useEffect(() => {
@@ -94,10 +151,11 @@ const AddProduct = () =>
       if (!parsedData.success) {
         const err = parsedData.error.format();
         console.log(acctive);
-        setFormError(err);
-      } else {
-        setFormError(null);
+        // setFormError(err);
       }
+      //  else {
+      //   setFormError(null);
+      // }
     }, [formData]);
 
     const handleSubmit = async (e: FormEvent) => {
@@ -109,7 +167,8 @@ const AddProduct = () =>
         if (!parsedFormValue.success) {
           const err = parsedFormValue.error.format();
 
-          setFormError(err);
+          // setFormError(err);
+          alert("error");
           console.log("object");
           return;
         }
