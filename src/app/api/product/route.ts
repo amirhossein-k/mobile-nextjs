@@ -118,7 +118,7 @@ interface getproduct {
   success: boolean;
   product: product[];
 }
-
+// s
 export const GET = async () => {
   //   const productList = await prisma.products.findMany({
   //     include: {
