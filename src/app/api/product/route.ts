@@ -1,7 +1,7 @@
 import prisma from "@/db/prismaDb";
 import Product from "@/models/productModel";
 import { NextRequest, NextResponse } from "next/server";
-import { product } from "../../../../../types";
+// import { product } from "../../../../../types";
 
 export const POST = async (req: NextRequest) => {
   const reqBody = await req.json();
@@ -113,11 +113,11 @@ export const POST = async (req: NextRequest) => {
   return NextResponse.json(product);
   // return NextResponse.json("hi");
 };
-interface getproduct {
-  message: string;
-  success: boolean;
-  product: product[];
-}
+// interface getproduct {
+//   message: string;
+//   success: boolean;
+//   product: product[];
+// }
 // s
 export const GET = async () => {
   //   const productList = await prisma.products.findMany({
