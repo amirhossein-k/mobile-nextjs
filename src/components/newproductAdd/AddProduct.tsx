@@ -80,10 +80,10 @@ const AddProduct = () =>
   {
     const inputRef = useRef("");
 
-    const addNewOrder = async (e: any) => {
-      console.log(inputRef.current);
-      // alert('hi')
-    };
+    // const addNewOrder = async (e: any) => {
+    //   console.log(inputRef.current);
+    //   // alert('hi')
+    // };
     const [value, setValue] = useState<string>("react");
     var tagproductt = ["xiamomi", "samsung", "new", "offer", "iphone"];
     const [selectedTag, setSelectedTag] = useState(tagproductt);
@@ -154,13 +154,13 @@ const AddProduct = () =>
           ...prev,
           [event.target.name]: event.target.value,
         }));
-        console.log("454");
+        // console.log("454");
         setActive(event.target.name);
       }
     };
 
     const handleSelector = (event: string | undefined, title: string) => {
-      console.log(event, "tteee");
+      // console.log(event, "tteee");
 
       if (event)
         setFormData((prev) => ({
@@ -180,10 +180,10 @@ const AddProduct = () =>
       }));
     };
 
-    // const [formError, setFormError] = useState<z.ZodFormattedError<
-    //   FormSchema,
-    //   string
-    // > | null>(null);
+    const [formError, setFormError] = useState<z.ZodFormattedError<
+      FormSchema,
+      string
+    > | null>(null);
     const [touchedInput, setTouchedInput] = useState<string[]>([]);
 
     useEffect(() => {
@@ -192,35 +192,34 @@ const AddProduct = () =>
       if (!parsedData.success) {
         const err = parsedData.error.format();
         console.log(acctive);
-        // setFormError(err);
+        setFormError(err);
+      } else {
+        setFormError(null);
       }
-      //  else {
-      //   setFormError(null);
-      // }
     }, [formData]);
 
     const handleSubmit = async (e: FormEvent) => {
       e.preventDefault();
-      console.log("ff");
+      // console.log("ff");
       try {
         const parsedFormValue = formSchema.safeParse(formData);
-        console.log(parsedFormValue, "[arss");
+        // console.log(parsedFormValue, "[arss");
         // console.log("2");
         if (!parsedFormValue.success) {
           const err = parsedFormValue.error.format().category;
 
           // setFormError(err);
-          console.log(`error: ${err}`);
-          console.log(parsedFormValue.error.formErrors.fieldErrors);
+          // console.log(`error: ${err}`);
+          // console.log(parsedFormValue.error.formErrors.fieldErrors);
           alert("error");
           return;
         }
 
         // send data to database
-        console.log("formdata", parsedFormValue.data);
-        alert(
-          `name: ${parsedFormValue.data.name} | title: ${parsedFormValue.data.title}`
-        );
+        // console.log("formdata", parsedFormValue.data);
+        // alert(
+        //   `name: ${parsedFormValue.data.name} | title: ${parsedFormValue.data.title}`
+        // );
         const login = axios.post("/api/product", parsedFormValue.data);
         console.log(login);
       } catch (error) {
@@ -230,7 +229,7 @@ const AddProduct = () =>
     };
     const name = "title";
     // console.log(inputRef.current.trim());
-    console.log(touchedInput.includes("title"));
+    // console.log(touchedInput.includes("title"));
 
     const [selectedColor, setSelectedColor] = useState([]);
 
@@ -261,7 +260,7 @@ const AddProduct = () =>
       })
     );
     const apiModel = tagsInput.connect(selectedModel, send, normalizeProps);
-    console.log(selectedModel.context.value, "state");
+    // console.log(selectedModel.context.value, "state");
 
     return (
       // <>
