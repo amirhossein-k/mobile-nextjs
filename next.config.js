@@ -12,8 +12,22 @@ const nextConfig = {
         port: "",
         pathname: "/**",
       },
+      {
+        protocol: "https",
+        hostname: "marloo.storage.c2.liara.space",
+        port: "",
+        pathname: "/**",
+      },
     ],
     domains: ["uploade.storage.iran.liara.space"],
+  },
+  env: {
+    BASE_URL: "http://localhost:3000",
+
+    LIARA_ENDPOINT: "storage.c2.liara.space",
+    LIARA_BUCKET_NAME: "marloo",
+    LIARA_ACCESS_KEY: "q799sh0ek8g9al6k",
+    LIARA_SECRET_KEY: "f3c9de88-d539-4bdf-b175-df8a7c5fa0af",
   },
   // reactStrictMode: true,
   // swcMinify: true,

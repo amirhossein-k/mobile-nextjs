@@ -1,14 +1,14 @@
 import Image from "next/image";
 import Link from "next/link";
 import React from "react";
-import {product} from "../../../types";
-import {usePathname, useRouter} from "next/navigation";
-import {Bounce, toast} from "react-toastify";
+import { product } from "../../../types";
+import { usePathname, useRouter } from "next/navigation";
+import { Bounce, toast } from "react-toastify";
 import { AppDispatch, useAppSelector } from "../../../redux/store";
 import { useDispatch } from "react-redux";
 import { SyncFavorite } from "../../../redux/features/added_favorite";
 
-const ItemBox = ({item}: {item: product}) => {
+const ItemBox = ({ item }: { item: product }) => {
   const router = useRouter();
   const hasUpdateFavorite = useAppSelector(
     (state) => state.SyncFavorite.value.syncFavorite
@@ -21,7 +21,7 @@ const ItemBox = ({item}: {item: product}) => {
     router.push(`/qhab/${item.id}`);
     loadingClick();
   };
-  console.log('object')
+  console.log("object");
   const loadingClick = async () => {
     toast("🦄 لطفا صبر کنید", {
       position: "top-right",
@@ -49,7 +49,7 @@ const ItemBox = ({item}: {item: product}) => {
 
       const requestOptions: any = {
         method: "POST",
-        headers: {"Content-Type": "application/json"},
+        headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
           productId: product.id,
           productTitle: product.title,
@@ -69,13 +69,13 @@ const ItemBox = ({item}: {item: product}) => {
         },
 
         success: {
-          render({data}: any) {
+          render({ data }: any) {
             console.log(data);
             return "اضافه شد";
           },
         },
         error: {
-          render({data}: any) {
+          render({ data }: any) {
             return data.message;
           },
         },
@@ -87,18 +87,18 @@ const ItemBox = ({item}: {item: product}) => {
       // router.replace(urltarget);
     } catch {}
   };
-  // 
+  //
   return (
     <div className="col  p-1 m-1  bg-white h-full  justify-center relative   flex flex-col group rounded-md">
       <form
-                    className="flex  p-1 justify-end mx-2 cursor-pointer top-2 left-0 z-30  absolute"
-                    dir="ltr"
-                    onClick={(e) => handleFavorite(e, item)}
-                  >
-                    <button type="submit">
-                      <i className="bi bi-heart text-2xl w-full text-black   hover:text-red-400"></i>
-                    </button>
-                  </form>
+        className="flex  p-1 justify-end mx-2 cursor-pointer top-2 left-0 z-30  absolute"
+        dir="ltr"
+        onClick={(e) => handleFavorite(e, item)}
+      >
+        <button type="submit">
+          <i className="bi bi-heart text-2xl w-full text-black   hover:text-red-400"></i>
+        </button>
+      </form>
       <a
         className="q cursor-pointer w-full h-full"
         // href={`/qhab/${item.title}`}
@@ -135,8 +135,11 @@ const ItemBox = ({item}: {item: product}) => {
             quality={100}
             // className="group-hover:scale-105 object-fill"
             src={
-              item.productImage.filter((item) => item.defaultImage === true)[0]
-                .childImage
+              item.productImage.length !== 0
+                ? item.productImage.filter(
+                    (item) => item.defaultImage === true
+                  )[0].childImage
+                : ""
             }
           />
         </div>

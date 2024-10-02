@@ -47,7 +47,8 @@ updatedAt DateTime @updatedAt
 model ProductImage{
   id        String @id @default(auto()) @map("_id") @db.ObjectId
   defaultImage Boolean
-  childImage      String  
+  childImage      String 
+  fileKey  String? 
   ImageOwn Products @relation("productImage",fields: [ownerId],references: [id])
   ownerId String @db.ObjectId
 }

@@ -4,7 +4,8 @@ import AddProduct from "@/components/newproductAdd/AddProduct";
 
 const page = () => {
   return (
-    <div>
+    <div dir="rtl">
+      <div className="title text-center ">اضافه کردن محصول</div>
       {/* <AddProduct>
         <div className="">fff</div>
       </AddProduct> */}

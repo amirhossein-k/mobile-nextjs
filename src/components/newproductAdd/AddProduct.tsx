@@ -1,9 +1,16 @@
 "use client";
 
 import React, { useRef, FormEvent, useEffect, useState } from "react";
+import { Select, Option } from "@material-tailwind/react";
+import { TagsInput } from "react-tag-input-component-2";
+import { array, object, string, z } from "zod";
+import { tree } from "next/dist/build/templates/app-page";
+import axios from "axios";
+import * as tagsInput from "@zag-js/tags-input";
+import { useMachine, normalizeProps } from "@zag-js/react";
 
-import { z } from "zod";
-
+import allbrand from "../../../utils/allBrand.json";
+import Upload from "../uploads/Upload";
 const formSchema = z.object({
   name: z
     .string({ required_error: "Name is required" })
@@ -18,10 +25,25 @@ const formSchema = z.object({
     .trim(),
 
   price: z
-    .string({ required_error: "Category is required" })
+    .string({ required_error: "price is required" })
     .refine((val) => val !== "uncategorised", {
       message: "Choose category other than uncategorised",
     }),
+  classs: z
+    .string({ required_error: "title is required" })
+    .min(2, { message: "title must be more than 10 characters" })
+    .max(150, { message: "title must be less than 150 characters" })
+    .trim(),
+  class2: z
+    .string({ required_error: "title is required" })
+    .min(2, { message: "title must be more than 10 characters" })
+    .max(150, { message: "title must be less than 150 characters" })
+    .trim(),
+  price_offer: z
+    .string({ required_error: "title is required" })
+    .min(2, { message: "title must be more than 10 characters" })
+    .max(150, { message: "title must be less than 150 characters" })
+    .trim(),
 
   category: z
     .string({ required_error: "Category is required" })
@@ -39,36 +61,17 @@ const formSchema = z.object({
     .min(2, { message: "Name must be more than 5 characters" })
     .max(50, { message: "Name must be less than 50 characters" })
     .trim(),
-  category_product: z
-    .string({ required_error: "Name is required" })
-    .min(2, { message: "Name must be more than 5 characters" })
-    .max(50, { message: "Name must be less than 50 characters" })
-    .trim(),
-  colors: z
-    .string({ required_error: "Name is required" })
-    .min(2, { message: "Name must be more than 5 characters" })
-    .max(50, { message: "Name must be less than 50 characters" })
-    .trim(),
+  category_product: z.array(z.string()),
+  colors: z.array(z.string()),
   property: z
     .string({ required_error: "Name is required" })
     .min(2, { message: "Name must be more than 5 characters" })
     .max(50, { message: "Name must be less than 50 characters" })
     .trim(),
-  model: z
-    .string({ required_error: "Name is required" })
-    .min(2, { message: "Name must be more than 5 characters" })
-    .max(50, { message: "Name must be less than 50 characters" })
-    .trim(),
-  product_image: z
-    .string({ required_error: "Name is required" })
-    .min(2, { message: "Name must be more than 5 characters" })
-    .max(50, { message: "Name must be less than 50 characters" })
-    .trim(),
-  tags: z
-    .string({ required_error: "Name is required" })
-    .min(2, { message: "Name must be more than 5 characters" })
-    .max(50, { message: "Name must be less than 50 characters" })
-    .trim(),
+  model: z.array(z.string()),
+  product_image: z.array(z.any()),
+  tags: z.array(z.string()),
+  defaultImage: z.string({ required_error: "defaultImage is required" }),
 });
 type FormSchema = z.infer<typeof formSchema>;
 
@@ -81,35 +84,52 @@ const AddProduct = () =>
       console.log(inputRef.current);
       // alert('hi')
     };
+    const [value, setValue] = useState<string>("react");
+    var tagproductt = ["xiamomi", "samsung", "new", "offer", "iphone"];
+    const [selectedTag, setSelectedTag] = useState(tagproductt);
+    const [defaultImage, setDefaultImage] = useState<string>("");
+
+    var catproductt = ["اسپرت", "مردانه", "زنانه", "کودکانه", "فانتزی"];
+    const [selectedCat, setSelectedCat] = useState(catproductt);
+
+    const [uploadedFiles, setUploadedFiles] = useState<any>([]);
+
+    // var tagproductt = ["xiamomi", "samsung", "new", "offer", "iphone"];
 
     const fromItem = [
       { id: "", title: "name" },
       { id: "", title: "title" },
       { id: "", title: "price" },
-      { id: "", title: "status" },
+      { id: "", title: "classs" },
+      { id: "", title: "class2" },
+      { id: "", title: "price_offer" },
       { id: "", title: "category" },
-      { id: "", title: "count" },
-      { id: "", title: "category-product" },
-      { id: "", title: "colors" },
+      { id: "", title: "counts" },
+      // { id: "", title: "category_product" },
+      // { id: "", title: "colors" },
       { id: "", title: "property" },
-      { id: "", title: "model" },
-      { id: "", title: "product-image" },
-      { id: "", title: "tags" },
+      // { id: "", title: "model" },
+      // { id: "", title: "product_image" },
+      // { id: "", title: "tags" },
     ];
 
     const [formData, setFormData] = useState<z.infer<typeof formSchema>>({
       name: "",
       title: "",
       price: "0",
+      classs: "",
+      class2: "",
+      price_offer: "",
       status: "",
       category: "",
       counts: "",
-      category_product: "",
-      colors: "",
+      category_product: [],
+      colors: [],
       property: "",
-      model: "",
-      product_image: "",
-      tags: "",
+      model: [],
+      product_image: [],
+      defaultImage: "",
+      tags: selectedTag,
     });
     const [acctive, setActive] = useState("");
 
@@ -139,6 +159,27 @@ const AddProduct = () =>
       }
     };
 
+    const handleSelector = (event: string | undefined, title: string) => {
+      console.log(event, "tteee");
+
+      if (event)
+        setFormData((prev) => ({
+          ...prev,
+          [title]: event,
+        }));
+    };
+    const handleInputChangeColor = (
+      event: string[] | undefined,
+      title: string
+    ) => {
+      console.log(event);
+
+      setFormData((prev) => ({
+        ...prev,
+        [title]: event,
+      }));
+    };
+
     // const [formError, setFormError] = useState<z.ZodFormattedError<
     //   FormSchema,
     //   string
@@ -147,7 +188,7 @@ const AddProduct = () =>
 
     useEffect(() => {
       const parsedData = formSchema.safeParse(formData);
-
+      console.log(parsedData);
       if (!parsedData.success) {
         const err = parsedData.error.format();
         console.log(acctive);
@@ -163,13 +204,15 @@ const AddProduct = () =>
       console.log("ff");
       try {
         const parsedFormValue = formSchema.safeParse(formData);
-        console.log("2");
+        console.log(parsedFormValue, "[arss");
+        // console.log("2");
         if (!parsedFormValue.success) {
-          const err = parsedFormValue.error.format();
+          const err = parsedFormValue.error.format().category;
 
           // setFormError(err);
+          console.log(`error: ${err}`);
+          console.log(parsedFormValue.error.formErrors.fieldErrors);
           alert("error");
-          console.log("object");
           return;
         }
 
@@ -178,6 +221,8 @@ const AddProduct = () =>
         alert(
           `name: ${parsedFormValue.data.name} | title: ${parsedFormValue.data.title}`
         );
+        const login = axios.post("/api/product", parsedFormValue.data);
+        console.log(login);
       } catch (error) {
         console.log("caught error");
         //handle additional erros ...
@@ -186,6 +231,38 @@ const AddProduct = () =>
     const name = "title";
     // console.log(inputRef.current.trim());
     console.log(touchedInput.includes("title"));
+
+    const [selectedColor, setSelectedColor] = useState([]);
+
+    var brand: string[] = [];
+    for (let i = 0; i < allbrand.length; i++) {
+      brand.push(allbrand[i].name);
+    }
+    const [selectedModel, send] = useMachine(
+      tagsInput.machine({
+        id: "1",
+        value: [],
+        validate(details) {
+          var valid = brand;
+          return (
+            !details.value.includes(details.inputValue) &&
+            details.inputValue.includes(
+              valid.filter((item) => item === details.inputValue)[0]
+            )
+          );
+        },
+        onValueChange(details) {
+          if (details)
+            setFormData((prev) => ({
+              ...prev,
+              ["model"]: details.value,
+            }));
+        },
+      })
+    );
+    const apiModel = tagsInput.connect(selectedModel, send, normalizeProps);
+    console.log(selectedModel.context.value, "state");
+
     return (
       // <>
       <form
@@ -193,7 +270,18 @@ const AddProduct = () =>
         // action={(e) => addNewOrder(e)}
         onSubmit={(e) => handleSubmit(e)}
       >
-        <div className="flex gap-2 flex-wrap w-full  mb-6" dir="rtl">
+        <div className="flex gap-2 flex-wrap w-full   mb-6" dir="rtl">
+          {/* image */}
+          <div className="w-[100%]  flex justify-center">
+            <Upload
+              defaultImage={defaultImage}
+              setDefaultImage={setDefaultImage}
+              uploadedFiles={uploadedFiles}
+              setUploadedFiles={setUploadedFiles}
+              setFormData={setFormData}
+            />
+          </div>
+          {/*  */}
           {/*title */}
           {fromItem.map((item) => {
             return (
@@ -212,12 +300,102 @@ const AddProduct = () =>
                   required
                   // ref={inputRef}
                 />
-                {}
               </div>
             );
           })}
 
           {/* {children} */}
+          <div className="w-[100%] md:w-[40%] lg:w-[30%]flex justify-center">
+            <Select
+              className=" overflow-hidden"
+              style={{ minWidth: "100px" }}
+              label="وضعیت محصول"
+              value={value}
+              onChange={(event) => handleSelector(event, "status")}
+              // onChange={(val: any) => setValue(val)}
+              name="status"
+            >
+              <Option value="approved">موجود</Option>
+            </Select>
+          </div>
+          <div className="w-[100%] md:w-[40%] lg:w-[30%]flex justify-center">
+            {/* <Select
+              className=" overflow-hidden"
+              style={{ minWidth: "100px" }}
+              label="دسته بندی محصول"
+              value={value}
+              onChange={(event) => handleSelector(event, "category_product")}
+              // onChange={(val: any) => setValue(val)}
+              name="category_product"
+            >
+              <Option value="man">مردانه</Option>
+              <Option value="woman">زنانه</Option>
+              <Option value="baby">کودکانه</Option>
+              <Option value="sport">اسپرت</Option>
+              <Option value="fantezi">فانتزی</Option>
+            </Select> */}
+            <TagsInput
+              value={selectedCat}
+              onChange={(event) =>
+                handleInputChangeColor(event, "category_product")
+              }
+              name="category_product"
+              placeHolder="دسته بندی محصول"
+            />
+          </div>
+          <div className="w-[100%] md:w-[40%] lg:w-[30%]flex justify-center">
+            <TagsInput
+              value={selectedColor}
+              onChange={(event) => handleInputChangeColor(event, "colors")}
+              name="color"
+              placeHolder="رنگ های محصول "
+            />
+          </div>
+          <div className="w-[100%] md:w-[40%] lg:w-[30%]flex justify-center">
+            <TagsInput
+              value={selectedTag}
+              onChange={(event) => handleInputChangeColor(event, "tags")}
+              name="tags"
+              placeHolder="تگ محصول"
+            />
+          </div>
+          {/* model  */}
+          <div className="w-[100%] md:w-[40%] lg:w-[30%]flex justify-center ">
+            <div
+              {...apiModel.getRootProps()}
+              className="bg-gray-50 rounded-md flex flex-row-reverse gap-2 flex-wrap"
+            >
+              {apiModel.value.map((value, index) => (
+                <span key={index} {...apiModel.getItemProps({ index, value })}>
+                  <div
+                    {...apiModel.getItemPreviewProps({ index, value })}
+                    className="bg-green-200 flex flex-row rounded-md gap-2"
+                  >
+                    <button
+                      className="bg-green-200 rounded-tl-md rounded-bl-md py-[1px] px-1"
+                      {...apiModel.getItemDeleteTriggerProps({ index, value })}
+                    >
+                      &#x2715;
+                    </button>
+                    <span className="bg-green-200 py-[3px]  rounded-tr-md rounded-br-md w-full h-full flex flex-row">
+                      {value}{" "}
+                    </span>
+                  </div>
+                  <input {...apiModel.getItemInputProps({ index, value })} />
+                </span>
+              ))}
+              <input
+                placeholder="مدل ..."
+                {...apiModel.getInputProps()}
+                className="inline w-full"
+                dir="rtl"
+              />
+            </div>
+          </div>
+
+          {/*  */}
+
+          {/*  */}
         </div>
         <div className="flex justify-end">
           <button className=" bg-blue-500 hover:scale-95 transition-all duration-75 ease-in px-5 py-2 rounded-md text-white">

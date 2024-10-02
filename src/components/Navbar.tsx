@@ -1,17 +1,17 @@
 "use client";
 import Link from "next/link";
-import React, {useEffect, useState} from "react";
+import React, { useEffect, useState } from "react";
 
 import styles from "@/styles/navbar.module.css";
 import Image from "next/image";
 import one from "../../public/logo.svg";
 import useWindowSize from "../../hooks/size";
-import {useDispatch} from "react-redux";
-import {AppDispatch, useAppSelector} from "../../redux/store";
-import {SyncOrder} from "../../redux/features/added_order";
-import {LISTORDERNEW} from "../../types";
+import { useDispatch } from "react-redux";
+import { AppDispatch, useAppSelector } from "../../redux/store";
+import { SyncOrder } from "../../redux/features/added_order";
+import { LISTORDERNEW } from "../../types";
 import Favorite from "./favorite/Favorite";
-import {SyncFavorite} from "../../redux/features/added_favorite";
+import { SyncFavorite } from "../../redux/features/added_favorite";
 interface ResGetOrderDetail {
   message: string;
   success: boolean;
@@ -20,7 +20,7 @@ interface ResGetOrderDetail {
 const Navbarr = ({
   tokken,
 }: {
-  tokken: {name: string; value: string} | undefined;
+  tokken: { name: string; value: string } | undefined;
 }) => {
   const [open, setOpen] = useState(false);
   const [openFavorite, setOpenFavorite] = useState(false);
@@ -28,7 +28,7 @@ const Navbarr = ({
   const [metr, setMetr] = useState(768);
   const [oneTime, setOneTime] = useState(true);
 
-  const {width, height} = useWindowSize();
+  const { width, height } = useWindowSize();
   const [order, setOrder] = useState<LISTORDERNEW[]>();
   const [lenghtFavorite, setLenghtFavorite] = useState();
   const dispatch = useDispatch<AppDispatch>();
@@ -60,7 +60,7 @@ const Navbarr = ({
     // );
     const requestOptions: any = {
       method: "GET",
-      headers: {"Content-Type": "application/json"},
+      headers: { "Content-Type": "application/json" },
     };
     const response = await fetch("/api/users/list");
 
@@ -89,7 +89,7 @@ const Navbarr = ({
           if (data) {
             setProductFav(data.data);
             console.log(data.data);
-            setLenghtFavorite(data.data.length);
+            // setLenghtFavorite(data.data.length);
             dispatch(SyncFavorite(false));
           }
         });
@@ -143,7 +143,7 @@ const Navbarr = ({
       {/* centrer brnad photo */}
       <div
         className="0 h-full justify-center"
-        style={search ? {display: "none"} : {display: "flex"}}
+        style={search ? { display: "none" } : { display: "flex" }}
       >
         <Link href={"/"} className="w-full">
           <Image
@@ -157,7 +157,7 @@ const Navbarr = ({
       </div>
       <div
         className="h-full"
-        style={!search ? {display: "none"} : {display: "flex"}}
+        style={!search ? { display: "none" } : { display: "flex" }}
         dir="rtl"
       >
         <input type="text" placeholder="جتستجو..." className="p-2 rounded-lg" />
@@ -166,8 +166,8 @@ const Navbarr = ({
       <div
         style={
           open
-            ? {top: "-100%", scale: "0", transitionProperty: "top"}
-            : {top: "0%", scale: "1", transitionProperty: "scale"}
+            ? { top: "-100%", scale: "0", transitionProperty: "top" }
+            : { top: "0%", scale: "1", transitionProperty: "scale" }
         }
         className="nav-link fixed bg-gray-950 duration-500 transition-all flex items-center md:min-h-fit  md:static right-0 top-[-100%] md:w-[31%] h-screen w-[50vh] md:h-full p-1  "
       >
