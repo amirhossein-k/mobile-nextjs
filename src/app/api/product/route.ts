@@ -58,12 +58,14 @@ export const POST = async (req: NextRequest) => {
   }
   // part 3 - 4  = colorsproduct = {model, Colors, ownerId= product.id} & model ={title ,ownerId=product.id}
   const reDot = /[-]/;
+  console.log(colors);
+  console.log(colors.length);
   for (let i = 0; i < colors.length; i++) {
     const length_slice = colors[i].search(reDot);
     console.log(length_slice);
     const modell = colors[i].slice(0, length_slice);
     var colorr;
-    if (length_slice === colors.length) {
+    if (length_slice === 0) {
       colorr = "سفید";
     } else {
       colorr = colors[i].slice(length_slice + 1);

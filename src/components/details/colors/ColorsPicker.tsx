@@ -1,11 +1,11 @@
 "use client";
-import React, {useCallback, useEffect, useState} from "react";
-import {pickColor, pickColorCSS} from "../../../../utils/ColorPicker";
-import {ColorsProduct, ModelProduct} from "../../../../types";
+import React, { useCallback, useEffect, useState } from "react";
+import { pickColor, pickColorCSS } from "../../../../utils/ColorPicker";
+import { ColorsProduct, ModelProduct } from "../../../../types";
 import Model from "../model/Model";
 import bcrypt from "bcryptjs";
-import {usePathname, useRouter, useSearchParams} from "next/navigation";
-import {useAppSelector} from "../../../../redux/store";
+import { usePathname, useRouter, useSearchParams } from "next/navigation";
+import { useAppSelector } from "../../../../redux/store";
 import { Bounce, toast } from "react-toastify";
 
 const ColorsPicker = ({
@@ -20,16 +20,17 @@ const ColorsPicker = ({
   const [Status, setStatus] = useState(model[0].title ?? "");
   const [color, setColor] = useState<string | undefined>();
 
-const backhandle= 1
+  const backhandle = 1;
 
   // console.log(Status, "sss");
   // const model = "redmi 12s";
   const urltarget = usePathname();
   // console.log(urltarget);
-  const modelDefault: ModelProduct[] = [{title: "", id: "", ownerId: ""}];
+  const modelDefault: ModelProduct[] = [{ title: "", id: "", ownerId: "" }];
+  const paramas = useSearchParams();
 
   const handelCallback = useCallback(
-    (e: React.SyntheticEvent) => {
+    (e: React.SyntheticEvent, paramas: any) => {
       e.preventDefault();
       // console.log(
       //   `my target color: ${e.currentTarget.getAttribute(
@@ -47,13 +48,14 @@ const backhandle= 1
       };
       if (counter) {
         router.push(
-          `${urltarget}?${createQueryString("id-title-color", data)}`
+          `${urltarget}?${createQueryString("id-title-color", data, paramas)}`
         );
       } else {
         router.push(
           `/qhab/${model[0].ownerId}?${createQueryString(
             "id-title-color",
-            data
+            data,
+            paramas
           )}`
         );
       }
@@ -61,7 +63,6 @@ const backhandle= 1
     [Status]
   );
 
-  const paramas = useSearchParams();
   const router = useRouter();
   const counter = paramas.get("counter");
   const hasUpdateOrder = useAppSelector(
@@ -70,23 +71,22 @@ const backhandle= 1
   // console.log(paramas.get("counter"));
   ///////////
 
-
   useEffect(() => {
-    window.addEventListener('popstate', ()=>{
+    window.addEventListener("popstate", () => {
       // console.log('one')
-      router.replace('/qhab')
-     
+      router.replace("/qhab");
     });
-    
+
     // Clean up event listener
-    return () => window.removeEventListener('popstate', ()=>{
-      // console.log('two')
-    });
-  }, [])
+    return () =>
+      window.removeEventListener("popstate", () => {
+        // console.log('two')
+      });
+  }, []);
   /////////////
 
   const createQueryString = useCallback(
-    (name: string, value: any) => {
+    (name: string, value: any, paramas: any) => {
       const params = new URLSearchParams(paramas);
 
       const rr = name.split("-");
@@ -157,7 +157,7 @@ const backhandle= 1
 
                   //   handelCallback(e);
                   // }}
-                  onClick={handelCallback}
+                  onClick={(e) => handelCallback(e, paramas)}
                 >
                   {/* {color} */}
                 </div>

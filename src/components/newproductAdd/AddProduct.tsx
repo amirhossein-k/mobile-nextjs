@@ -29,21 +29,9 @@ const formSchema = z.object({
     .refine((val) => val !== "uncategorised", {
       message: "Choose category other than uncategorised",
     }),
-  classs: z
-    .string({ required_error: "title is required" })
-    .min(2, { message: "title must be more than 10 characters" })
-    .max(150, { message: "title must be less than 150 characters" })
-    .trim(),
-  class2: z
-    .string({ required_error: "title is required" })
-    .min(2, { message: "title must be more than 10 characters" })
-    .max(150, { message: "title must be less than 150 characters" })
-    .trim(),
-  price_offer: z
-    .string({ required_error: "title is required" })
-    .min(2, { message: "title must be more than 10 characters" })
-    .max(150, { message: "title must be less than 150 characters" })
-    .trim(),
+  classs: z.optional(z.any()),
+  class2: z.optional(z.any()),
+  price_offer: z.optional(z.any()),
 
   category: z
     .string({ required_error: "Category is required" })
