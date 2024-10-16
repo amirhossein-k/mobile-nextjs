@@ -39,6 +39,7 @@
     "jsonwebtoken": "^9.0.1",
     "mongoose": "^7.4.3",
     "next": "^13.5.2",
+    "nextjs-ssr-paginator": "^0.0.9",
     "postcss": "^8.4.33",
     "prisma": "^5.2.0",
     "react": "^18.2.0",

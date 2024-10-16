@@ -1,7 +1,7 @@
 "use server";
 
-import axios, {AxiosRequestConfig, AxiosResponse} from "axios";
-import {product} from "../types";
+import axios, { AxiosRequestConfig, AxiosResponse } from "axios";
+import { product } from "../types";
 import prisma from "@/db/prismaDb";
 interface getproduct {
   message: string;
@@ -9,7 +9,7 @@ interface getproduct {
   product: product[];
   error?: boolean;
 }
-export const GetProduct = async () => {
+export async function GetProduct() {
   try {
     const listprodeuct = await prisma.products.findMany({
       include: {
@@ -19,6 +19,7 @@ export const GetProduct = async () => {
         model: true,
         productImage: true,
         tags: true,
+        _count: true,
       },
     });
     console.log(listprodeuct);
@@ -27,7 +28,7 @@ export const GetProduct = async () => {
   } catch (error: any) {
     throw new Error(error);
   }
-};
+}
 
 export const GetDetailProduct = async (id: string) => {
   try {
