@@ -252,7 +252,7 @@ const AddProduct = () =>
           </div>
           {/*  */}
           {/*title */}
-          {fromItem.map((item) => {
+          {/* {fromItem.map((item) => {
             return (
               <div key={item.title} className="w-[100%] md:w-[40%] lg:w-[30%]">
                 <label className=" block" htmlFor={item.title}>
@@ -271,7 +271,7 @@ const AddProduct = () =>
                 />
               </div>
             );
-          })}
+          })} */}
 
           {/* {children} */}
           <div className="w-[100%] md:w-[40%] lg:w-[30%]flex justify-center">
