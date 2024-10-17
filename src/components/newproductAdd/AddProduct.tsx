@@ -82,8 +82,6 @@ const AddProduct = () =>
 
     const [uploadedFiles, setUploadedFiles] = useState<any>([]);
 
-    // var tagproductt = ["xiamomi", "samsung", "new", "offer", "iphone"];
-
     const fromItem = [
       { id: "", title: "name" },
       { id: "", title: "title" },
@@ -142,14 +140,11 @@ const AddProduct = () =>
           ...prev,
           [event.target.name]: event.target.value,
         }));
-        // console.log("454");
         setActive(event.target.name);
       }
     };
 
     const handleSelector = (event: string | undefined, title: string) => {
-      // console.log(event, "tteee");
-
       if (event)
         setFormData((prev) => ({
           ...prev,
@@ -176,10 +171,9 @@ const AddProduct = () =>
 
     useEffect(() => {
       const parsedData = formSchema.safeParse(formData);
-      console.log(parsedData);
       if (!parsedData.success) {
         const err = parsedData.error.format();
-        console.log(acctive);
+
         setFormError(err);
       } else {
         setFormError(null);
@@ -191,23 +185,14 @@ const AddProduct = () =>
       // console.log("ff");
       try {
         const parsedFormValue = formSchema.safeParse(formData);
-        // console.log(parsedFormValue, "[arss");
-        // console.log("2");
+
         if (!parsedFormValue.success) {
           const err = parsedFormValue.error.format().category;
 
-          // setFormError(err);
-          // console.log(`error: ${err}`);
-          // console.log(parsedFormValue.error.formErrors.fieldErrors);
           alert("error");
           return;
         }
 
-        // send data to database
-        // console.log("formdata", parsedFormValue.data);
-        // alert(
-        //   `name: ${parsedFormValue.data.name} | title: ${parsedFormValue.data.title}`
-        // );
         const login = axios.post("/api/product", parsedFormValue.data);
         console.log(login);
       } catch (error) {
@@ -215,9 +200,6 @@ const AddProduct = () =>
         //handle additional erros ...
       }
     };
-    const name = "title";
-    // console.log(inputRef.current.trim());
-    // console.log(touchedInput.includes("title"));
 
     const [selectedColor, setSelectedColor] = useState([]);
 

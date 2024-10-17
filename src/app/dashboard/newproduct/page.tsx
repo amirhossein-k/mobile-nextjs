@@ -2,7 +2,7 @@
 
 import AddProduct from "@/components/newproductAdd/AddProduct";
 
-const page = () => {
+const page = async () => {
   return (
     <div dir="rtl">
       <div className="title text-center ">اضافه کردن محصول</div>
