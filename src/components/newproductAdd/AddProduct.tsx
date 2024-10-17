@@ -330,7 +330,7 @@ const AddProduct = () =>
           </div>
           {/* model  */}
           <div className="w-[100%] md:w-[40%] lg:w-[30%]flex justify-center ">
-            {apiModel && (
+            {/* {apiModel && (
               <div
                 {...apiModel.getRootProps()}
                 className="bg-gray-50 rounded-md flex flex-row-reverse gap-2 flex-wrap"
@@ -367,7 +367,7 @@ const AddProduct = () =>
                   dir="rtl"
                 />
               </div>
-            )}
+            )} */}
           </div>
 
           {/*  */}
