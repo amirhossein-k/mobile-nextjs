@@ -4,7 +4,7 @@ import { getData } from "../../../../actions/GetProductList";
 // import Pagination from "../../../../types/Pagination2";
 import Paginator from "@/../types/Pagination2";
 
-export async function Page({
+export async function page({
   searchParams,
 }: {
   searchParams: { [key: string]: string | string[] | undefined };
@@ -42,4 +42,4 @@ export async function Page({
   );
 }
 
-export default Page;
+export default page;
