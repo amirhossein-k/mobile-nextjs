@@ -4,11 +4,11 @@ import { getData } from "../../../../actions/GetProductList";
 // import Pagination from "../../../../types/Pagination2";
 import Paginator from "@/../types/Pagination2";
 
-export async function page({
+const page = async ({
   searchParams,
 }: {
   searchParams: { [key: string]: string | string[] | undefined };
-}) {
+}) => {
   const currentPage = parseInt(searchParams["page"] as string, 10) || 1;
   const { data, meta } = await getData(currentPage);
 
@@ -40,6 +40,6 @@ export async function page({
       </div>
     </div>
   );
-}
+};
 
 export default page;

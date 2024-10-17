@@ -69,6 +69,7 @@
     "@types/react-image-gallery": "^1.2.0",
     "@types/react-slick": "^0.23.10",
     "@types/react-tagsinput": "^3.20.6",
-    "@types/window-size": "^1.1.1"
+    "@types/window-size": "^1.1.1",
+    "eslint": "^9.12.0"
   }
 }
