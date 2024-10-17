@@ -1,8 +1,8 @@
-"use server";
+// "use server";
 
 import AddProduct from "@/components/newproductAdd/AddProduct";
 
-const page = async () => {
+const page = () => {
   return (
     <div dir="rtl">
       <div className="title text-center ">اضافه کردن محصول</div>
