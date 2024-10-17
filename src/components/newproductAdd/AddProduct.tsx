@@ -3,7 +3,7 @@
 import React, { useRef, FormEvent, useEffect, useState } from "react";
 import { Select, Option } from "@material-tailwind/react";
 import { TagsInput } from "react-tag-input-component-2";
-import { array, object, string, z } from "zod";
+import { z } from "zod";
 import { tree } from "next/dist/build/templates/app-page";
 import axios from "axios";
 import * as tagsInput from "@zag-js/tags-input";
@@ -66,7 +66,7 @@ type FormSchema = z.infer<typeof formSchema>;
 const AddProduct = () =>
   // { children }: { children: React.ReactNode }
   {
-    const inputRef = useRef("");
+    // const inputRef = useRef("");
 
     // const addNewOrder = async (e: any) => {
     //   console.log(inputRef.current);
@@ -348,36 +348,44 @@ const AddProduct = () =>
           </div>
           {/* model  */}
           <div className="w-[100%] md:w-[40%] lg:w-[30%]flex justify-center ">
-            <div
-              {...apiModel.getRootProps()}
-              className="bg-gray-50 rounded-md flex flex-row-reverse gap-2 flex-wrap"
-            >
-              {apiModel.value.map((value, index) => (
-                <span key={index} {...apiModel.getItemProps({ index, value })}>
-                  <div
-                    {...apiModel.getItemPreviewProps({ index, value })}
-                    className="bg-green-200 flex flex-row rounded-md gap-2"
+            {apiModel && (
+              <div
+                {...apiModel.getRootProps()}
+                className="bg-gray-50 rounded-md flex flex-row-reverse gap-2 flex-wrap"
+              >
+                {apiModel.value.map((value, index) => (
+                  <span
+                    key={index}
+                    {...apiModel.getItemProps({ index, value })}
                   >
-                    <button
-                      className="bg-green-200 rounded-tl-md rounded-bl-md py-[1px] px-1"
-                      {...apiModel.getItemDeleteTriggerProps({ index, value })}
+                    <div
+                      {...apiModel.getItemPreviewProps({ index, value })}
+                      className="bg-green-200 flex flex-row rounded-md gap-2"
                     >
-                      &#x2715;
-                    </button>
-                    <span className="bg-green-200 py-[3px]  rounded-tr-md rounded-br-md w-full h-full flex flex-row">
-                      {value}{" "}
-                    </span>
-                  </div>
-                  <input {...apiModel.getItemInputProps({ index, value })} />
-                </span>
-              ))}
-              <input
-                placeholder="مدل ..."
-                {...apiModel.getInputProps()}
-                className="inline w-full"
-                dir="rtl"
-              />
-            </div>
+                      <button
+                        className="bg-green-200 rounded-tl-md rounded-bl-md py-[1px] px-1"
+                        {...apiModel.getItemDeleteTriggerProps({
+                          index,
+                          value,
+                        })}
+                      >
+                        &#x2715;
+                      </button>
+                      <span className="bg-green-200 py-[3px]  rounded-tr-md rounded-br-md w-full h-full flex flex-row">
+                        {value}{" "}
+                      </span>
+                    </div>
+                    <input {...apiModel.getItemInputProps({ index, value })} />
+                  </span>
+                ))}
+                <input
+                  placeholder="مدل ..."
+                  {...apiModel.getInputProps()}
+                  className="inline w-full"
+                  dir="rtl"
+                />
+              </div>
+            )}
           </div>
 
           {/*  */}
